@@ -10,11 +10,21 @@ Hotelling \citep{hotelling1929} untersucht anhand eines einfachen Modells wie si
 \begin{figure}[htb]
 	\centering
 	\begin{tikzpicture}
-	\node (start) at (0,0) {0};
-	\node (end) at (2,0) {l};
+	\coordinate (start) at (0,0) {};
+	\coordinate (end) at (10,0) {};
+	\coordinate (left) at (2,0) {};
+	\coordinate (right) at (7,0) {};
 	\draw (start) -- (end);
+	\draw ($(start)+(0,5pt)$) -- ($(start)-(0,5pt)$);
+	\draw ($(left)+(0,5pt)$) -- ($(left)-(0,5pt)$);
+	\draw ($(right)+(0,5pt)$) -- ($(right)-(0,5pt)$);
+	\draw ($(end)+(0,5pt)$) -- ($(end)-(0,5pt)$);
+	\node at ($(start)+(0,10pt)$) {$0$};
+	\node at ($(end)+(0,10pt)$) {$l$};
+	\node at ($(left)+(0,10pt)$) {$A$};
+	\node at ($(right)+(0,10pt)$) {$B$};
 	\end{tikzpicture}
-	\caption{Positionen der Wettbewerber und Konsumenten auf einer Linie.}
+	\caption{Positionen der Wettbewerber $A$ und $B$ und Konsumenten auf einer Linie von $0$ bis $l$.}
 	\label{Fig-Linearer-Wettbewerb}
 \end{figure}
 
