@@ -1,7 +1,7 @@
 \chapter{Theoretische Analyse}\label{Kap-Theorie}
 
 \noindent
-Text...
+Im Folgenden werden unterschiedliche Modelle des räumlichen Wettbewerbs vorgestellt. Jedes Modell wird zunächst in seiner ursprünglichen Form gezeigt. Anschließend wird analysiert inwiefern sich das Modell auf politische Gegebenheiten anwenden lässt und welche Vorhersagen sich daraus ergeben.
 
 \section{Hotellings Gesetz}\label{Sec-Hotelling}
 
@@ -23,14 +23,77 @@ Hotelling \citep{hotelling1929} untersucht anhand eines einfachen Modells wie si
 	\node at ($(end)+(0,10pt)$) {$l$};
 	\node at ($(left)+(0,10pt)$) {$A$};
 	\node at ($(right)+(0,10pt)$) {$B$};
+	
+	\coordinate (startdown) at ($(start)+(0,-20pt)$) {};
+	\coordinate (enddown) at ($(end)+(0,-20pt)$) {};
+	\coordinate (leftdown) at ($(left)+(0,-20pt)$) {};
+	\coordinate (rightdown) at ($(right)+(0,-20pt)$) {};
+	
+	\draw[|-|] (startdown) -- (leftdown) node[midway, below] {$a$};
+	\draw[|-|] (rightdown) -- (enddown) node[midway, below] {$b$};
 	\end{tikzpicture}
 	\caption{Positionen der Wettbewerber $A$ und $B$ und Konsumenten auf einer Linie von $0$ bis $l$.}
 	\label{Fig-Linearer-Wettbewerb}
 \end{figure}
 
-Die Konsumenten kaufen bei demjenigen Duopolisten, der ihnen den größten Nutzen gibt. Die Nutzenfunktion der Konsumenten ist dabei
+Eine grundlegende Annahme des Modells ist, dass die Konsumenten lineare Transportkosten in Höhe von $c$ pro Längeneinheit haben. Die Konsumenten kaufen somit bei demjenigen Duopolisten bei dem die Kosten bestehend aus Preis und Transportkosten am geringsten sind.
+
+Nun nimmt Hotelling an, dass $A$ zu einem Preis $p_1$ und $B$ zu einem Preis $p_2$ verkauft. Die Verkaufsmengen sind jeweils $q_1$ und $q_2$.
+
+Die erste wichtige Feststellung ist, dass das Duopol nur dann ein Duopol bleibt und nicht zu einem Monopol kollabiert, wenn der Preisunterschied nicht zu hoch ist. Genauer gesagt, darf der Preisaufschlag von $A$ nicht höher sein als die Transportkosten von Wettbewerber $B$ nach $A$:
+\begin{equation}\label{eqn:Preisannahme}
+\begin{split}
+p_1 &\leq p_2 + c(l-a-b) \\
+p_2 &\leq p_1 + c(l-a-b)
+\end{split}
+\end{equation}
+So lange Bedingung \ref{eqn:Preisannahme} erfüllt ist, kaufen alle Konsumenten links bei Wettbewerber $A$ und alle rechts bei $B$. Die Konsumenten in der Mitte teilen sich in einen Abschnitt $x$, der bei $A$ kauft, und einen Abschnitt $y$, der bei $B$ kauft.
+
+Daraus ergeben sich zwei Bedingungen. Erstens ergeben die Längen zusammen die gesamte Länge und zweitens soll der Konsument der die beiden Abschnitte $x$ und $y$ trennt indifferent zwischen den beiden Wettbewerbern sein. Dies ist in Gleichung \ref{eqn:Gleichgewichtsbedingungen} formuliert.
+\begin{equation}\label{eqn:Gleichgewichtsbedingungen}
+\begin{split}
+l &= a + x + y + b \\
+p_1 + cx &= p_2 + cy
+\end{split}
+\end{equation}
+
+Löst man dieses lineare Gleichungssystem nach $x$ und $y$ auf ergibt sich
 \begin{equation}
-U_{Hotelling} = 
+\begin{split}
+x &= \tfrac{1}{2} \left(l-a-b+\frac{p_2-p_1}{c}\right)\\
+y &= \tfrac{1}{2} \left(l-a-b+\frac{p_1-p_2}{c}\right)
+\end{split}
+\end{equation}
+
+Ohne Beschränkung der Allgemeinheit werden die Kosten der Wettbewerber Null gesetzt und der Gewinn ist somit
+\begin{equation}
+\begin{split}
+\pi_1 &= p_1 q_1 = p_1 (a+x) = \tfrac{1}{2} p_1 \left(l+a-b\right) -\frac{p_1^2}{c}+\frac{p_1 p_2}{c}\\
+\pi_2 &= p_2 q_2 = p_2 (b+y) = \tfrac{1}{2} p_1 \left(l-a+b\right) -\frac{p_2^2}{c}+\frac{p_1 p_2}{c}
+\end{split}
+\end{equation}
+
+Der gewinnmaximierende Preis, berechnet mithilfe der Gleichungen $\frac{\partial \pi_1}{\partial p_1}=0$ und $\frac{\partial \pi_2}{\partial p_2}=0$, ist
+\begin{equation}
+\begin{split}
+p_1 &= \left(l+\frac{a-b}{c}\right) \\
+p_2 &= \left(l-\frac{a-b}{c}\right)
+\end{split}
+\end{equation}
+mit den verkauften Mengen
+\begin{equation}
+\begin{split}
+q_1 &= a + x = \tfrac{1}{2} \left(l + \frac{a-b}{3}\right) \\
+q_2 &= b + y = \tfrac{1}{2} \left(l - \frac{a-b}{3}\right)
+.\end{split}
+\end{equation}
+
+Die resultierende Gewinnfunktion der Wettbewerber ist
+\begin{equation}\label{eqn:Gewinnfunktion}
+\begin{split}
+\pi_1 &= \frac{c}{2} \left(l+\frac{a-b}{3}\right) \\
+\pi_2 &= \frac{c}{2} \left(l-\frac{a-b}{3}\right)
+.\end{split}
 \end{equation}
 
 \section{Modell von d‘Aspremont}\label{Sec-Aspremont}
