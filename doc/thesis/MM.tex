@@ -30,11 +30,14 @@ Hotelling \citep{hotelling1929} untersucht anhand eines einfachen Modells wie si
 	\coordinate (enddown) at ($(end)+(0,-20pt)$) {};
 	\coordinate (leftdown) at ($(left)+(0,-20pt)$) {};
 	\coordinate (rightdown) at ($(right)+(0,-20pt)$) {};
+	\coordinate (middledown) at (4,-20pt) {};
 	
 	\draw[|-|] (startdown) -- (leftdown) node[midway, below] {$a$};
 	\draw[|-|] (rightdown) -- (enddown) node[midway, below] {$b$};
+	\draw[|-|] (leftdown) -- (middledown) node[midway, below] {$x$};
+	\draw[|-|] (middledown) -- (rightdown) node[midway, below] {$y$};
 	\end{tikzpicture}
-	\caption{Positionen der Wettbewerber $A$ und $B$ und Konsumenten auf einer Linie von $0$ bis $l$.}
+	\caption{Positionen der Wettbewerber $A$ und $B$ und Konsumenten auf einer Linie von $0$ bis $l$. Die Konsumenten im Bereich $a$ und $x$ kaufen bei $A$ ein und $y$ und $b$ bei $B$. (angelehnt an \cite{hotelling1929})}
 	\label{Fig-Linearer-Wettbewerb}
 \end{figure}
 
