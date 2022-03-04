@@ -6,3 +6,5 @@
 *.synctex.gz
 *.toc
 .idea/
+*.json
+*.sav
