@@ -8,24 +8,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 
-filepath_opinion = "../data/wahl_o_mat_2017/opinion.json"
-with open(filepath_opinion) as fp:
-    file = json.load(fp)
-filepath_statement = "../data/wahl_o_mat_2017/statement.json"
-with open(filepath_statement) as fp:
-    file_statement = json.load(fp)
-    no_statements = len(file_statement)
-filepath_party = "../data/wahl_o_mat_2017/party.json"
-with open(filepath_party) as fp:
-    file_party = json.load(fp)
+from src.data_utility.party_dictionary import PARTY_DICTIONARY
+from src.data_utility.wahl_o_mat.wahl_o_mat import opinion_to_array, load_opinion, load_statement
 
-parties = list(range(6))
-party_positions = np.zeros([len(parties), no_statements])
-for item in file:
-    if item['party'] in parties:
-        party_positions[item['party'], item['statement']] = item['answer']
-# replace 2 with 0.5 due to this being the neutral position
-party_positions = np.where(party_positions == 2, 0.5, party_positions)
+dataframe_statement = load_statement()
+party_positions = opinion_to_array(load_opinion(n_parties=6))
 
 pca = PCA(n_components=2).fit(party_positions)
 print("pca explained variance ratio", pca.explained_variance_ratio_)
@@ -34,9 +21,9 @@ print("statements from first PCA")
 for statement in pca_argsort[0, :5]:
     print(
         statement,
-        file_statement[statement]['label'],
+        dataframe_statement.iloc[statement]['label'],
         ": ",
-        file_statement[statement]['text'],
+        dataframe_statement.iloc[statement]['text'],
         pca.components_[0, statement],
     )
 
@@ -44,9 +31,9 @@ print("\nstatements from second PCA")
 for statement in pca_argsort[1, :5]:
     print(
         statement,
-        file_statement[statement]['label'],
+        dataframe_statement.iloc[statement]['label'],
         ": ",
-        file_statement[statement]['text'],
+        dataframe_statement.iloc[statement]['text'],
         pca.components_[1, statement],
     )
 
@@ -54,10 +41,10 @@ plt.scatter(
     party_positions.dot(pca.components_[0]),
     party_positions.dot(pca.components_[1]),
     )
-for party in parties:
+for party in range(6):
     plt.text(
         party_positions.dot(pca.components_[0])[party],
         party_positions.dot(pca.components_[1])[party],
-        file_party[party]['name'],
+        PARTY_DICTIONARY[party],
     )
 plt.show()
