@@ -5,9 +5,18 @@ data from https://github.com/gockelhahn/qual-o-mat-data
 import matplotlib.pyplot as plt
 
 from src.data_utility.party_dictionary import PARTY_DICTIONARY
-from src.data_utility.politbarometer.politbarometer import load_voter_data, reduce_data, calculate_voter_position
-from src.data_utility.wahl_o_mat.wahl_o_mat import load_statement, opinion_to_array, perform_pca, \
-    print_pca_significant_statements, load_opinion
+from src.data_utility.politbarometer.politbarometer import (
+    calculate_voter_position,
+    load_voter_data,
+    reduce_data,
+)
+from src.data_utility.wahl_o_mat.wahl_o_mat import (
+    load_opinion,
+    load_statement,
+    opinion_to_array,
+    perform_pca,
+    print_pca_significant_statements,
+)
 
 # load party data
 dataframe_statement = load_statement()
@@ -23,10 +32,11 @@ print_pca_significant_statements(pca, dataframe_statement)
 # plot party positions
 plt.scatter(party_positions[:, 0], party_positions[:, 1])
 for party in range(6):
-    plt.text(party_positions[party, 0],
-             party_positions[party, 1],
-             PARTY_DICTIONARY[party],
-             )
+    plt.text(
+        party_positions[party, 0],
+        party_positions[party, 1],
+        PARTY_DICTIONARY[party],
+    )
 
 # load voter data
 dataframe = load_voter_data()
