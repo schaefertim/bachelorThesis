@@ -26,8 +26,8 @@ map_rating_int = {
     '+3': 3,
     '+4': 4,
     '+5 sehr viel': 5,
-    'KA': np.NaN,
-    'nicht erhoben': np.NaN,
+    'KA': 99,
+    'nicht erhoben': 0,
 }
 
 
@@ -53,10 +53,11 @@ def reduce_data(dataframe: pd.DataFrame, year=None, study=None, month=None) -> p
     if month is not None:
         dataframe = dataframe[dataframe[col_month] == month]
 
-    dataframe[cols_party_preference] = dataframe[cols_party_preference].apply(lambda x: x.cat.codes)
+    dataframe[cols_party_preference] = dataframe[cols_party_preference].replace(map_rating_int).astype(int)
     for col_party_preference in cols_party_preference:
         dataframe = dataframe[dataframe[col_party_preference] != 0]
         dataframe = dataframe[dataframe[col_party_preference] != 99]
+
     return dataframe
 
 
@@ -68,4 +69,43 @@ def calculate_voter_position(position_party, dataframe_voter) -> pd.DataFrame:
             nominator += np.exp(dataframe_voter[col_party_preference]) * position_party[PARTY_MAPPING_POLITBAROMETER[p], i]
             denominator += np.exp(dataframe_voter[col_party_preference])
         dataframe_voter[f'position_{"x" if i==0 else "y"}'] = nominator / denominator
+    return dataframe_voter
+
+
+def convert_left_right(dataframe_voter) -> pd.DataFrame:
+    map_left_right_int = {
+        'nicht erhoben': 0,
+        "0 links": 1,
+        "1": 2,
+        "2": 3,
+        "3": 4,
+        "4": 5,
+        "5": 6,
+        "6": 7,
+        "7": 8,
+        "8": 9,
+        "9": 10,
+        "10 rechts": 11,
+        "KA": 99,
+    }
+    dataframe_voter[col_left_right] = dataframe_voter[col_left_right].replace(map_left_right_int).astype(int)
+    # drop answer 0: nicht erhoben, and 99: KA
+    dataframe_voter = dataframe_voter[dataframe_voter[col_left_right] != 0]
+    dataframe_voter = dataframe_voter[dataframe_voter[col_left_right] != 99]
+    return dataframe_voter
+
+
+def convert_party_affiliation(dataframe_voter: pd.DataFrame) -> pd.DataFrame:
+    map_party_int = {
+        "CDU": 1,
+        "CSU": 1,
+        "SPD": 2,
+        "FDP": 3,
+        "Grüne": 4,
+        "PDS/die Linke": 5,
+        "AfD - Alternative für Deutschland": 6,
+    }
+    dataframe_voter = dataframe_voter[dataframe_voter[col_party].isin(map_party_int)]
+    dataframe_voter[col_party].replace(map_party_int, inplace=True)
+    # dataframe_voter.astype(int)
     return dataframe_voter
