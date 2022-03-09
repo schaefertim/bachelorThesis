@@ -40,4 +40,4 @@ dataframe = calculate_voter_position(party_positions, dataframe)
 # plot voters in PC coordinates
 plt.scatter(dataframe["position_x"], dataframe["position_y"], s=1)
 
-plt.show()
+plt.savefig("../fig/voter_distribution.png")

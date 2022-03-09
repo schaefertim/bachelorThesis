@@ -26,4 +26,5 @@ for party in range(6):
              party_positions[party, 1],
              PARTY_DICTIONARY[party],
              )
-plt.show()
+
+plt.savefig("../fig/party_positions.png")
