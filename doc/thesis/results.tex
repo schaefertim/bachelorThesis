@@ -6,7 +6,75 @@
 
 \section{Positionen der Parteien}\label{Sec-Parteienpositionen}
 
+\subsection{Wahl-O-Mat Daten}
+Wahl-O-Mat (TODO cite Wahl-O-Mat) ist ein Tool das von der Bundeszentrale für politische Bildung zur Verfügung gestellt wird. Er wird betreut und entwickelt von [TODO] [TODO zitieren].
+[Ziele und Wirkung, wissenschaftliche Publikationen]
+Die Wahl-O-Mat-Daten umfassen also die Positionen der Parteien zu ungefähr 38 Thesen (TODO check). Die Parteien geben dabei an, ob sie der These zustimmen, nicht zustimmen oder neutral gegenüberstehen. Die Parteien können außerdem einen Kommentar zu ihrer Antwort verfassen.
+Die Daten umfassen ausdrücklich keine Daten von Wählern. Eine Anfrage bei [TODO Prof. ...] hat ergeben, dass \glqq aus datenschutzrechtlichen Gründen keine Angaben von Nutzern gespeichert werden\grqq (TODO check Zitat).
+
+Für diese Arbeit greife ich auf die github-Datenbank Qual-O-Mat von [TODO] [TODO Zitat] zurück. Diese Datenbank sammelt die historischen Antworten der Parteien und legt diese in einem einheitlichen Format ab. Somit kann auf die Daten leichter zugegriffen werden.
+
+\subsection{PCA Wahl-O-Mat}
+\paragraph{Principal Component Analysis}
+Die Wahl-O-Mat Daten stellen die Positionen der Parteien im Hinblick auf die Thesen dar. Angesichts dessen, dass viele Thesen abgefragt werden ist der Raum der Positionen hochdimensional. Daher nehme ich eine Dimensionsreduktion vor. Mein Mittel der Wahl ist eine Principal Component Analysis (PCA) vorzunehmen.
+[TODO Erläuterung PCA allgemein]
+
+\paragraph{Umsetzung}
+[TODO Erklärung Code]
+[TODO Konertieren Antworten [0, 1], Abwägung Skalierung, Richtung, Parteien usw.]
+Die Positionen der Parteien auf die PCs projiziert sind in Abbildung \ref{fig:party-positions-pca} dargestellt.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=1.0]{../../fig/party_positions}
+	\caption{TODO caption}
+	\label{fig:party-positions-pca}
+\end{figure}
+
+\paragraph{Analyse der Principal Components}
+Um den dimensionslosen PCs Bedeutung zu verleihen analysiere ich aus welchen Thesen sie sich zusammensetzen. Der größte Absolutwert im Vektor einer PC repräsentiert gleichzeitig diejenige These, die diese PC ausmacht. Daher sortiere ich die PCs nach absteigendem Absolutwert und sehe mir an welche Thesen am wichtigsten sind. In Tabelle [TODO Tabelle einbinden] ...
+[TODO Tabelle statements]
+
+[TODO grobe Interpretation]
+
 \section{Positionen der Wähler}\label{Sec-Wählerpositionen}
+
+\subsection{Politbarometer Daten}
+[TODO Wer?]
+[Datenerhebung]
+[Datenbeschreibung]
+
+\subsection{Wählerpositionierung mithilfe der Parteipositionen}
+\paragraph{Metrik}
+[TODO Diskussion Metrik]
+[Entscheidung für exponentielle Gewichtung]
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=1.0]{../../fig/voter_distribution}
+	\caption{TODO caption}
+	\label{fig:voter-positions-pca}
+\end{figure}
+
+\paragraph{Analyse Rechts-Links}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=1.0]{../../fig/voter_distribution_left_right}
+	\caption{TODO caption}
+	\label{fig:voter-positions-pca-left-right}
+\end{figure}
+[Vergleich mit Interpretation PCs]
+
+\paragraph{Parteipräferenz}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=1.0]{../../fig/voter_distribution_party_affiliation}
+	\caption{TODO caption}
+	\label{fig:voter-positions-pca-party-affiliation}
+\end{figure}
+[Analyse]
+
+\paragraph{Gesamtbeurteilung Wählerpositionierung}
+
 
 \section{Weitere Daten}\label{Sec-Weitere-Daten}
 
