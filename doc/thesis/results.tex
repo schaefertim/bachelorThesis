@@ -20,15 +20,21 @@ Die Daten umfassen ausdrücklich keine Daten von Wählern. Eine Anfrage bei Prof
 
 Für diese Arbeit greife ich auf die GitHub-Datenbank Qual-O-Mat von Felix Bolte \citep{Bolte2022QualOMat} zurück. Diese Datenbank sammelt alle verfügbaren Wahl-O-Mat Daten mit den Antworten der Parteien und legt diese in einem strukturierten Format ab. Somit kann auf die Daten leichter zugegriffen werden.
 
-\subsection{PCA Wahl-O-Mat}
-\paragraph{Principal Component Analysis}
-Die Wahl-O-Mat Daten stellen die Positionen der Parteien im Hinblick auf die Thesen dar. Angesichts dessen, dass viele Thesen abgefragt werden ist der Raum der Positionen hochdimensional. Daher nehme ich eine Dimensionsreduktion vor. Mein Mittel der Wahl ist eine Principal Component Analysis (PCA) vorzunehmen.
-[TODO Erläuterung PCA allgemein]
+\subsection{Hauptkomponentenanalyse Wahl-O-Mat}
+\paragraph{Hauptkomponentenanalyse}
+Die Wahl-O-Mat Daten stellen die Positionen der Parteien im Hinblick auf die Thesen dar. Angesichts dessen, dass 38 Thesen abgefragt werden ist der Raum der Positionen hochdimensional. Daher nehme ich eine Dimensionsreduktion vor. Mein Mittel der Wahl ist eine Hauptkomponentenanalyse vorzunehmen.
+
+Die Hauptkomponentenanalyse hat nach Bishop und Nasrabadi \citep{bishop2006pattern} zwei verschiedene Motivationen. Die erste Motivation ist es, die Hauptkomponenten so zu wählen, dass die Varianz entlang der Hauptkomponenten maximiert wird. Das entspricht im vorliegenden Fall, dem Ziel, dass sich die Positionen der Parteien entlang der Hauptkomponenten maximal unterscheiden sollen. Die zweite Motivation ist es, die Länge der Projektion zu minimieren. Im Fall der Parteipositionen bedeutet das, dass die projizierte Position möglichst nah an der tatsächlichen Position liegen soll. Beide Ziele entsprechen auch den Eigenschaften, die eine geeignete Projektion der Parteipositionen darstellt.
 
 \paragraph{Umsetzung}
-[TODO Erklärung Code]
-[TODO Konertieren Antworten [0, 1], Abwägung Skalierung, Richtung, Parteien usw.]
-Die Positionen der Parteien auf die PCs projiziert sind in Abbildung \ref{fig:party-positions-pca} dargestellt.
+Für die konkrete Umsetzung sind die Details zu beachten. Zunächst sind die Daten aufzubereiten. Dazu werden die Daten in numerische Werte konvertiert, wobei die Position \glqq stimmt nicht zu\grqq der $0$ entspricht und \glqq stimmt zu\grqq der $1$. Die neutrale Position entspricht der Mitte bei $0,5$.
+Eine wichtige Entscheidung ist außerdem welche Parteien für die Hauptkomponentenanalyse verwendet werden sollen. In diesem Fall werden ausschließlich die Bundestagsparteien verwendet. Das schränkt zwar die Daten sehr ein, aber damit konzentriert sich die Analyse auf die Parteien die relevant sind.
+
+Die Berechnung der Hauptkomponentenanalyse nehme ich mit scikit-learn \citep{scikit-learn} vor. Die Bibliothek implementiert eine Vielzahl an Algorithmen des maschinellen Lernens. Das garantiert eine einfach Handhabung und effiziente Implementierung.
+
+Bei der Berechnung der Haupkomponentenanalyse muss außerdem bedacht werden, wie die Hauptkomponenten skaliert werden. In der Theorie stellen sie lediglich eine Richtung dar. Wenn jedoch eine Metrik verwendet wird, spielt die Skalierung eine Rolle. Es gibt im Wesentlichen zwei Optionen. Erstens, können die Hauptkomponenten so skaliert werden, dass die Varianz in jeder Hauptkomponente die gleich ist. Zweitens, können die Hauptkomponenten so skaliert werden, dass das Verhältnis der Varianzen zwischen den Hauptkomponenten erhalten bleibt. Ich entscheide mich dafür das Verhältnis der Varianzen zu erhalten, da somit eine Gewichtung zwischen den politischen Themen erhalten bleibt.
+
+Die Positionen der Parteien auf die Hauptkomponenten projiziert sind in Abbildung \ref{fig:party-positions-pca} dargestellt.
 
 \begin{figure}[htb]
 	\centering
