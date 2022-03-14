@@ -44,8 +44,44 @@ Die Positionen der Parteien auf die Hauptkomponenten projiziert sind in Abbildun
 \end{figure}
 
 \paragraph{Analyse der Principal Components}
-Um den dimensionslosen PCs Bedeutung zu verleihen analysiere ich aus welchen Thesen sie sich zusammensetzen. Der größte Absolutwert im Vektor einer PC repräsentiert gleichzeitig diejenige These, die diese PC ausmacht. Daher sortiere ich die PCs nach absteigendem Absolutwert und sehe mir an welche Thesen am wichtigsten sind. In Tabelle [TODO Tabelle einbinden] ...
-[TODO Tabelle statements]
+Um den dimensionslosen PCs Bedeutung zu verleihen analysiere ich aus welchen Thesen sie sich zusammensetzen. Der größte Absolutwert im Vektor einer PC repräsentiert gleichzeitig diejenige These, die diese PC ausmacht. Daher sortiere ich die PCs nach absteigendem Absolutwert und sehe mir an welche Thesen am wichtigsten sind. In Tabelle \ref{tab:pca1} sind die 10 Thesen aufgelistet, die für die erste Hauptkomponente am bedeutendsten sind. In Tabelle \ref{tab:pca2} sind die 10 bedeutendsten der zweiten Hauptkomponente aufgelistet.
+
+\begin{table}[htb]
+	\centering
+	\sisetup{round-mode=places,round-precision=3}
+	\csvreader[
+		head to column names,
+		head to column names prefix=MY,
+		tabular				= {|l|c|L{5cm}|L{7cm}|},
+		table head			= \hline \bfseries Nr. & \bfseries Wert & \bfseries Titel & \bfseries Text \\\hline,
+		late after line 	= \\\hline,
+		late after last line=\\\hline,
+		filter				= {\value{csvrow}<10},
+	]{../../fig/statements_pca0.csv}{}{
+		\MYindex & \num{\MYvalue} & \MYlabel & \MYtext
+	}
+	\caption{TODO caption}
+	\label{tab:pca1}
+\end{table}
+
+\begin{table}[htb]
+	\centering
+	\sisetup{round-mode=places,round-precision=3}
+	\csvreader[
+	head to column names,
+	head to column names prefix=MY,
+	tabular				= {|l|c|L{5cm}|L{7cm}|},
+	table head			= \hline \bfseries Nr. & \bfseries Wert & \bfseries Titel & \bfseries Text \\\hline,
+	late after line 	= \\\hline,
+	late after last line=\\\hline,
+	filter				= {\value{csvrow}<10},
+	]{../../fig/statements_pca1.csv}{}{
+		\MYindex & \num{\MYvalue} & \MYlabel & \MYtext
+	}
+	\caption{TODO caption}
+	\label{tab:pca2}
+\end{table}
+[TODO Check dass Daten von 2017, Kein Covid-19!!!]
 
 [TODO grobe Interpretation]
 
