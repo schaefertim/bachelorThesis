@@ -22,7 +22,7 @@ party_positions, pca = perform_pca(party_positions)
 
 # print most significant statements
 print("pca explained variance ratio", pca.explained_variance_ratio_)
-print_pca_significant_statements(pca, dataframe_statement)
+print_pca_significant_statements(pca, dataframe_statement, filepath="../fig")
 
 # plot party positions
 plt.scatter(party_positions[:, 0], party_positions[:, 1])
