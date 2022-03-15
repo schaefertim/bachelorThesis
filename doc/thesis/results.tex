@@ -43,8 +43,9 @@ Die Positionen der Parteien auf die Hauptkomponenten projiziert sind in Abbildun
 	\label{fig:party-positions-pca}
 \end{figure}
 
-\paragraph{Analyse der Principal Components}
-Um den dimensionslosen PCs Bedeutung zu verleihen analysiere ich aus welchen Thesen sie sich zusammensetzen. Der größte Absolutwert im Vektor einer PC repräsentiert gleichzeitig diejenige These, die diese PC ausmacht. Daher sortiere ich die PCs nach absteigendem Absolutwert und sehe mir an welche Thesen am wichtigsten sind. In Tabelle \ref{tab:pca1} sind die 10 Thesen aufgelistet, die für die erste Hauptkomponente am bedeutendsten sind. In Tabelle \ref{tab:pca2} sind die 10 bedeutendsten der zweiten Hauptkomponente aufgelistet.
+\paragraph{Analyse der Hauptkomponenten}
+Um den dimensionslosen Hauptkomponenten Bedeutung zu verleihen, wie die Thesen in ihnen gewichtet sind. Der größte Absolutwert im Vektor einer Hauptkomponente repräsentiert gleichzeitig diejenige These, die diese Hauptkomponente ausmacht. Daher sortiere ich die Hauptkomponenten nach absteigendem Absolutwert und sehe mir an welche Thesen am wichtigsten sind.
+In Tabelle \ref{tab:pca1} sind die 10 Thesen aufgelistet, die für die erste Hauptkomponente am bedeutendsten sind. In Tabelle \ref{tab:pca2} sind die 10 bedeutendsten Thesen der zweiten Hauptkomponente aufgelistet.
 
 \begin{table}[htb]
 	\centering
@@ -64,7 +65,10 @@ Um den dimensionslosen PCs Bedeutung zu verleihen analysiere ich aus welchen The
 	\label{tab:pca1}
 \end{table}
 
-\begin{table}[htb]
+In der Spalte \glqq Wert\grqq ist der Wert im Vektor der Hauptkomponente gelistet. Je größer der Wert, desto größer ist die Bedeutung für diese Richtung. Ist der Wert positiv, so bedeutet das eine Ablehnung der These. Ist der Wert negativ bedeutet das eine Zustimmung zur These.
+Zur Erläuterung ein kurzes Beispiel [TODO aktualisieren]: Die \glqq CDU/CSU\grqq hat die beiden bedeutendsten Thesen der ersten Hauptkomponente, die These 18 mit 0 (Zustimmung) und die These 27 mit 1 (Ablehnung) beantwortet. In der Projektion werden diese Werte mit dem Wert in der Hauptkomponente multipliziert, was einen Wert von $0*(-0.226)+1*(0.226)=0.226$ ergibt. Deshalb befindet sich die \glqq CDU/CSU\grqq eher im positiven Teil der ersten Hauptkomponente. Parteien die diese Positionen genau gegenteilig beantwortet haben befinden sich eher im negativen Teil, siehe dazu auch Abbilung \ref{fig:party-positions-pca}.
+
+\begin{table}%[htb]
 	\centering
 	\sisetup{round-mode=places,round-precision=3}
 	\csvreader[
@@ -83,19 +87,79 @@ Um den dimensionslosen PCs Bedeutung zu verleihen analysiere ich aus welchen The
 \end{table}
 [TODO Check dass Daten von 2017, Kein Covid-19!!!]
 
-[TODO grobe Interpretation]
+Nun versuche ich eine thematische Interpretation der Hauptkomponenten. Die Thesen der ersten Hauptkomponente in Tabelle \ref{tab:pca1} beinhalten mehrere Klimaschutzthemen, wie
+\begin{itemize}
+	\item Verbrennungsmotor
+	\item Besteuerung des Flugverkehrs
+	\item Tempolimit auf Autobahnen
+	\item Ausstieg aus der Kohleverstromung
+	\item Ökologische Landwirtschaft
+\end{itemize}
+Dabei bedeutet der positive Teil der Hauptkomponente, dass Umweltschutz abgelehnt wird.
+
+Das zweite bedeutende Thema in der ersten Hauptkomponente ist Verteilungspolitik. Die zugehörigen Thesen sind
+\begin{itemize}
+	\item Steuer auf hohe Vermögen
+	\item Abschaffung des Solidaritätszuschlags
+	\item Erhöhung des Mindestlohns
+\end{itemize}
+Dabei bedeutet der positive Teil der Hauptkomponente, dass eine soziale Umverteilung abgelehnt wird.
+
+Die Thesen \glqq Frauen und Männer auf Landeslisten\grqq und \glqq Patentschutz auf Impfstoffe\grqq lassen sich nicht einwandfrei zuordnen. Es ist vertretbar diese Themen unter Verteilungspolitik zuzuordnen. Es ist jedoch genauso argumentierbar, dass Verteilungspolitik nicht die Machtverteilung zwischen Männern und Frauen und auch nicht die Vermögensverteilung zwischen Industrie- und Entwicklungsstaaten umfasst.
+
+Wie in Tabelle \ref{tab:pca2} zu sehen, zeigt die zweite Hauptkomponente grundsätzliches ein stärkeres Gefälle im Absolutwert der Komponenten. Das bedeutet, dass die Thesen unterschiedlich wichtig sind.
+
+[TODO genauer herausarbeiten]
+\blindtext
+
+Zusammenfassend lässt sich sagen, dass die erste Hauptkomponente das Spektrum von \glqq links\grqq und \glqq grün\grqq nach \glqq rechts\grqq und \glqq braun\grqq abbildet. Die zweite Haupkomponente hat keine pauschale Interpretation.
 
 \section{Positionen der Wähler}\label{Sec-Wählerpositionen}
 
 \subsection{Politbarometer Daten}
-[TODO Wer?]
-[Datenerhebung]
-[Datenbeschreibung]
+Die Daten des Politbarometers \citep{politbarometer} werden von der Forschungsgruppe Wahlen Mannheim erhoben im Auftrag des ZDF. Die Erhebung erfolgt telefonisch und ist repräsentativ für das gesamte Bundesgebiet. Die Daten umfassen eine lange Historie von 1977 bis 2020. Für den Zweck in dieser Arbeit, werden diejenigen Daten ausgewählt, die am besten mit dem Zeitpunkt des Wahl-O-Maten übereinstimmen.
+
+Der Daten des Politbarometers sind sehr umfangreich. Es werden viele verschiedene politische Ansichten erfasst. Für diese Arbeit werden folgende Variablen verwendet:
+\begin{itemize}
+	\item V6 Parteienwahl Absicht\\
+	Die Frage lautete von 2010 bis 2020 (in anderen Jahren ähnlich): \glqq Und welche Partei würden Sie wählen?\grqq.\\
+	Diese Antwort verwende ich um die Umfrageteilnehmer einer Partei zuzuordnen. Die Angaben dieser Frage sind außerdem zum jeweiligen Erhebungszeitpunkt aktueller als die Angaben bei der Variable \glqq V7 Wahl: Rückerinnerung\grqq.
+
+	\item V8 bis V14 Skalometer Parteien\\
+	Die Frage lautete von 1989 bis 2010 (in anderen Jahren ähnlich): \glqq Und nun noch etwas genauer zu den Parteien. Stellen Sie sich bitte einmal ein Thermometer vor, das von plus 5 bis minus 5 geht, mit einem Nullpunkt dazwischen. Sagen Sie mir mit diesem Thermometer, was Sie von den einzelnen Parteien halten. +5 bedeutet, dass Sie sehr viel von der Partei halten. -5 bedeutet, dass Sie überhaupt nichts von ihr halten. Mit den Werten dazwischen können Sie Ihre Meinung abgestuft sagen.\grqq\\
+	Zu den konkreten Parteien wurde dann gefragt: \glqq Was halten Sie von der [Parteiname]?\grqq, wobei SPD, CDU, CSU, FDP, Grüne, AfD und Die Linken abgefragt werden.\\
+	TODO Erläuterung Akkumulation CDU und CSU\\
+	Diese Variable wird in dieser Arbeit verwendet, um die Wählerpositionen abzuleiten. Dabei werden die vorher berechneten Parteipositionen und die Bewertung der einzelnen Parteien berücksichtigt.
+
+	\item V22 Links-Rechts-Kontinuum\\
+	Die Frage lautete ab 2010: \glqq Wenn von Politik die Rede ist, hört man immer wieder die Begriﬀe 'links' und 'rechts'. Wir hätten gerne von Ihnen gewusst, ob Sie sich selbst eher links oder eher rechts einstufen. Stellen Sie sich	dazu bitte noch einmal ein Thermometer vor, das diesmal aber nur von 0 bis 10 geht. 0 bedeutet sehr links, 10 bedeutet sehr rechts. Mit den Werten dazwischen können Sie Ihre Meinung abgestuft sagen. Wo würden Sie sich einstufen?\grqq\\
+	Diese Variable wird verwendet um die Qualität der Wählerpositionierung  und die Interpretation der Hauptkomponentenanalyse zu beurteilen.
+\end{itemize}
+
+[TODO Datenaufbereitung, Datenauswahl]
 
 \subsection{Wählerpositionierung mithilfe der Parteipositionen}
 \paragraph{Metrik}
-[TODO Diskussion Metrik]
-[Entscheidung für exponentielle Gewichtung]
+Hier werden die Wähler mithilfe des Skalometers positioniert. Zu jeder Partei steht eine Bewertung des Wählers zwischen -5 und +5 zur Verfügung. Dies ist eine Metrik der Wähler, wobei ein hoher Wert einen geringen Abstand zur Partei und ein niedriger Wert einen großen Abstand zur Parteiposition bedeutet.
+Fraglich ist jedoch wie diese Metrik umgesetzt werden kann. In dieser Arbeit wird eine exponentielle Gewichtung der Parteipositionen vorgenommen. Somit ist die Wählerposition $x_i$:
+\begin{equation}
+	x_i = \frac{\sum_j e^{r_{ij}} p_j}{\sum_j e^{r_{ij}}}
+\end{equation}
+berechnet aus den Parteipositionen $p_j$, und den Bewertungen des Wählers $r_{ij}$.
+Diese Entscheidung hat Vor- und Nachteile:
+\begin{itemize}
+	\item Berechenbarkeit: Die Formel ist immer berechenbar, da der Nenner stets positiv ist.
+	\item Positive Bewertungen werden stärker gewichtet. Aufgrund der Exponentialfunktion spielen fast ausschließlich die besten Bewertungen eine Rolle. Dies ist positiv in dem Sinn, dass bei einer Wahl der Wähler nur eine Stimme hat und es daher wichtiger ist, welche Partei der Wähler mag, als welche er nicht mag.
+	\item Negative Bewertungen werden als positiv berechnet: Andererseits wird eine stark negative Gewichtung zwar als quasi Null gewichtet, aber immer noch positiv gewichtet was nicht der Realtität entspricht.
+	\item Konvexkombination: Es handelt sich bei der Berechnung um eine Konvexkombination. Das bedeutet, dass Wählerpositionen außerhalb der konvexen Hülle der Parteipositionen gar nicht möglich sind. Dagegen ist es in der Realität durchaus wahrscheinlich, dass Wählerpositionen extremer sind als jede Parteiposition.
+	\item Robustheit gegen Verschiebung: Es denkbar, dass Wähler unter einer genauen Zahl als Bewertung, zum Beispiel +3, etwas anderes verstehen. Die hier angewendete Formel hat den Vorteil, dass das Ergebnis invariant ist gegenüber einer pauschal bessereren oder schlechtereren Bewertung aller Parteien. Der einzig entscheidende Faktor ist der Abstand zwischen den Bewertungen.
+	\item Nichtlinearität: TODO
+\end{itemize}
+
+TODO alternative Metriken
+
+Das Ergebnis der Wählergewichtungen ist in Abbildung \ref{fig:voter-positions-pca} dargestellt.
+
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=1.0]{../../fig/voter_distribution}
