@@ -155,13 +155,13 @@ def convert_party_affiliation(dataframe_voter: pd.DataFrame) -> pd.DataFrame:
         dataframe with column [col_party] converted to int
     """
     map_party_int = {
-        "CDU": 1,
-        "CSU": 1,
-        "SPD": 2,
+        "CDU": 0,
+        "CSU": 0,
+        "SPD": 1,
         "FDP": 3,
-        "Grüne": 4,
-        "PDS/die Linke": 5,
-        "AfD - Alternative für Deutschland": 6,
+        "Grüne": 5,
+        "PDS/die Linke": 4,
+        "AfD - Alternative für Deutschland": 2,
     }
     dataframe_voter = dataframe_voter[
         dataframe_voter[col_party].isin(map_party_int)

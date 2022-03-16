@@ -51,10 +51,15 @@ scatter_voter = ax.scatter(
     dataframe["position_y"],
     s=1,
     c=dataframe[col_party],
+    cmap="Set1",
 )
 legend1 = ax.legend(
-    *scatter_voter.legend_elements(), loc="upper right", title="Parteien"
+    *scatter_voter.legend_elements(),
+    loc="upper right",
+    title="Parteipräferenz",
+    bbox_to_anchor=(1.1, 1.0),
 )
-ax.add_artist(legend1)
+for i, text in enumerate(legend1.get_texts()):
+    text.set_text(PARTY_DICTIONARY[i])
 
 fig.savefig("../fig/voter_distribution_party_affiliation.png")
