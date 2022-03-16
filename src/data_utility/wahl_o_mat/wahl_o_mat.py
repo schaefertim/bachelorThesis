@@ -84,7 +84,8 @@ def print_pca_significant_statements(
         pca: PCA as previously calculated
         dataframe_statement: statement data
         verbose: whether to print to command line
-        filepath: if provided print to file as csv, named statements_pca{0|1}.csv
+        filepath: if provided print to file as csv,
+            file is named statements_pca{0|1}.csv
     """
     pca_argsort = np.argsort(np.abs(pca.components_), axis=1)[:, ::-1]
 

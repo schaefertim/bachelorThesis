@@ -53,11 +53,16 @@ scatter_voter = ax.scatter(
     c=dataframe[col_left_right],
     vmin=1,
     vmax=11,
-    cmap="seismic",
+    cmap="coolwarm",
 )
-legend1 = ax.legend(
+"""legend1 = ax.legend(
     *scatter_voter.legend_elements(), loc="upper right", title="Rechts-Links"
 )
-ax.add_artist(legend1)
+ax.add_artist(legend1)"""
+cbar = fig.colorbar(
+    scatter_voter,
+    ticks=[1, 6, 11],
+)
+cbar.ax.set_yticklabels(["0 sehr links", "5", "10 sehr rechts"])
 
 plt.savefig("../fig/voter_distribution_left_right.png")
