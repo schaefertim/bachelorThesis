@@ -186,7 +186,15 @@ Die Dynamik wird in Kapitel \ref{sec:ABM-Dynamik} genauer betrachtet.
 
 \subsection{Einführung in Agentenbasierte Modelle}
 
-Marchi und Page (2014)
+Agentenbasierte Modelle zeichnen sich dadurch aus, dass die Modellbeschreibung sich auf einzelne Bestandteile, die Agenten, beziehen. Zusammen bilden die Agentenbeschreibung und ihre Interaktionen das Modell, anstatt eine globale Beschreibung des Modells zu haben. Marchi und Page \citep{marchi2014ABMs} besprechen eingehend agentenbasierende Modelle. Sie beschreiben die Vielfalt an Modellen und erklären ihre Anwendungsfelder.
+
+Im Zentrum der Modelle stehen die Agentenmit ihren Eigenschaften und Verhaltensregeln. Die Anzahl der Agenten kann je nach Modell stark schwanken. Laut \cite{marchi2014ABMs} variiert die Anzahl der Agenten normalerweise zwischen 2 und 10000. Im Zuge der Covid-19 Studien gibt es agentenbasierte Modelle die bis zu ??? Agenten umfassen (TODO Zitat).
+
+Die Agenten haben eine vorher festgelegte Anzahl an Eigenschaften. Diese können sich über die Zeit ändern. Das bedeutet zu jedem Zeitpunkt können die Eigenschaften der Agenten durch einen Vektor $a_j^t = (x_{j1}^t, x_{j2}^t,..., x_{jM}^t)$ beschrieben werden. Diese Eigenschaften bieten eine große Flexibilität des Modells, da sie fast alles codieren können. Im Kontext politischer Modelle spielen insbesondere die Eigenschaften von Wählern und Parteien eine Rolle. Das bedeutet beispielsweise, dass ideologische Positionen bedeutend sind.
+
+Die Verhaltensregeln beschreiben wie sich die Eigenschaften der Agenten von einem Zeitpunkt zum nächsten verändern. In einfachen Modellen hängt das ausschließlich von den Eigenschaften des vorherigen Zeitpunkts ab. In komplizierteren Modellen kann dies auch von weiteren vorherigen Zeitpunkten abhängen. Diese Verhaltensregeln beschreiben insbesondere die Rationalität der Agenten. Agenten mit beschränkter Rationalität betrachten nur einen kleinen Ausschnitt der Informationen und ziehen mögliche Nebenwirkungen ihrer Entscheidungen nicht in Betracht. Dagegen nutzen Agenten mit vollkommener Rationalität alle verfügbaren Informationen und Berücksichtigen bei ihrer Entscheidung die Reaktionen anderer Akteure. Auf diesem Spektrum der Rationalität können Modelle berücksichtigen, dass Agenten lernfähig sein können. Zuletzt muss dass Modell genau festlegen in welcher Reihenfolge die Akteure agieren beziehungsweise wie ein gleichzeitiges Handeln der Agenten behandelt werden soll. Beispielsweise, können die Entscheidungen zweier Agenten A und B gegenseitig von der Position des anderen abhängen. Wenn zuerst Agent A agiert und dann Agent B die neue Position von A berücksichtig, so führt das zu einem anderen Ergebnis, als wenn zuerst Agent A agiert und dann Agent B auf die Position von A reagiert. Eine solche Reihenfolge kann zufällig, aufgrund von Eigenschaften, oder endogen im Modell entschieden werden[TODO Page 1977 zitieren?].
+
+[TODO Beispiele was mit agentenbasierten Modellen gelöst werden kann]
 
 \subsection{Dynamik von Parteien} \label{sec:ABM-Dynamik}
 
