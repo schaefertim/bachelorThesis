@@ -3,6 +3,7 @@
 data from https://github.com/gockelhahn/qual-o-mat-data
 """
 import matplotlib.pyplot as plt
+import numpy as np
 
 from src.data_utility.party_dictionary import PARTY_DICTIONARY
 from src.data_utility.politbarometer.politbarometer import (
@@ -51,3 +52,7 @@ dataframe = calculate_voter_position(party_positions, dataframe)
 plt.scatter(dataframe["position_x"], dataframe["position_y"], s=1)
 
 plt.savefig("../fig/voter_distribution.png")
+np.save(
+    "../data/saved/voter_positions",
+    dataframe[["position_x", "position_y"]].to_numpy(),
+)

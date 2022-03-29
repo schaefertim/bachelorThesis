@@ -3,6 +3,7 @@
 data from https://github.com/gockelhahn/qual-o-mat-data
 """
 import matplotlib.pyplot as plt
+import numpy as np
 
 from src.data_utility.party_dictionary import PARTY_DICTIONARY
 from src.data_utility.wahl_o_mat.wahl_o_mat import (
@@ -34,3 +35,4 @@ for party in range(6):
     )
 
 plt.savefig("../fig/party_positions.png")
+np.save("../data/saved/party_positions_pca", party_positions)
