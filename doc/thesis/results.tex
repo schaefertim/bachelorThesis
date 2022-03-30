@@ -205,11 +205,43 @@ TODO
 
 \section{Dynamik agentenbasiert modelliert}
 
-\blindtext
+Die in Kapitel [TODO] und Kapitel [TODO] erstellten Daten der Partei- und Wählerpositionen dienen nun als Grundlage für ein dynamisches Modell. Das Modell von \cite{laver2005policy} das in Kapitel [TODO] vorgestellt wurde wird hier umgesetzt.
 
 \subsection{Umsetzung des Modells}
 
-\blindtext[3]
+Zur Umsetzung des agentenbasierten Modells wird hier Mesa \citep{mesa2020} verwendet. Das Mesa Projekt ist ein open-source Projekt das auf github zu finden ist [TODO mesa repository]. 
+Mesa bietet ein Gerüst innerhalb dessen ein agentenbasiertes Modell einfach und effizient umgesetzt werden kann. Es bietet Werkzeuge zum Aufbau, der Analyse und der Visualisierung dieser Modelle.
+% TODO cite https://mesa.readthedocs.io/en/latest/overview.html
+
+Zunächst wird das Modell in das allgemeine Modell und seine Agenten eingeteilt. In diesem Fall sind die Parteien die Agenten, da sie ihre Position dynamisch ändern. Die Wähler könnten auch als Agenten modelliert werden. Allerdings ist es hier einfacher sie als Teil des äußeren Modells zu betrachten, da sie lediglich ihre Parteipräferenz ändern. So können die Berechnungen effizienter durchgeführt werden, als wenn alle Wähler einzelne Agenten wären.
+
+\paragraph{Implementierung}Das Modell übernimmt die Berechnung der Wählerzuordnung und der daraus abgeleiteten Größen wie zum Beispiel den Wähleranteil einer Partei. Das Modell führt die Zeitschritte aus. Innerhalb eines Zeitschritts hat Parteie als Agente die Aufgabe, ihre neue Position für den nächsten Zeitschritt zu berechnen. Dabei kann sie auf die Ressourcen des Modells zurückgreifen und die Art und Weise hängt vom Typ der Partei ab. Wie in Kapitel [TODO] beschrieben teilt \cite{laver2005policy} die Parteien in die Typen Aggregator, Hunter, Predator und Sticker ein. Bei programmierten Modellen stecken wichtige Elemente auch in Implementierungsdetails. Im Folgenden wird insbesondere auf folgende Punkte eingegangen:
+\begin{itemize}
+\item Einheitslänge
+\item Hunter mit stagnierendem Stimmenanteil
+\item Ausführungsreihenfolge
+\item Anzahl Zyklen
+\end{itemize}
+
+\paragraph{Einheitslänge}
+\cite{laver2005policy} verwendet im Modell, insbesondere für Hunter und Predator eine Einheitslänge als Bewegung für den nächsten Zeitschritt. Allerdings ist nicht eindeutig geklärt wie diese Einheitslänge definiert ist.
+[TODO Vermutung anhand Quelle äußern]
+Das die Länge nicht eindeutig geklärt ist, ist ein Problem insofern, dass sich die Ergebnisse je nach Einheitslänge erheblich unterscheiden können. Bei einer zu großen Einheitslänge sind die Positionsanpassungen der Parteien zu groß. Dadurch verlieren die Positionsanpassungen ihren Sinn und das Modell kann sich nicht stabilieren. Ist die Einheitslänge dagegen zu klein, braucht das Modell sehr viele Zyklen um sich zu ändern beziehungsweise zu stabilisieren. Im schlimmsten Fall funktioniert das Modell gar nicht, weil beispielsweise der Hunter aufgrund der Diskretität der Wähler mit einer kleinen Schrittlänge gar keine Stimmenanteiländerung feststellt.
+[TODO Ich lege es als $0,1$ fest]
+
+\paragraph{Hunter mit stagnierendem Stimmenanteil}
+Direkt mit der Einheitslänge verbunden ist die Problematik was der Hunter tut, wenn sein Stimmenanteil gleich bleibt. Wird die momentane Richtung beibehalten, dann verhält sich der Hunter eher explorativ. Dagegen kann diese Strategie katastrophal scheitern, wenn beispielsweise der Stimmenanteil bei Null liegt und der Hunter sich immer weiter von den Wählern entfernt. Die andere Möglichkeit ist, dass der Hunter seine Richtung wechselt. Dann ist die Strategie des Hunters stabiler. Allerdings besteht die Gefahr, dass zu exploriert wird. Diese Eigenschaft muss also direkt mit der Einheitslänge abgestimmt werden.
+Laver entscheidet sich für den Richtungswechsel, weshalb diese Arbeit diesen Fall ebenso handhabt \citep[S.\,280]{laver2005policy}.
+
+\paragraph{Ausführungsreihenfolge}
+Die Ausführungsreihenfolge zwischen den Parteien kann einen kleinen Unterschied machen. Da in dieser Version die Wählerzuordnungen erst aktualisiert werden, wenn alle Parteien ihre Positionen festgelegt haben, macht es für die meisten Parteitypen keinen Unterschied. Einzig der Predator macht seine Position von der Position der anderen Parteien abhängig. Da es im Normalfall keinen großen Unterschied macht, wird die Reihenfolge als zufällig gewählt.
+[TODO im Code umsetzen]
+
+\paragraph{Anzahl Zyklen}
+Laver zeigt in seiner Arbeit, dass ein Modell mit bis zu 10 Parteien des Typs Aggregator mit bis zu 1000 Wählern nach spätestens 55 Zyklen statisch wird \cite[S.\,271-2]{laver2005policy}. Das dient als Orientierung, um abzuschätzen, wann ein Modell statisch wird.
+
+\paragraph{Ausführungsdauer}
+Die resultierende Implementierung ist effizient. So kann beispielsweise ein System mit ??? Wählern und ??? Parteien ??? Zyklen innerhalb von ??? Sekunden berechnen [TODO]. Kleinere Systeme haben eine vernachlässigbare Ausführungsdauer. Somit sind alle Systeme die, die auf den Daten dieser Arbeit basieren problemlos berechenbar.
 
 \subsection{Ergebnisse}
 
