@@ -50,7 +50,7 @@ class PartyAgent(Agent):
                         * self.model.unit_distance
                     )
                 elif (
-                    self.model.vote_share[self.unique_id] >= self.position_old
+                    self.model.vote_share[self.unique_id] > self.position_old
                 ):
                     new_direction = self.position - self.position_old
                 else:
