@@ -37,7 +37,7 @@ Hotelling \citep{hotelling1929} untersucht anhand eines einfachen Modells wie si
 	\draw[|-|] (leftdown) -- (middledown) node[midway, below] {$x$};
 	\draw[|-|] (middledown) -- (rightdown) node[midway, below] {$y$};
 	\end{tikzpicture}
-	\caption{Positionen der Wettbewerber $A$ und $B$ und Konsumenten auf einer Linie von $0$ bis $l$. Die Konsumenten im Bereich $a$ und $x$ kaufen bei $A$ ein und $y$ und $b$ bei $B$. (angelehnt an \cite{hotelling1929})}
+	\caption{Positionen der Wettbewerber $A$ und $B$ und Konsumenten auf einer Linie von $0$ bis $l$. Die Konsumenten im Bereich $a$ und $x$ kaufen bei $A$ ein und $y$ und $b$ bei $B$. (eigene Darstellung angelehnt an \citet{hotelling1929})}
 	\label{Fig-Linearer-Wettbewerb}
 \end{figure}
 
@@ -113,7 +113,7 @@ Der Gleichgewichtspreis ergibt sich als Nash-Cournot-Gleichgewicht. Dabei müsse
 
 Im Fall, dass die Wettbewerber sich beide am selben Punkt (beispielsweise in der Mitte) befinden, so herrscht reiner Preiswettbewerb. Nach Betrand (TODO: zitieren) führt das zu Preisen in Höhe der Stückkosten, in diesem Fall zu einem Preis $p_1=p_2=0$.
 
-Liegen die Wettbewerber auseinander, so stimmt \cite{aspremont1979} mit \cite{hotelling1929} überein und präzisiert das Marktgleichgewicht. Der Gleichgewichtspreis ist dann
+Liegen die Wettbewerber auseinander, so stimmt \citet{aspremont1979} mit \citet{hotelling1929} überein und präzisiert das Marktgleichgewicht. Der Gleichgewichtspreis ist dann
 \begin{equation}
 \begin{split}
 p_1 &= c \left(l+\frac{a-b}{3}\right) \\
@@ -128,10 +128,10 @@ unter der Bedingung
 \end{split}
 \end{equation}
 
-\paragraph{Das Gleichgewicht tendiert zur Mitte und kollabiert.} Da $\frac{\partial \pi_1}{\partial a}>0$ und $\frac{\partial \pi_2}{\partial b}>0$ bewegen sich beide Wettbewerber zur Gewinnoptimierung zur Mitte hin. Allerdings existiert in der Mitte nur noch das Gleichgewicht mit Nullpreisen. Da dies kein wirkliches Marktgleichgewicht ist, ist das laut \cite{aspremont1979} das gesamte Modell invalidiert.
+\paragraph{Das Gleichgewicht tendiert zur Mitte und kollabiert.} Da $\frac{\partial \pi_1}{\partial a}>0$ und $\frac{\partial \pi_2}{\partial b}>0$ bewegen sich beide Wettbewerber zur Gewinnoptimierung zur Mitte hin. Allerdings existiert in der Mitte nur noch das Gleichgewicht mit Nullpreisen. Da dies kein wirkliches Marktgleichgewicht ist, ist das laut \citet{aspremont1979} das gesamte Modell invalidiert.
 
 \subsection{Modell}\label{Sec-Aspremont-Modell}
-\cite{aspremont1979} schlägt stattdessen ein korrigiertes Modell vor mit einer veränderten Transportkostenfunktion vor. Diese ist dann quadratisch, also $cx^2$ statt $cx$.
+\citet{aspremont1979} schlägt stattdessen ein korrigiertes Modell vor mit einer veränderten Transportkostenfunktion vor. Diese ist dann quadratisch, also $cx^2$ statt $cx$.
 Das Gleichgewicht berechnet sich identisch zum Fall oben. Die Gleichgewichtspreise sind dann
 \begin{equation}
 \begin{split}
@@ -184,7 +184,7 @@ Die Dynamik wird in Kapitel \ref{sec:ABM-Dynamik} genauer betrachtet.
 
 Agentenbasierte Modelle zeichnen sich dadurch aus, dass die Modellbeschreibung sich auf einzelne Bestandteile, die Agenten, beziehen. Zusammen bilden die Agentenbeschreibung und ihre Interaktionen das Modell, anstatt eine globale Beschreibung des Modells zu haben. Marchi und Page \citep{marchi2014ABMs} besprechen eingehend agentenbasierende Modelle. Sie beschreiben die Vielfalt an Modellen und erklären ihre Anwendungsfelder.
 
-Im Zentrum der Modelle stehen die Agentenmit ihren Eigenschaften und Verhaltensregeln. Die Anzahl der Agenten kann je nach Modell stark schwanken. Laut \cite{marchi2014ABMs} variiert die Anzahl der Agenten normalerweise zwischen 2 und 10000. Im Zuge der Covid-19 Studien gibt es agentenbasierte Modelle die bis zu ??? Agenten umfassen (TODO Zitat).
+Im Zentrum der Modelle stehen die Agentenmit ihren Eigenschaften und Verhaltensregeln. Die Anzahl der Agenten kann je nach Modell stark schwanken. Laut \citet{marchi2014ABMs} variiert die Anzahl der Agenten normalerweise zwischen 2 und 10000. Im Zuge der Covid-19 Studien gibt es agentenbasierte Modelle die bis zu ??? Agenten umfassen (TODO Zitat).
 
 Die Agenten haben eine vorher festgelegte Anzahl an Eigenschaften. Diese können sich über die Zeit ändern. Das bedeutet zu jedem Zeitpunkt können die Eigenschaften der Agenten durch einen Vektor $a_j^t = (x_{j1}^t, x_{j2}^t,..., x_{jM}^t)$ beschrieben werden. Diese Eigenschaften bieten eine große Flexibilität des Modells, da sie fast alles codieren können. Im Kontext politischer Modelle spielen insbesondere die Eigenschaften von Wählern und Parteien eine Rolle. Das bedeutet beispielsweise, dass ideologische Positionen bedeutend sind.
 
@@ -194,13 +194,13 @@ Die Verhaltensregeln beschreiben wie sich die Eigenschaften der Agenten von eine
 
 \subsection{Dynamik von Parteien} \label{sec:ABM-Dynamik}
 
-\cite{laver2005policy}: kontinuierliche Evaluation der Wähler
+\citet{laver2005policy}: kontinuierliche Evaluation der Wähler
 
 Viele politische Modelle sind statisch hinsichtlich der Parteipositionen, wohingegen Laver die Parteipositionen als dynamisch modelliert. Dies stelle die Realität besser dar, in der die Parteien kontinuierlich ihre Positionen anpassen, wie schwankende Umfragewerte der Parteien belegen würden \citep[S.\,263-4]{laver2005policy}.
 
 [TODO evtl Absatz über KMP]
 
-Das Modell von \cite{laver2005policy} vereinigt Ansätze der klassischen räumlichen Modelle mit den dynamischen Ansätzen verschieder Parteitypen. Die Parteitypen haben gemeinsam, dass sie ihre Position auf die aktuelle politische Situation anpassen. Sie unterscheiden sich jedoch darin, wie sie diese Anpassung vornehmen. Laver unterscheidet dabei die vier Parteitypen Aggregator, Hunter, Predator und Sticker \citep[S.\,266-7]{laver2005policy}. In dieser Arbeit werden die original englischen Begriffe beibehalten. Im Folgenden werden die Parteitypen genauer definiert.
+Das Modell von \citet{laver2005policy} vereinigt Ansätze der klassischen räumlichen Modelle mit den dynamischen Ansätzen verschieder Parteitypen. Die Parteitypen haben gemeinsam, dass sie ihre Position auf die aktuelle politische Situation anpassen. Sie unterscheiden sich jedoch darin, wie sie diese Anpassung vornehmen. Laver unterscheidet dabei die vier Parteitypen Aggregator, Hunter, Predator und Sticker \citep[S.\,266-7]{laver2005policy}. In dieser Arbeit werden die original englischen Begriffe beibehalten. Im Folgenden werden die Parteitypen genauer definiert.
 
 \paragraph{Aggregator} Der Aggregator, was im Deutschen die gleiche Bedeutung hat, sammelt die Meinungen seiner momentanen Wähler. Die neue Position ist die Durchschnittsposition dieser momentanen Wähler \citep[S.\,267]{laver2005policy}. Dies entspricht einer Partei die sich basisdemokratisch organisiert.
 
@@ -212,4 +212,4 @@ Das Modell von \cite{laver2005policy} vereinigt Ansätze der klassischen räumli
 
 TODO Ergebnisse der Experimente von \citep{laver2005policy}
 
-\cite{laver2007endogenousParties}: Parteitypen % TODO
+\citet{laver2007endogenousParties}: Parteitypen % TODO

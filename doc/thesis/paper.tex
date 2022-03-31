@@ -21,13 +21,31 @@
 \usepackage[toc,page]{appendix}
 
 % meine Pakete
-\usepackage[authoryear]{natbib}
-\citestyle{aysep={,}}
+%\usepackage[authoryear]{natbib}
+%\citestyle{aysep={,}}
+\usepackage[
+	backend=biber,
+	natbib=true,
+	language=ngerman,
+	style=authoryear,
+	maxcitenames=1
+]{biblatex}
+\DefineBibliographyStrings{ngerman}{ 
+	andothers = {{et\,al\adddot}},             
+}
+\addbibresource{mylit.bib}
+
 \usepackage{ngerman}
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usepackage{amsmath}
 \usepackage{setspace}
+
+% don't reset counter of figures and tables
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{equation}{chapter}
 
 \usepackage{blindtext}  %TODO delete
 
@@ -114,7 +132,7 @@
 
 \section*{Abstract}
 
-Abstract
+100 bis 200 Wörter, Fragestellung und wichtigste Erkenntnisse/Ergebnisse
 \newpage
 
 \section*{Danksagungen}
@@ -167,11 +185,13 @@ Danksagungen
 
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 
-\bibliographystyle{agsm}
-\bibliography{mylit}
+%\bibliographystyle{agsm}
+%\bibliography{mylit}
 %% Obige Anweisung legt fest, dass BibTeX-Datei `mylit.bib' verwendet
 %% wird. Hier koennen mehrere Dateinamen mit Kommata getrennt aufgelistet
 %% werden.
+
+\printbibliography
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Ende
