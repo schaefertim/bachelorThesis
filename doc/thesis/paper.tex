@@ -6,7 +6,12 @@
 %%% allgemeine Einstellungen
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[twoside,12pt,a4paper]{report}
+\documentclass[oneside,12pt,a4paper]{report}
+
+% set Times New Roman
+\usepackage{mathptmx}
+\usepackage[T1]{fontenc}
+
 %\usepackage{reportpage}
 \usepackage{epsf}
 \usepackage{graphics, graphicx}
@@ -22,6 +27,7 @@
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usepackage{amsmath}
+\usepackage{setspace}
 
 \usepackage{blindtext}  %TODO delete
 
@@ -56,39 +62,45 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 \begin{titlepage}
- \begin{center}
-  {\huge Bachelorarbeit\\Wirtschaftswissenschaften\\[1.5cm]}
-  {\huge\bf Strategische Positionierung Politischer Parteien in Deutschland\\[3cm]}
-  {\large Fakultät für Wirtschaftswissenschaft\\}
-  {\large Lehrstuhl für Volkswirtschaftslehre, insbes.\,Mikroökonomie\\[1cm]}
-  {\large FernUniversität in Hagen\\[3.5cm]}
-  {\large Tim Schäfer\\[3cm]}
-  {Hagen, \today} %TODO
-  \end{center}
+	\raggedright
+	{\huge\bf FernUniversität in Hagen\\[0.5cm]}
+	{\LARGE\bf Fakultät für Wirtschaftswissenschaft\\[1.5cm]}
+	{\large\doublespacing
+		Bachelorarbeit\\
+		zur Erlangung\\
+		\singlespacing des Grades eines\\
+		Bachelor of Science\\
+		\doublespacing über das Thema\\[2cm]
+	}
+	\begin{center}
+	{\huge\bf Strategische Positionierung Politischer Parteien in Deutschland\\[3cm]}
+	\end{center}
+	\vfill
+	\begin{minipage}{\textwidth}
+		\doublespacing
+		\parbox[t][4.5cm][t]{3.5cm}{
+			Eingereicht bei:\\
+			Betreuer:\\
+			Von stud.rer.oec.:\\
+			Matrikelnummer:\\
+			Anschrift:\\
+			Telefon:\\
+			E-Mail:\\
+			Abgabedatum:\\
+		}\hfill
+		\parbox[t][2cm][t]{11cm}{
+			Prof.\,Dr.\,Robert Schmidt \\
+			Vitus Bühl\\
+			Tim Schäfer\\
+			6231080\\
+			72622 Nürtingen, Teichstr.\,19\\
+			015770295697\\
+			tim@gruber-schaefer.de\\
+			11.04.2022
+		}
+	\end{minipage}
 \end{titlepage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Titelr"uckseite: Bibliographische Angaben
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\thispagestyle{empty}
-\vspace*{\fill}
-\begin{minipage}{\textwidth}
-\parbox[t][2cm][t]{3.5cm}{Erstkorrektor:}\hfill
-\parbox[t][2cm][t]{11cm}{
-	Prof.\,Dr.\,Robert Schmidt \\
-	Lehrstuhl für Volkswirtschaftslehre, insbes.\,Mikroökonomie\\
-	Fakultät für Wirtschaftswissenschaft
-}
-\parbox[t][2cm][t]{3.5cm}{Zweitkorrektor:}\hfill
-\parbox[t][2cm][t]{11cm}{ %TODO
-	Prof.\,Dr.\,Joachim Grosser\\
-	Lehrstuhl für Volkswirtschaftslehre, insbes.\,Wirtschaftspolitik\\
-	Fakultät für Wirtschaftswissenschaft
-}
-
-\end{minipage}
-\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -167,9 +179,9 @@ Danksagungen
 
 \cleardoublepage
 
-\addcontentsline{toc}{chapter}{Erklärung}
+\addcontentsline{toc}{chapter}{Eidesstattliche Erklärung}
 
-\chapter*{Erklärung}
+\chapter*{ Eidesstattliche Erklärung}
 
 \noindent
 Ich erkläre, dass ich die Bachelorarbeit selbstständig und ohne unzulässige Inanspruchnahme Dritter verfasst habe. Ich habe dabei nur die angegebenen Quellen und Hilfsmittel verwendet und die aus diesen wörtlich, inhaltlich oder sinngemäß entnommenen Stellen als solche den wissenschaftlichen Anforderungen entsprechend kenntlich gemacht. Die Versicherung selbstständiger Arbeit gilt auch für die Zeichnungen, Skizzen oder graphische Darstellungen. Die Arbeit wurde bisher in gleicher oder ähnlicher Form weder derselben noch einer anderen Prüfungsbehörde vorgelegt und auch noch nicht veröffentlicht. Mit der Abgabe der elekronischen Fassung der endgültigen Version der Arbeit nehme ich zur Kenntnis, dass diese mit Hilfe eines Plagiatserkennungsdienstes auf enthaltene Plagiate überprüft und ausschließlich für Prüfungszwecke gespeichtert wird.
