@@ -20,9 +20,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[toc,page]{appendix}
 
-% meine Pakete
-%\usepackage[authoryear]{natbib}
-%\citestyle{aysep={,}}
+% Literatur
 \usepackage[
 	backend=biber,
 	natbib=true,
@@ -34,7 +32,13 @@
 	andothers = {{et\,al\adddot}},             
 }
 \addbibresource{mylit.bib}
+\renewcommand*{\newunitpunct}{\addcomma\space}
+% TODO checkout 
+\DeclareFieldFormat[book, article, incollection, online, misc, inproceedings]{citetitle}{#1}
+\DeclareFieldFormat[book, article, incollection, online, misc, inproceedings]{title}{#1} 
+\DeclareFieldFormat[book]{number}{Nr.,\ #1} 
 
+% meine Pakete
 \usepackage{ngerman}
 \usepackage{tikz}
 \usetikzlibrary{calc}
@@ -191,6 +195,7 @@ Danksagungen
 %% wird. Hier koennen mehrere Dateinamen mit Kommata getrennt aufgelistet
 %% werden.
 
+\renewcommand{\bibname}{Literaturverzeichnis}
 \printbibliography
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
