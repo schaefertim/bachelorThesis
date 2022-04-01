@@ -96,17 +96,21 @@ q_2 &= b + y = \tfrac{1}{2} \left(l - \frac{a-b}{3}\right)
 Die resultierende Gewinnfunktion der Wettbewerber ist
 \begin{equation}\label{eqn:Gewinnfunktion}
 \begin{split}
-\pi_1 &= \frac{c}{2} \left(l+\frac{a-b}{3}\right) \\
-\pi_2 &= \frac{c}{2} \left(l-\frac{a-b}{3}\right)
+\pi_1 &= \frac{c}{2} \left(l+\frac{a-b}{3}\right)^2 \\
+\pi_2 &= \frac{c}{2} \left(l-\frac{a-b}{3}\right)^2
 .\end{split}
 \end{equation}
 
 \subsection{Schlussfolgerungen}
+\paragraph{Prinzip der minimalen Differenzierung}
+Ist einer der Wettbewerber auf seine Position fixiert, so kann der andere Wettbewerber seine Position so anpassen, dass sein Gewinn maximiert wird. Dies kann nicht durch Differenzierung ermittelt werden, da die Gewinnfunktion kein eindeutiges Maximum hat. Es gilt jedoch für alle $a<l$, dass $\frac{\partial \pi_1}{\partial a} > 0$. Deswegen strebt Wettbewerber $A$, danach sich möglichst nah an der Mitte zu positionieren. Für Wettbewerber $B$ gilt das symmetrische Argument. \citep[S.\,51-2]{hotelling1929}
+
+Daraus leitet sich ab, dass die Wettbewerber stets zueinander streben und sich minimal differenzieren.
 
 \section{Modell von d‘Aspremont}\label{Sec-Aspremont}
 
-d'Aspremont \citep{aspremont1979} kritisiert das Principle of Minimum Differentiation (TODO: kontrollieren, dass definiert) von Hotelling.
-Die Kritik stützt sich auf zwei Aspekte: Erstens ist kein Gleichgewichtspreis definiert, wenn die beiden Wettbewerber sich am selben Punkt befinden. Zweitens hat das Modell drastisch andere Lösungen, wenn die Transportkostenfunktion sich ändert.
+d'Aspremont \citep{aspremont1979} kritisieren das Prinzip der minimalen Differenzierung von \citet{hotelling1929}.
+Die Kritik stützt sich auf zwei Aspekte: Erstens ist kein Gleichgewichtspreis definiert, wenn die beiden Wettbewerber sich am selben Punkt befinden. Zweitens hat das Modell drastisch andere Lösungen, wenn die Transportkostenfunktion sich ändert. \citep[S.\,1145]{aspremont1979}
 
 \subsection{Kritik an Hotelling}
 Der Gleichgewichtspreis ergibt sich als Nash-Cournot-Gleichgewicht. Dabei müssen zwei Fälle unterschieden werden: Erstens wenn sich die Wettbewerber am selben Punkt befinden und zweitens wenn die Wettbewerber auseinanderliegen.
@@ -130,24 +134,42 @@ unter der Bedingung
 
 \paragraph{Das Gleichgewicht tendiert zur Mitte und kollabiert.} Da $\frac{\partial \pi_1}{\partial a}>0$ und $\frac{\partial \pi_2}{\partial b}>0$ bewegen sich beide Wettbewerber zur Gewinnoptimierung zur Mitte hin. Allerdings existiert in der Mitte nur noch das Gleichgewicht mit Nullpreisen. Da dies kein wirkliches Marktgleichgewicht ist, ist das laut \citet{aspremont1979} das gesamte Modell invalidiert.
 
-\subsection{Modell}\label{Sec-Aspremont-Modell}
-\citet{aspremont1979} schlägt stattdessen ein korrigiertes Modell vor mit einer veränderten Transportkostenfunktion vor. Diese ist dann quadratisch, also $cx^2$ statt $cx$.
+\subsection{Alternatives Modell}\label{Sec-Aspremont-Modell}
+\citet{aspremont1979} schlagen stattdessen ein alternatives Modell mit einer veränderten Transportkostenfunktion vor. Diese ist dann quadratisch im Abstand, also $cx^2$ statt $cx$.
 Das Gleichgewicht berechnet sich identisch zum Fall oben. Die Gleichgewichtspreise sind dann
-\begin{equation}
+\begin{equation} \label{eqn:aspremont-prices}
 \begin{split}
 p_1 &= c (l-a-b) \left(l+\frac{a-b}{b}\right) \\
 p_2 &= c (l-a-b) \left(l-\frac{a-b}{b}\right)
 \end{split}
 \end{equation}
 
-Die Gewinnfunktionen sind dann
-\begin{equation}
-TODO: Gewinnfunktionen
+Die Gleichgewichtsmenge ist dann \citep[S.\,1148]{aspremont1979}
+\begin{equation} \label{eqn:aspremont-quantities}
+q_1(p_1,p_2) = \begin{cases}
+	a+ \frac{p_2-p_1}{2c(l-a-b)} + \frac{l-a-b}{2} & 0\leq a+ \frac{p_2-p_1}{2c(l-a-b)} + \frac{l-a-b}{2} \leq l\\
+	l & a+ \frac{p_2-p_1}{2c(l-a-b)} + \frac{l-a-b}{2}>l\\
+	0 & a+ \frac{p_2-p_1}{2c(l-a-b)} + \frac{l-a-b}{2}<0
+\end{cases}
 \end{equation}
 
-Die Ableitungen $\frac{\partial \pi_1}{\partial a}<0$ und $\frac{\partial \pi_2}{\partial b}<0$ sind also negativ. Somit bewegen sich die beiden Wettbewerber so weit wie möglich voneinander weg. Das ist das Prinzip der maximalen Differenzierung.
+Setzt man die Gleichgewichtspreise aus Gleichungen \ref{eqn:aspremont-prices} in die Gleichgewichtsmengen aus Gleichung \ref{eqn:aspremont-quantities} ein, so kann man daraus den Gewinn im Gleichgewicht $\pi_1^*=p_1^* q_1(p_1^*, p_2^*)$ berechnen.
+Der Gewinn im Gleichgewicht ist dann (Quelle: eigene Berechnung)
+\begin{equation}
+\pi_1^* = \frac{c}{2} (l-a-b) \left(l+ \frac{a-b}{2} \right)^2
+\end{equation}
 
 \subsection{Schlussfolgerungen}
+
+\paragraph{Prinzip der maximalen Differenzierung}
+Daraus lassen sich die Ableitungen der Gewinnfunktion im Gleichgewicht berechnen. Sie sind (Quelle: eigene Berechnung)
+\begin{equation}
+\frac{\partial \pi_1^*}{\partial a} = -\frac{c}{2}\left(l+\frac{a-b}{3}\right)^2 + \frac{c}{3} (l-a-b) \left( l+\frac{a-b}{3} \right)
+\end{equation}
+Dieser Wert ist strikt negativ, da der erste Term negativ und der zweite strikt positiv ist, der erste Term im Absolutwert jedoch stets dominiert. Der erste Term ist im Absolutwert größer als der zweite, weil $\frac{c}{2} > \frac{c}{3}$ und $\left(l+\frac{a-b}{3}\right) \geq (l-a-b)$ (Quelle: eigene Berechnung).
+
+Die Ableitungen $\frac{\partial \pi_1^*}{\partial a}<0$ und $\frac{\partial \pi_2^*}{\partial b}<0$ sind also negativ \citep[S.\,1149]{aspremont1979}.
+Somit bewegen sich die beiden Wettbewerber so weit wie möglich voneinander weg. Das ist das Prinzip der maximalen Differenzierung.
 
 \section{Agentenbasierte Ansätze}\label{Sec-ABM}
 Agentenbasierte Ansätze sind in der Lage eine größere Komplexität an Modellen abzubilden. In Kapitel \ref{sec:ABM-Komplexität} wird dargelegt, dass in der Politik viele verschiedene Aspekte zu berücksichtigen sind. Diese Aspekte lassen sich nicht alle in ein globales Modell (TODO check Begriff) integrieren und analytisch lösen. Daher werden agentenbasierte Ansätze verwendet.
