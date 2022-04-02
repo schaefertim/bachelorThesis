@@ -212,7 +212,35 @@ Die Agenten haben eine vorher festgelegte Anzahl an Eigenschaften. Diese können
 
 Die Verhaltensregeln beschreiben wie sich die Eigenschaften der Agenten von einem Zeitpunkt zum nächsten verändern. In einfachen Modellen hängt das ausschließlich von den Eigenschaften des vorherigen Zeitpunkts ab. In komplizierteren Modellen kann dies auch von weiteren vorherigen Zeitpunkten abhängen. Diese Verhaltensregeln beschreiben insbesondere die Rationalität der Agenten. Agenten mit beschränkter Rationalität betrachten nur einen kleinen Ausschnitt der Informationen und ziehen mögliche Nebenwirkungen ihrer Entscheidungen nicht in Betracht. Dagegen nutzen Agenten mit vollkommener Rationalität alle verfügbaren Informationen und Berücksichtigen bei ihrer Entscheidung die Reaktionen anderer Akteure. Auf diesem Spektrum der Rationalität können Modelle berücksichtigen, dass Agenten lernfähig sein können. Zuletzt muss dass Modell genau festlegen in welcher Reihenfolge die Akteure agieren beziehungsweise wie ein gleichzeitiges Handeln der Agenten behandelt werden soll. Beispielsweise, können die Entscheidungen zweier Agenten A und B gegenseitig von der Position des anderen abhängen. Wenn zuerst Agent A agiert und dann Agent B die neue Position von A berücksichtig, so führt das zu einem anderen Ergebnis, als wenn zuerst Agent A agiert und dann Agent B auf die Position von A reagiert. Eine solche Reihenfolge kann zufällig, aufgrund von Eigenschaften, oder endogen im Modell entschieden werden[TODO Page 1977 zitieren?].
 
-[TODO Beispiele was mit agentenbasierten Modellen gelöst werden kann]
+\paragraph{Beispiele agentenbasierter Modelle}
+
+Im Folgenden sollen drei räumliche agentenbasierte politische Modelle genauer erläutert werden. Zunächst wird das Koalitionsmodell von \citet{laver1990coalitions} erläutert. Dagegen stellt das Modell von Kollmann, Miller und Page (TODO, cite 1992, 1998) als Zweiparteienmodell die Bewegungen der Parteien ins Zentrum. Das dritte Modell ist das Mehrparteienmodell von \citet{laver2005policy}. Dieses Modell wird separat in Kapitel (TODO 2.3.4 Dynamik von Parteien) beschrieben, da es teil der empirischen Untersuchung in Kapitel (TODO 3.4 Dynamik agentenbasiert modelliert) ist.
+
+[TODO check Buch von Laver ob noch andere/sinnvollere Modelle]
+
+\paragraph{Koalitionsmodell}
+Die Idee für das Koalitionsmodell von \citet{laver1990coalitions} basiert darauf, dass eine Koalition in einer parlamentarischen Demokratie zugleich die Regierung stellt. Das bedeutet, dass aus den Reihen der Koalitionspartner die Exekutive, das bedeutet die Ministerämter besetzt werden. Die Autoren nehmen dabei an, dass eine Partei, die ein Ministeramt innehat, die volle Kontrolle über diesen Fachbereich hat und innerhalb dieses Fachbereichs die eigene Parteiposition ohne Rücksicht auf Koalitionspartner durchsetzt. Dies beschränkt die glaubwürdigen Koalitionen auf diskrete Kombinationen der Standpunkte der Parteien auf festgelegten Politikfeldern. Insbesondere schließt das Koalitionen aus, bei denen Kompromisse innerhalb eines Politikfelds geschlossen werden. \citep[S.\,873-5]{laver1990coalitions}
+
+Eine Regierungskoalition stellt den status quo dar. Damit der status quo durch eine andere Koalition abgelöst werden kann müssen mehrere Voraussetzungen erfüllt sein. Erstens muss jeder einzelne Koalitionspartner in der neuen Koalition die vorgeschlagene Ministerialverteilung gegenüber der alten Ministerialverteilung präferieren. Zweitens unterstellen \citet{laver1990coalitions} den Parteien die Rationalität das komplexe Spiel von Gegenvorschlägen durchrechnen zu können. Dadurch kann eine Koalition nur abgelöst werden, wenn alle beteiligten Parteien diese Dynamiken gegenüber dem status quo präferieren. \citep[S.\,877-8]{laver1990coalitions}
+
+Dieses Modell wird auf die politische Situation in Island 1967 und 1971 angewendet. Dabei werden zwei politische Dimensionen mit vier (1967) beziehungsweise fünf (1971) Parteien betrachtet \citep[S.\,882-5]{laver1990coalitions}. \citet{laver1990coalitions} bezeichnen ihr Modell berechtigterweise nicht als agentenbasiertes Modell. Dennoch eignet es sich hervorragend als agentenbasiertes Modell, da es die Dynamik von neuen Koalitionen zwischen Wahlen gut beschreiben kann und die Aktuere klare Verhaltensmuster haben. Dabei können verschiedene Szenarien bezüglich der Rationalität der Parteien durchgespielt werden. Beispielsweise können die Parteien wie im Modell als vollständig rational betrachtet werden. Jedoch kann alternativ auch angenommen werden, dass die Parteien jeglicher Koalition zustimmen, die sie dem status quo gegenüber präferieren.
+
+\paragraph{Dynamisches Zweiparteienmodell}
+
+[TODO Check: Hotelling kann als agentenbasiertes Modell betrachtet werden.]
+
+\citet{kollman1992adaptive} entwickeln ein Modell mit zwei Parteien, das klären soll, ob es unter verschiedenen Annahmen ein Gleichgewicht gibt, zu dem die Parteien streben. In dem agentenbasierten Modell versuchen die Parteien wahlweise mit einem Wahlprogramm möglichst nah an ihrer Idealposition zu gewinnen oder nur zu gewinnen. Dabei wissen die Parteien nicht genau über die Wähler Bescheid, sondern können nur auf ihre Umfragewerte reagieren und ihre Position entsprechend anpassen. Die Präferenz der Wähler drückt sich in einer Optimalposition im mehrdimensionalen Positionsraum und eine Gewichtung der Politikfelder aus. 
+\citep[S.\,930-1]{kollman1992adaptive}
+
+Für jede Wahl beziehungsweise jeden Zeitschritt bleibt die Regierungspartei statisch und die Oppositionspartei versucht zu gewinnen. Dabei stellen die Autoren fest, dass bei zwei Parteien, die lediglich nach Wahlgewinn streben, der Herausforderer nach nur zwölf Wahlen nur noch eine Chance von 40 Prozent hat, die Regierung zurückzugewinnen. Dagegen wechselt die Regierung bei zwei ideologische Parteien hin und her und auch nach mehreren Wahlen bleiben die Chancen gut, dass die Oppositionspartei gewinnt. \citep[S.\,934-5]{kollman1992adaptive}
+
+\citet{kollman1998political} untersuchen dieses Modell mit seinen adaptiven Parteien genauer hinsichtlich der Wählerverteilung. Nun gibt es Stellen mit hohen und geringen Wählerdichten. Dabei stellt sich heraus, dass die Parteien zwar immer noch moderate Positionen finden, die Wahlen gewinnen können, es ist jedoch deutlich erschwert. Das bedeutet, dass der Vorteil der Regierungspartei noch größer ist und dass je nach Unregelmäßigkeit der Wählerverteilung es länger braucht, bis ein Optimum gefunden wird. \citep{kollman1998political}
+
+\paragraph{TODO verschiebe diesen Paragraphen}
+\citet[S.\,13ff]{marchi2014ABMs}: Ein Modell sollte sowohl mathematisch gelöst als auch computersimuliert werden. Das Modell sollte dabei zunächst so einfach wie möglich gehalten werden. Erst wenn sich das Modell trotzdem als zu komplex darstellt sollte das Modell ausschließlich als agentenbasiertes Modell formuliert werden.
+
+
+
 
 \subsection{Dynamik von Parteien} \label{sec:ABM-Dynamik}
 
