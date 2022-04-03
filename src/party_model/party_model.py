@@ -49,9 +49,7 @@ class PartyAgent(Agent):
                         np.array([np.cos(angle), np.sin(angle)])
                         * self.model.unit_distance
                     )
-                elif (
-                    self.model.vote_share[self.unique_id] > self.position_old
-                ):
+                elif self.model.vote_share[self.unique_id] > self.position_old:
                     new_direction = self.position - self.position_old
                 else:
                     new_direction = self.position_old - self.position
