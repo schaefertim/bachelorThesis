@@ -167,7 +167,7 @@ Das Ergebnis der Wählergewichtungen ist in Abbildung \ref{fig:voter-positions-p
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=1.0]{../../fig/voter_distribution}
-	\caption{TODO caption (Quelle: eigene Darstellung)}
+	\caption{Wählerpositionen im zweidimensionalen Raum der Parteipositionen. Positionen sind mithilfe der Politbarometer-Daten \citep{politbarometer} berechnet. (Quelle: eigene Darstellung)\\TODO Achsenbeschriftung}
 	\label{fig:voter-positions-pca}
 \end{figure}
 
@@ -177,11 +177,11 @@ Im Politbarometer stehen auch Daten zur Verfügung, wie sich die Befragten auf e
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=1.0]{../../fig/voter_distribution_left_right}
-	\caption{TODO caption (Quelle: eigene Darstellung)}
+	\caption{Wähler auf einer links-rechts-Skala auf Grundlage der Politbarometer-Daten \citep{politbarometer}. (Quelle: eigene Darstellung)}
 	\label{fig:voter-positions-pca-left-right}
 \end{figure}
 
-Nun stellt sich die Frage, ob dieses Ergebnis mit der Interpretation der ersten Hauptkomponente als links-rechts-Skala übereinstimmt. Tatsächlich ist es so, dass die Wähler im linken Teil des Schaubilds sich tendenziell als links identifizieren und diejenigen im rechten Teil des Schaubilds, sich als neutral beziehungsweise rechts identifizieren. Dies bestätigt also die Interpretation der Haupkomponente.
+Nun stellt sich die Frage, ob dieses Ergebnis mit der Interpretation der ersten Hauptkomponente als links-rechts-Skala übereinstimmt. Tatsächlich ist es so, dass die Wähler im rechten Teil des Schaubilds sich tendenziell als links identifizieren und diejenigen im linken Teil des Schaubilds, sich als neutral beziehungsweise rechts identifizieren. Dies bestätigt also die Interpretation der Haupkomponente.
 
 Dieses Muster ist zwar eindeutig aber eindeutig nicht homogen. Das liegt schlichtweg daran, dass Wähler nicht homogen sind und somit Abweichungen erwartbar sind.
 
@@ -194,14 +194,15 @@ Ein weiterer Indikator für die Qualität der Partei- und Wählerverteilung ist 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=1.0]{../../fig/voter_distribution_party_affiliation}
-	\caption{TODO caption (Quelle: eigene Darstellung)}
+	\caption{Wahlabsicht der Wähler auf Grundlage der Politbarometer-Daten \citep{politbarometer}. (Quelle: eigene Darstellung)\\TODO Legende positionieren, Achsenbeschriftung}
 	\label{fig:voter-positions-pca-party-affiliation}
 \end{figure}
 
-Wie erwartet, zeigt sich bei jeder Partei ein eindeutiger Bereich im näheren Umfeld, in dem fast alle Wähler diese Partei wählen würden. Außerdem ein bisschen weiterer Bereich, in dem eine gewisse Wahrscheinlichkeit besteht, dass die Partei gewählt wird. Eine Außnahme dabei bilden die Wähler der AfD. Es gibt einige AfD-Wähler die sich unmittelbar auf der Position der CDU/CSU befinden. Das kann zwei Ursachen haben. Einerseits könnte es sein, dass die Wähler die CDU/CSU gut bewerten aber AfD wählen. Wahrscheinlicher ist jedoch, dass sie FDP und AFD beide gut bewerten und AfD wählen. Das hier abgebildete Modell kann das nicht erklären. Somit gibt es hier Wähler in positioneller Nähe der CDU/CSU, die jedoch nicht diese Partei wählen. Insgesamt wird die Parteizuordnung also in dieser Hauptkomponentenanalyse mit dieser Wählerpositionszuordnung gut abgebildet. Allerdings gibt es auch Fälle, die nicht gut abgebildet werden.
+Wie erwartet, zeigt sich bei jeder Partei ein eindeutiger Bereich im näheren Umfeld, in dem fast alle Wähler diese Partei wählen würden. Außerdem ein bisschen weiterer Bereich, in dem eine gewisse Wahrscheinlichkeit besteht, dass die Partei gewählt wird. Es gibt jedoch einige Besonderheiten. Zum Beispiel befinden sich die FDP-Wähler nicht in Richtung der AfD. Außerdem gibt es einzelne Wähler, die weit aus dem direkten Einflussbereich ihrer Partei herausfallen. Dies sind Wähler, die in den Umfragen zwar eine hohe Bewertung für eine Partei angeben, jedoch eine andere Partei wählen wird.
+Insgesamt wird die Parteizuordnung also in dieser Hauptkomponentenanalyse mit dieser Wählerpositionszuordnung gut abgebildet. Eine Zuordnung der Wähler alleine aufgrund der Distanz zur Partei ist zwar keine perfekte Interpretation, stellt jedoch eine gut Annäherung dar.
 
 \paragraph{Gesamtbeurteilung Wählerpositionierung}
-TODO
+Insgesamt erscheint die Wählerpositionierung sinnvoll und kosistent. Die Links-Rechts-Komponente wird gut abgebildet und ist konsistent mit der Interpretation der Hauptkomponente. Der Einflussbereich der Parteien ist ebenfalls sehr gut abgebildet.
 
 \section{Dynamik agentenbasiert modelliert}
 
