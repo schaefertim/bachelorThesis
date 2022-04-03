@@ -5,7 +5,7 @@ Created using mesa.
 import matplotlib.pyplot as plt
 import numpy as np
 from mesa import Agent, Model
-from mesa.time import BaseScheduler
+from mesa.time import RandomActivation
 from scipy.spatial import distance_matrix
 
 
@@ -107,9 +107,7 @@ class PartyModel(Model):
         """
         super().__init__()
         self.num_agents = party_positions.shape[0]
-        self.schedule = BaseScheduler(
-            self
-        )  # consider using SimultaneousActivation instead
+        self.schedule = RandomActivation(self)
         kinds = (
             ["AGGREGATOR" for _ in range(self.num_agents)]
             if kinds is None
@@ -124,7 +122,9 @@ class PartyModel(Model):
         self.vote_share = None
         self._update_party_affiliation()
 
-        self.unit_distance = 0.1  # TODO set value from Laver(2005)
+        # Laver(2005) leaves this value completely unclear
+        # choose arbitrary value
+        self.unit_distance = 0.1
 
     def step(self):
         """Perform one time step in mode.
@@ -159,8 +159,12 @@ class PartyModel(Model):
             party_positions[i] = party_agent.position
         return party_positions
 
-    def scatter_plot(self):
-        """Plot party and voter positions with affiliation."""
+    def scatter_plot(self, filename=None):
+        """Plot party and voter positions with affiliation.
+
+        Args:
+            filename: if None show plot, if provided save to given filename
+        """
         plt.figure()
         party_positions = self._get_party_positions()
         scatter_party = plt.scatter(
@@ -176,5 +180,15 @@ class PartyModel(Model):
             c=self.party_affiliation,
             cmap="Set1",
         )
-        plt.legend(*scatter_party.legend_elements())
-        plt.show()
+        legend = plt.legend(
+            *scatter_party.legend_elements(),
+            loc="lower right",
+            bbox_to_anchor=(1.1, 0.0),
+        )
+        for i, text in enumerate(legend.get_texts()):
+            text.set_text(self.schedule.agents[i].kind)
+
+        if filename is None:
+            plt.show()
+        else:
+            plt.savefig(filename)
