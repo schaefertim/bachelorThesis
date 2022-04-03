@@ -38,17 +38,19 @@ Die Berechnung der Hauptkomponentenanalyse nehme ich mit scikit-learn \citep{sci
 
 Bei der Berechnung der Haupkomponentenanalyse muss außerdem bedacht werden, wie die Hauptkomponenten skaliert werden. In der Theorie stellen sie lediglich eine Richtung dar. Wenn jedoch eine Metrik verwendet wird, spielt die Skalierung eine Rolle. Es gibt im Wesentlichen zwei Optionen. Erstens, können die Hauptkomponenten so skaliert werden, dass die Varianz in jeder Hauptkomponente die gleich ist. Zweitens, können die Hauptkomponenten so skaliert werden, dass das Verhältnis der Varianzen zwischen den Hauptkomponenten erhalten bleibt. Ich entscheide mich dafür das Verhältnis der Varianzen zu erhalten, da somit eine Gewichtung zwischen den politischen Themen erhalten bleibt.
 
-Die Positionen der Parteien auf die Hauptkomponenten projiziert sind in Abbildung \ref{fig:party-positions-pca} dargestellt.
+\paragraph{Positionen der Parteien in den Hauptkomponenten}
+Die Positionen der Parteien auf die Hauptkomponenten projiziert sind in Abbildung \ref{fig:party-positions-pca} dargestellt. Parteien, die sich auf einer Achse nah beieinander befinden, haben auf dieser Achse tendenziell ähnliche Positionen. Somit haben beispielsweise \glqq DIE LINKE\grqq\ und \glqq Grüne\grqq\ tendenziell ähnliche Positionen in der ersten Hauptkomponente. Dagegen haben in der zweiten Hauptkomponente \glqq AfD\grqq\ und \glqq DIE LINKE\grqq\ und am anderen Ende des Spektrums \glqq CDU/CSU\grqq\ und \glqq SPD\grqq\ ähnliche Positionen. Dass das Zentrum leer ist, liegt an der Konstruktion der Hauptkomponentenanalyse. Da sie darauf abzielt, die Varianz zu maximieren, liegen nur wenige beziehungsweise keine Datenpunkte in der Projektion in der Mitte.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=1.0]{../../fig/party_positions}
-	\caption{TODO caption (Quelle: eigene Darstellung)}
+	\caption{Parteipositionen im zweidimensionalen Positionsraum: Der Positionsraum ergibt sich aus den 38 Thesen der Wahl-O-Mat-Daten \citep{WahlOMat,Bolte2022QualOMat} projiziert auf die ersten beiden Hauptkomponenten. (Quelle: eigene Darstellung)\\TODO Achsenbeschriftung}
 	\label{fig:party-positions-pca}
 \end{figure}
 
 \paragraph{Analyse der Hauptkomponenten}
-Um den dimensionslosen Hauptkomponenten Bedeutung zu verleihen, wie die Thesen in ihnen gewichtet sind. Der größte Absolutwert im Vektor einer Hauptkomponente repräsentiert gleichzeitig diejenige These, die diese Hauptkomponente ausmacht. Daher sortiere ich die Hauptkomponenten nach absteigendem Absolutwert und sehe mir an welche Thesen am wichtigsten sind.
+Die theoretischen Arbeiten, die in Kapitel \ref{Sec-ABM} betrachtet wurden, nehmen zumeist an, dass es sich bei den Achsen um politische Themenfelder handelt.
+Um den dimensionslosen Hauptkomponenten Bedeutung zu verleihen wird berechnet, wie die Thesen in ihnen gewichtet sind. Der größte Absolutwert im Vektor einer Hauptkomponente repräsentiert gleichzeitig diejenige These, die diese Hauptkomponente ausmacht. Daher werden die Vektorelemente der Hauptkomponenten nach absteigendem Absolutwert sortiert.
 In Tabelle \ref{tab:pca1} sind die 10 Thesen aufgelistet, die für die erste Hauptkomponente am bedeutendsten sind. In Tabelle \ref{tab:pca2} sind die 10 bedeutendsten Thesen der zweiten Hauptkomponente aufgelistet.
 
 \begin{table}[htb]
@@ -65,12 +67,12 @@ In Tabelle \ref{tab:pca1} sind die 10 Thesen aufgelistet, die für die erste Hau
 	]{../../fig/statements_pca0.csv}{}{
 		\MYindex & \num{\MYvalue} & \MYlabel & \MYtext
 	}
-	\caption{TODO caption (Quelle: eigene Darstellung)}
+	\caption{Zehn bedeutendsten Thesen der ersten Hauptkomponente der Parteipositionen: Sortiert nach absteigendem Absolutwert, was gleichbedeuted mit absteigender Relevanz ist. Für Parteien die einen positiven Wert in der Hauptkomponente haben gilt tendenziell: Sie lehnen Thesen mit positivem Wert ab und stimmen Thesen mit negativem Wert zu. (Quelle: eigene Darstellung)}
 	\label{tab:pca1}
 \end{table}
 
 In der Spalte \glqq Wert\grqq ist der Wert im Vektor der Hauptkomponente gelistet. Je größer der Wert, desto größer ist die Bedeutung für diese Richtung. Ist der Wert positiv, so bedeutet das eine Ablehnung der These. Ist der Wert negativ bedeutet das eine Zustimmung zur These.
-Zur Erläuterung ein kurzes Beispiel [TODO aktualisieren]: Die \glqq CDU/CSU\grqq hat die beiden bedeutendsten Thesen der ersten Hauptkomponente, die These 18 mit 0 (Zustimmung) und die These 27 mit 1 (Ablehnung) beantwortet. In der Projektion werden diese Werte mit dem Wert in der Hauptkomponente multipliziert, was einen Wert von $0*(-0.226)+1*(0.226)=0.226$ ergibt. Deshalb befindet sich die \glqq CDU/CSU\grqq eher im positiven Teil der ersten Hauptkomponente. Parteien die diese Positionen genau gegenteilig beantwortet haben befinden sich eher im negativen Teil, siehe dazu auch Abbilung \ref{fig:party-positions-pca}.
+Zur Erläuterung ein kurzes Beispiel: Die \glqq AfD\grqq hat die beiden bedeutendsten Thesen der ersten Hauptkomponente, die These 29 mit 0 (Zustimmung) und die These 3 mit 1 (Ablehnung) beantwortet. In der Projektion werden diese Werte mit dem Wert in der Hauptkomponente multipliziert, was einen Wert von $0*0.259+1*(-0.259)=-0.259$ ergibt. Deshalb befindet sich die \glqq AfD\grqq eher im negativen Teil der ersten Hauptkomponente, also eher links. Parteien die diese Thesen genau gegenteilig beantwortet haben befinden sich eher im positiven Teil, also eher rechts, siehe dazu auch Abbilung \ref{fig:party-positions-pca}.
 
 \begin{table}%[htb]
 	\centering
@@ -86,37 +88,35 @@ Zur Erläuterung ein kurzes Beispiel [TODO aktualisieren]: Die \glqq CDU/CSU\grq
 	]{../../fig/statements_pca1.csv}{}{
 		\MYindex & \num{\MYvalue} & \MYlabel & \MYtext
 	}
-	\caption{TODO caption (Quelle: eigene Darstellung)}
+	\caption{Zehn bedeutendsten Thesen der zweiten Hauptkomponente der Parteipositionen: Sortiert nach absteigendem Absolutwert, was gleichbedeuted mit absteigender Relevanz ist. Für Parteien die einen positiven Wert in der Hauptkomponente haben gilt tendenziell: Sie lehnen Thesen mit positivem Wert ab und stimmen Thesen mit negativem Wert zu. (Quelle: eigene Darstellung)}
 	\label{tab:pca2}
 \end{table}
-[TODO Check dass Daten von 2017, Kein Covid-19!!!]
 
-Nun versuche ich eine thematische Interpretation der Hauptkomponenten. Die Thesen der ersten Hauptkomponente in Tabelle \ref{tab:pca1} beinhalten mehrere Klimaschutzthemen, wie
+\paragraph{Interpretation der ersten Hauptkomponente}
+Die Thesen der ersten Hauptkomponente in Tabelle \ref{tab:pca1} beinhalten mehrere Umweltschutzthemen, wie
 \begin{itemize}
-	\item Verbrennungsmotor
-	\item Besteuerung des Flugverkehrs
-	\item Tempolimit auf Autobahnen
-	\item Ausstieg aus der Kohleverstromung
-	\item Ökologische Landwirtschaft
+	\item Ausbau erneuerbarer Energien
+	\item Besteuerung von Pkw-Diesel
+	\item Tempolimit
 \end{itemize}
-Dabei bedeutet der positive Teil der Hauptkomponente, dass Umweltschutz abgelehnt wird.
+Dabei bedeutet im positiven Teil der Hauptkomponente, dass Umweltschutz befürwortet wird.
 
 Das zweite bedeutende Thema in der ersten Hauptkomponente ist Verteilungspolitik. Die zugehörigen Thesen sind
 \begin{itemize}
-	\item Steuer auf hohe Vermögen
-	\item Abschaffung des Solidaritätszuschlags
-	\item Erhöhung des Mindestlohns
+	\item Freibetrag bei der Grunderwerbssteuer
+	\item Gesetzliche Krankenversicherung
+	\item Schuldenschnitt für Griechenland
+	\item Vermögenssteuer
+	\item Sachgrundlose Befristung
 \end{itemize}
-Dabei bedeutet der positive Teil der Hauptkomponente, dass eine soziale Umverteilung abgelehnt wird.
+Dabei bedeutet der positive Teil der Hauptkomponente, dass eine soziale Umverteilung befürwortet wird.
 
-Die Thesen \glqq Frauen und Männer auf Landeslisten\grqq und \glqq Patentschutz auf Impfstoffe\grqq lassen sich nicht einwandfrei zuordnen. Es ist vertretbar diese Themen unter Verteilungspolitik zuzuordnen. Es ist jedoch genauso argumentierbar, dass Verteilungspolitik nicht die Machtverteilung zwischen Männern und Frauen und auch nicht die Vermögensverteilung zwischen Industrie- und Entwicklungsstaaten umfasst.
+Die Thesen \glqq Erhöhung der Verteidigungsausgaben\grqq\ und \glqq Abbau von Staatsschulden\grqq\ lassen sich nicht einwandfrei zuordnen.
 
-Wie in Tabelle \ref{tab:pca2} zu sehen, zeigt die zweite Hauptkomponente grundsätzliches ein stärkeres Gefälle im Absolutwert der Komponenten. Das bedeutet, dass die Thesen unterschiedlich wichtig sind.
+Zusammenfassend gilt, dass die erste Hauptkomponente das Spektrum von \glqq rechts\grqq\ und \glqq braun\grqq\ nach \glqq links\grqq\ und \glqq grün\grqq\ abbildet.
 
-[TODO genauer herausarbeiten]
-\blindtext
-
-Zusammenfassend lässt sich sagen, dass die erste Hauptkomponente das Spektrum von \glqq links\grqq und \glqq grün\grqq nach \glqq rechts\grqq und \glqq braun\grqq abbildet. Die zweite Haupkomponente hat keine pauschale Interpretation.
+\paragraph{Interpretation der zweiten Hauptkomponente}
+Die zehn bedeutendsten Thesen der zweiten Hauptkomponente, die in Tabelle \ref{tab:pca2} zu sehen sind, sind nur schwer zuzuordnen. Beispielsweise stimmen Parteien, die sich im positiven Teil der zweiten Komponente befinden, also eher oben, der These \glqq Vorgezogener Renteneintritt\grqq\ zu, lehnen jedoch die These \glqq Sozialer Wohnungsbau\grqq\ ab. Dies sind beides linke Themen, die aber völlig entgegengesetzt beantwortet werden. Deshalb ist eine eindeutige Zuordnung nur schwer möglich.
 
 \section{Positionen der Wähler}\label{Sec-Wählerpositionen}
 
