@@ -11,24 +11,9 @@ from src.data_utility.politbarometer.politbarometer import (
     load_voter_data,
     reduce_data,
 )
-from src.data_utility.wahl_o_mat.wahl_o_mat import (
-    load_opinion,
-    load_statement,
-    opinion_to_array,
-    perform_pca,
-    print_pca_significant_statements,
-)
 
-# load party data
-dataframe_statement = load_statement()
-party_positions = opinion_to_array(load_opinion(n_parties=6))
-
-# compute pca and new party positions
-party_positions, pca = perform_pca(party_positions)
-
-# print most significant statements
-print("pca explained variance ratio", pca.explained_variance_ratio_)
-print_pca_significant_statements(pca, dataframe_statement)
+# load party positions
+party_positions = np.load("../data/saved/party_positions_pca.npy")
 
 # plot party positions
 plt.scatter(party_positions[:, 0], party_positions[:, 1])

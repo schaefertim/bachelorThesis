@@ -1,5 +1,6 @@
 """Color the voter distribution from left to right."""
 import matplotlib.pyplot as plt
+import numpy as np
 
 from src.data_utility.party_dictionary import PARTY_DICTIONARY
 from src.data_utility.politbarometer.politbarometer import (
@@ -9,19 +10,9 @@ from src.data_utility.politbarometer.politbarometer import (
     load_voter_data,
     reduce_data,
 )
-from src.data_utility.wahl_o_mat.wahl_o_mat import (
-    load_opinion,
-    load_statement,
-    opinion_to_array,
-    perform_pca,
-)
 
-# load party data
-dataframe_statement = load_statement()
-party_positions = opinion_to_array(load_opinion(n_parties=6))
-
-# compute pca and new party positions
-party_positions, pca = perform_pca(party_positions)
+# load party positions
+party_positions = np.load("../data/saved/party_positions_pca.npy")
 
 # plot party positions
 fig, ax = plt.subplots()
