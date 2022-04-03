@@ -5,7 +5,10 @@ data from https://github.com/gockelhahn/qual-o-mat-data
 import matplotlib.pyplot as plt
 import numpy as np
 
-from src.data_utility.party_dictionary import PARTY_DICTIONARY
+from src.data_utility.party_dictionary import (
+    PARTY_DICTIONARY,
+    PARTY_MAPPING_WAHL_O_MAT_2017,
+)
 from src.data_utility.wahl_o_mat.wahl_o_mat import (
     load_opinion,
     load_statement,
@@ -20,6 +23,12 @@ party_positions = opinion_to_array(load_opinion(n_parties=6))
 
 # compute pca and new party positions
 party_positions, pca = perform_pca(party_positions)
+
+# permute party index such that they are in usual order
+party_positions_temp = np.zeros_like(party_positions)
+for i in range(6):
+    party_positions_temp[PARTY_MAPPING_WAHL_O_MAT_2017[i]] = party_positions[i]
+party_positions = party_positions_temp
 
 # print most significant statements
 print("pca explained variance ratio", pca.explained_variance_ratio_)

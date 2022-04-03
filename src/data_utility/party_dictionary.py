@@ -10,6 +10,15 @@ PARTY_DICTIONARY = {
     5: "GRÜNE",
 }
 
+PARTY_MAPPING_WAHL_O_MAT_2017 = {
+    0: 0,
+    1: 1,
+    2: 4,
+    3: 5,
+    4: 3,
+    5: 2,
+}
+
 PARTY_MAPPING_POLITBAROMETER = [
     1,  # SPD
     0,  # CDU
