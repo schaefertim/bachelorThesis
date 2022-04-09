@@ -209,62 +209,90 @@ Die Ableitungen $\frac{\partial \pi_1^*}{\partial a}<0$ und $\frac{\partial \pi_
 Somit bewegen sich die beiden Wettbewerber so weit wie möglich voneinander weg. Das ist das Prinzip der maximalen Differenzierung.
 
 \section{Agentenbasierte Ansätze}\label{Sec-ABM}
-Agentenbasierte Ansätze sind in der Lage eine größere Komplexität an Modellen abzubilden. In Kapitel \ref{sec:ABM-Komplexität} wird dargelegt, dass in der Politik viele verschiedene Aspekte zu berücksichtigen sind. Diese Aspekte lassen sich nicht alle in ein globales Modell (TODO check Begriff) integrieren und analytisch lösen. Daher werden agentenbasierte Ansätze verwendet.
+
+Agentenbasierte Ansätze sind in der Lage eine größere Komplexität an Modellen abzubilden.
+In Kapitel \ref{sec:ABM-Komplexität} wird dargelegt, dass in der Politik viele verschiedene Aspekte zu berücksichtigen sind.
+Dadurch werden die Modelle größer und komplexer und lassen sich unter Umständen nicht mehr analytisch lösen.
+
+Diese komplexen Modelle sollen im besten Fall sowohl mathematisch gelöst als auch computersimuliert werden. Dabei sollte sich das Modell auf seine wesentlichen Elemente konzentrieren. Erst wenn sich das Modell trotzdem als zu komplex darstellt soll das Modell ausschließlich als agentenbasiertes Modell formuliert und gelöst werden. \citep[S.\,13ff]{marchi2014ABMs}
 
 \subsection{Komplexität von Politik} \label{sec:ABM-Komplexität}
-Politik umfasst viele Aspekte. Die bisher vorgestellten Modelle bilden einen eindimensionalen räumlichen Preiswettbewerb ab. Politik ist real sehr viel komplexer. Im Folgenden werden einige Aspekte erläutert, die eine Rolle spielen können. Dazu gehören:
+\paragraph{Interpretation Hotelling}
+Die bisher vorgestellten Modelle bilden einen eindimensionalen räumlichen Preiswettbewerb ab.
+Das kann so interpretiert werden, dass die Parteien eine politische Position anbieten und außerdem einen Preis festlegen, beispielsweise in Form von Steuererhöhungen- oder senkungen.
+Im Modell wird die politische Position als räumlicher Wettbewerb abgebildet.
+Der Geldanreiz wird als Preiswettbewerb dargestellt.
+
+\paragraph{Andere Aspekte}
+Politik ist real sehr viel komplexer.
+Die möglichen Einflussfaktoren sind quasi endlos.
+Im Folgenden werden folgende ausgewählte Aspekte erläutert, die eine Rolle spielen können:
 \begin{itemize}
 	\item Wahlrecht
 	\item Koalitionen
-	\item Personen
 	\item Dynamik
 \end{itemize}
 
 \paragraph{Wahlrecht}
-Das Wahlrecht spielt eine wesentliche Rolle für die Strategien der Parteien, da es gewissermaßen die Spielregeln der politischen Machtverteilung definiert. Es wird im Wesentlichen zwischen Mehrheitswahlrecht und Verhältniswahlrecht unterschieden (TODO Zitat). Beim Mehrheitswahlrecht werden jeweils diejenigen Kandidaten gewählt, die in ihrem Wahlbezirk die meisten Stimmen bekommen. Aus parteipolitischer Perspektive degeneriert das politische System zu einem Zweiparteiensystem (TODO Zitat). Dagegen gilt in Deutschland hauptsächlich das Verhältniswahlrecht. Dabei spiegeln die Anteile der Parlamterier im Parlament die Wahlstimmenanteile wider. Dass Parteien auf diese Art und Weise beliebig klein werden können, wird in Deutschland durch eine 5\%-Hürde begrenzt. Das sorgt für eine völlig eigene Dynamik rund um die 5\%-Grenze.
+Das Wahlrecht spielt eine wesentliche Rolle für die Strategien der Parteien, da es gewissermaßen die Spielregeln der politischen Machtverteilung definiert.
+Es wird im Wesentlichen zwischen Mehrheitswahlrecht und Verhältniswahlrecht unterschieden.
+Beim Mehrheitswahlrecht werden jeweils diejenigen Kandidaten gewählt, die in ihrem Wahlbezirk die meisten Stimmen bekommen.
+Aus parteipolitischer Perspektive degeneriert das politische System meistens zu einem Zweiparteiensystem, beispielsweise gibt es in Großbritannien und USA im Wesentlichen nur zwei Parteien \citep[S.\,257-8]{schofield1998germany}.
+Dagegen gilt in Deutschland hauptsächlich das Verhältniswahlrecht.
+Dabei spiegeln die Anteile der Parlamentarier im Parlament die Wahlstimmenanteile wider.
+Dass Parteien auf diese Art und Weise beliebig klein werden können, wird in Deutschland durch eine 5\%-Hürde begrenzt.
+Das sorgt für eine völlig eigene Dynamik rund um die 5\%-Hürde.
 
 \paragraph{Koalitionen}
-Politische Macht wird in Demokratien hauptsächlich über Gesetzgebung und Regierung ausgeübt (TODO check und Zitat). Nur so können eigene Standpunkte und Ideen durchgesetzt werden. Da eine Partei in Deutschland selten die absolute Mehrheit erringen kann, müssen die Parteien Koalitionen eingehen. Beispielweise beschäftigen sich Laver und Shepsle (TODO Laver Shepsle 1990) mit möglichen Koalitionsmodellen.
-
-Ich möchte hier die Grundidee der Koalitionsmodelle zitieren. [TODO]
-
-Aufgrund der vielfältigen Kombinationsmöglichkeiten der Parteien werden diese Modelle sehr schnell sehr komplex, insbesondere bei mehr als drei Parteien. Das hier beschriebene Modell setzt außerdem voraus, dass die politischen Dimensionen, über die die Standpunkte der Parteien definiert sind, klar definiert und abgegrenzt sind. Das Modell, das hier später beschrieben wird vermischt jedoch politische Dimensionen und ist daher nicht geeignet um Koalitionen auf diese Art und Weise zu analysieren.
-
-\paragraph{Personen}
-Ein wesentlicher Faktor sind außerdem die Personen, die die Parteien jeweils vertreten, beispielsweise die Spitzenkandidaten bei Bundestagswahlen. 
-[TODO: Beispiel von Wahl und Einfluss von Spitzenkandidaten]
-
-\paragraph{Dynamik}
-Zuletzt ist Politik keinesfalls statisch sondern dynamisch. Einfache Modelle betrachten Politik als rundenbasiert (TODO Zitat), zum Beispiel zwischen den Wahlen, wohingegen komplexere Modelle die Phasen zwischen den Wahlen abbilden (TODO Zitat)
-
-Die Dynamik wird in Kapitel \ref{sec:ABM-Dynamik} genauer betrachtet.
-
-\subsection{Einführung in Agentenbasierte Modelle}
-
-Agentenbasierte Modelle zeichnen sich dadurch aus, dass die Modellbeschreibung sich auf einzelne Bestandteile, die Agenten, beziehen. Zusammen bilden die Agentenbeschreibung und ihre Interaktionen das Modell, anstatt eine globale Beschreibung des Modells zu haben. Marchi und Page \citep{marchi2014ABMs} besprechen eingehend agentenbasierende Modelle. Sie beschreiben die Vielfalt an Modellen und erklären ihre Anwendungsfelder.
-
-Im Zentrum der Modelle stehen die Agentenmit ihren Eigenschaften und Verhaltensregeln. Die Anzahl der Agenten kann je nach Modell stark schwanken. Laut \citet{marchi2014ABMs} variiert die Anzahl der Agenten normalerweise zwischen 2 und 10000. Im Zuge der Covid-19 Studien gibt es agentenbasierte Modelle die bis zu ??? Agenten umfassen (TODO Zitat).
-
-Die Agenten haben eine vorher festgelegte Anzahl an Eigenschaften. Diese können sich über die Zeit ändern. Das bedeutet zu jedem Zeitpunkt können die Eigenschaften der Agenten durch einen Vektor $a_j^t = (x_{j1}^t, x_{j2}^t,..., x_{jM}^t)$ beschrieben werden. Diese Eigenschaften bieten eine große Flexibilität des Modells, da sie fast alles codieren können. Im Kontext politischer Modelle spielen insbesondere die Eigenschaften von Wählern und Parteien eine Rolle. Das bedeutet beispielsweise, dass ideologische Positionen bedeutend sind.
-
-Die Verhaltensregeln beschreiben wie sich die Eigenschaften der Agenten von einem Zeitpunkt zum nächsten verändern. In einfachen Modellen hängt das ausschließlich von den Eigenschaften des vorherigen Zeitpunkts ab. In komplizierteren Modellen kann dies auch von weiteren vorherigen Zeitpunkten abhängen. Diese Verhaltensregeln beschreiben insbesondere die Rationalität der Agenten. Agenten mit beschränkter Rationalität betrachten nur einen kleinen Ausschnitt der Informationen und ziehen mögliche Nebenwirkungen ihrer Entscheidungen nicht in Betracht. Dagegen nutzen Agenten mit vollkommener Rationalität alle verfügbaren Informationen und Berücksichtigen bei ihrer Entscheidung die Reaktionen anderer Akteure. Auf diesem Spektrum der Rationalität können Modelle berücksichtigen, dass Agenten lernfähig sein können. Zuletzt muss dass Modell genau festlegen in welcher Reihenfolge die Akteure agieren beziehungsweise wie ein gleichzeitiges Handeln der Agenten behandelt werden soll. Beispielsweise, können die Entscheidungen zweier Agenten A und B gegenseitig von der Position des anderen abhängen. Wenn zuerst Agent A agiert und dann Agent B die neue Position von A berücksichtig, so führt das zu einem anderen Ergebnis, als wenn zuerst Agent A agiert und dann Agent B auf die Position von A reagiert. Eine solche Reihenfolge kann zufällig, aufgrund von Eigenschaften, oder endogen im Modell entschieden werden[TODO Page 1977 zitieren?].
-
-\paragraph{Beispiele agentenbasierter Modelle}
-
-Im Folgenden sollen drei räumliche agentenbasierte politische Modelle genauer erläutert werden. Zunächst wird das Koalitionsmodell von \citet{laver1990coalitions} erläutert. Dagegen stellt das Modell von Kollmann, Miller und Page (TODO, cite 1992, 1998) als Zweiparteienmodell die Bewegungen der Parteien ins Zentrum. Das dritte Modell ist das Mehrparteienmodell von \citet{laver2005policy}. Dieses Modell wird separat in Kapitel (TODO 2.3.4 Dynamik von Parteien) beschrieben, da es teil der empirischen Untersuchung in Kapitel (TODO 3.4 Dynamik agentenbasiert modelliert) ist.
-
-[TODO check Buch von Laver ob noch andere/sinnvollere Modelle]
-
-\paragraph{Koalitionsmodell}
-Die Idee für das Koalitionsmodell von \citet{laver1990coalitions} basiert darauf, dass eine Koalition in einer parlamentarischen Demokratie zugleich die Regierung stellt. Das bedeutet, dass aus den Reihen der Koalitionspartner die Exekutive, das bedeutet die Ministerämter besetzt werden. Die Autoren nehmen dabei an, dass eine Partei, die ein Ministeramt innehat, die volle Kontrolle über diesen Fachbereich hat und innerhalb dieses Fachbereichs die eigene Parteiposition ohne Rücksicht auf Koalitionspartner durchsetzt. Dies beschränkt die glaubwürdigen Koalitionen auf diskrete Kombinationen der Standpunkte der Parteien auf festgelegten Politikfeldern. Insbesondere schließt das Koalitionen aus, bei denen Kompromisse innerhalb eines Politikfelds geschlossen werden. \citep[S.\,873-5]{laver1990coalitions}
+Eine Regierungskoalition stellt in einer parlamentarischen Demokratie zugleich die Regierung und übt somit politische Macht aus.
+Nur so können eigene Standpunkte und Ideen durchgesetzt werden. 
+Genau diese Idee steht bei \citet{laver1990coalitions} im Mittelpunkt des Modells.
+In diesem Modell stellen die Koalitionspartner aus ihren Reihen die Exekutive, das heißt sie besetzen die Ministerämter. Die Autoren nehmen dabei an, dass eine Partei, die ein Ministeramt innehat, die volle Kontrolle über diesen Fachbereich hat und innerhalb dieses Fachbereichs die eigene Parteiposition ohne Rücksicht auf Koalitionspartner durchsetzt. Dies beschränkt die glaubwürdigen Koalitionen auf diskrete Kombinationen der Standpunkte der Parteien auf festgelegten Politikfeldern. Insbesondere schließt das Koalitionen aus, bei denen Kompromisse innerhalb eines Politikfelds geschlossen werden. \citep[S.\,873-5]{laver1990coalitions}
 
 Eine Regierungskoalition stellt den status quo dar. Damit der status quo durch eine andere Koalition abgelöst werden kann müssen mehrere Voraussetzungen erfüllt sein. Erstens muss jeder einzelne Koalitionspartner in der neuen Koalition die vorgeschlagene Ministerialverteilung gegenüber der alten Ministerialverteilung präferieren. Zweitens unterstellen \citet{laver1990coalitions} den Parteien die Rationalität das komplexe Spiel von Gegenvorschlägen durchrechnen zu können. Dadurch kann eine Koalition nur abgelöst werden, wenn alle beteiligten Parteien diese Dynamiken gegenüber dem status quo präferieren. \citep[S.\,877-8]{laver1990coalitions}
 
 Dieses Modell wird auf die politische Situation in Island 1967 und 1971 angewendet. Dabei werden zwei politische Dimensionen mit vier (1967) beziehungsweise fünf (1971) Parteien betrachtet \citep[S.\,882-5]{laver1990coalitions}. \citet{laver1990coalitions} bezeichnen ihr Modell berechtigterweise nicht als agentenbasiertes Modell. Dennoch eignet es sich hervorragend als agentenbasiertes Modell, da es die Dynamik von neuen Koalitionen zwischen Wahlen gut beschreiben kann und die Aktuere klare Verhaltensmuster haben. Dabei können verschiedene Szenarien bezüglich der Rationalität der Parteien durchgespielt werden. Beispielsweise können die Parteien wie im Modell als vollständig rational betrachtet werden. Jedoch kann alternativ auch angenommen werden, dass die Parteien jeglicher Koalition zustimmen, die sie dem status quo gegenüber präferieren.
 
-\paragraph{Dynamisches Zweiparteienmodell}
+Aufgrund der vielfältigen Kombinationsmöglichkeiten der Parteien werden diese Modelle sehr schnell sehr komplex, insbesondere bei mehr als drei Parteien. Das hier beschriebene Modell setzt außerdem voraus, dass die politischen Dimensionen, über die die Standpunkte der Parteien definiert sind, klar definiert und abgegrenzt sind. Die in dieser Arbeit verwendeten Daten vermischen jedoch politische Dimensionen und sind daher nicht geeignet um Koalitionen auf diese Art und Weise zu analysieren.
 
-[TODO Check: Hotelling kann als agentenbasiertes Modell betrachtet werden.]
+\paragraph{Dynamik}
+Zuletzt ist Politik keinesfalls statisch sondern dynamisch. Einfache Modelle betrachten Politik als rundenbasiert, zum Beispiel zwischen den Wahlen, wohingegen komplexere Modelle die Phasen zwischen den Wahlen abbilden \citep[S.\,263-4]{laver2005policy}.
+Das Modell von \citet{laver2005policy} wird in Kapitel \ref{sec:ABM-Dynamik} genauer betrachtet und in Kapitel \ref{Sec:Dynamik-Anwendung} auf reale Daten angewendet.
+
+\subsection{Einführung in Agentenbasierte Modelle}
+
+Agentenbasierte Modelle zeichnen sich dadurch aus, dass die Modellbeschreibung sich auf einzelne Bestandteile, die Agenten, beziehen. Zusammen bilden die Agentenbeschreibung und ihre Interaktionen das Modell, anstatt eine globale Beschreibung des Modells zu haben. \citet{marchi2014ABMs} besprechen eingehend agentenbasierende Modelle. Sie beschreiben die Vielfalt an Modellen und erklären ihre Anwendungsfelder.
+
+\paragraph{Agenten}
+Im Zentrum der Modelle stehen die Agenten mit ihren Eigenschaften und Verhaltensregeln.
+Die Anzahl der Agenten schwankt normalerweise zwischen 2 und 10000.
+Die Agenten haben eine vorher festgelegte Anzahl an Eigenschaften.
+Diese können sich über die Zeit ändern.
+Das bedeutet zu jedem Zeitpunkt können die Eigenschaften der Agenten durch einen Vektor $a_j^t = (x_{j1}^t, x_{j2}^t,..., x_{jM}^t)$ beschrieben werden.
+Diese Eigenschaften bieten eine große Flexibilität des Modells, da sie fast alles codieren können. \citep[S.\,7]{marchi2014ABMs}
+
+Im Kontext politischer Modelle spielen insbesondere die Eigenschaften von Wählern und Parteien eine Rolle.
+Für ein räumliches politisches Modell codieren die Eigenschaften also die Positionen der Parteien.
+Für die Wähler kann dort codiert sein, welche Partei sie momentan präferieren beziehungsweise welche Partei sie in der Vergangenheit gewählt haben.
+
+\paragraph{Verhaltensregeln}
+Die Verhaltensregeln beschreiben wie sich die Eigenschaften der Agenten von einem Zeitpunkt zum nächsten verändern. In einfachen Modellen hängt das ausschließlich von den Eigenschaften des vorherigen Zeitpunkts ab. In komplizierteren Modellen kann dies auch von weiteren vorherigen Zeitpunkten abhängen. Diese Verhaltensregeln beschreiben insbesondere die Rationalität der Agenten. Agenten mit beschränkter Rationalität betrachten nur einen kleinen Ausschnitt der Informationen und ziehen mögliche Nebenwirkungen ihrer Entscheidungen nicht in Betracht. Dagegen nutzen Agenten mit vollkommener Rationalität alle verfügbaren Informationen und Berücksichtigen bei ihrer Entscheidung die Reaktionen anderer Akteure. Auf diesem Spektrum der Rationalität können Modelle berücksichtigen, dass Agenten lernfähig sein können. \citep[S.\,8]{marchi2014ABMs}
+
+\paragraph{Äußere Regeln}
+Zuletzt muss dass Modell genau festlegen in welcher Reihenfolge die Akteure agieren beziehungsweise wie ein gleichzeitiges Handeln der Agenten behandelt werden soll.
+Eine solche Reihenfolge kann zufällig, aufgrund von Eigenschaften, oder endogen im Modell entschieden werden \citep[S.\,8]{marchi2014ABMs}.
+Beispielsweise können die Entscheidungen zweier Agenten A und B gegenseitig von der Position des anderen abhängen. Wenn zuerst Agent A agiert und dann Agent B die neue Position von A berücksichtigt, so führt das zu einem anderen Ergebnis, als wenn zuerst Agent A agiert und dann Agent B auf die Position von A reagiert. 
+
+\paragraph{Beispiele agentenbasierter Modelle}
+
+Im Prinzip können die meisten analytisch lösbaren Modelle auch agentenbasiert gelöst werden. Beispielsweise können die Modelle von \citet{hotelling1929} und \citet{aspremont1979} agentenbasiert gelöst werden.
+Das Koalitionsmodell von \citet{laver1990coalitions} wird zwar analytisch gelöst, kann jedoch genauso auch agentenbasiert betrachtet werden.
+
+Die Modelle von \citet{kollman1992adaptive} und \citet{kollman1998political} stellen als Zweiparteienmodelle die Dynamik der Parteien ins Zentrum.
+Sie werden im nächsten Absatz erläutert.
+Darauf baut das Mehrparteienmodell von \citet{laver2005policy} auf. Dieses Modell wird separat in Kapitel \ref{sec:ABM-Dynamik} beschrieben, da es Teil der empirischen Untersuchung in Kapitel \ref{Sec:Dynamik-Anwendung} ist.
+
+\paragraph{Dynamisches Zweiparteienmodell}
 
 \citet{kollman1992adaptive} entwickeln ein Modell mit zwei Parteien, das klären soll, ob es unter verschiedenen Annahmen ein Gleichgewicht gibt, zu dem die Parteien streben. In dem agentenbasierten Modell versuchen die Parteien wahlweise mit einem Wahlprogramm möglichst nah an ihrer Idealposition zu gewinnen oder nur zu gewinnen. Dabei wissen die Parteien nicht genau über die Wähler Bescheid, sondern können nur auf ihre Umfragewerte reagieren und ihre Position entsprechend anpassen. Die Präferenz der Wähler drückt sich in einer Optimalposition im mehrdimensionalen Positionsraum und eine Gewichtung der Politikfelder aus. 
 \citep[S.\,930-1]{kollman1992adaptive}
@@ -273,29 +301,20 @@ Für jede Wahl beziehungsweise jeden Zeitschritt bleibt die Regierungspartei sta
 
 \citet{kollman1998political} untersuchen dieses Modell mit seinen adaptiven Parteien genauer hinsichtlich der Wählerverteilung. Nun gibt es Stellen mit hohen und geringen Wählerdichten. Dabei stellt sich heraus, dass die Parteien zwar immer noch moderate Positionen finden, die Wahlen gewinnen können, es ist jedoch deutlich erschwert. Das bedeutet, dass der Vorteil der Regierungspartei noch größer ist und dass je nach Unregelmäßigkeit der Wählerverteilung es länger braucht, bis ein Optimum gefunden wird. \citep{kollman1998political}
 
-\paragraph{TODO verschiebe diesen Paragraphen}
-\citet[S.\,13ff]{marchi2014ABMs}: Ein Modell sollte sowohl mathematisch gelöst als auch computersimuliert werden. Das Modell sollte dabei zunächst so einfach wie möglich gehalten werden. Erst wenn sich das Modell trotzdem als zu komplex darstellt sollte das Modell ausschließlich als agentenbasiertes Modell formuliert werden.
-
-
-
-
 \subsection{Dynamik von Parteien} \label{sec:ABM-Dynamik}
 
-\citet{laver2005policy}: kontinuierliche Evaluation der Wähler
+Als Weiterentwicklung der Modelle von \citet{kollman1992adaptive} und \citet{kollman1998political} baut \citet{laver2005policy} sein dynamisches Modell mit Parteitypen auf.
+Dieser dynamische Ansatz stelle die Realität gut dar, in der die Parteien kontinuierlich ihre Positionen anpassen, wie schwankende Umfragewerte der Parteien belegen würden \citep[S.\,263-4]{laver2005policy}.
 
-Viele politische Modelle sind statisch hinsichtlich der Parteipositionen, wohingegen Laver die Parteipositionen als dynamisch modelliert. Dies stelle die Realität besser dar, in der die Parteien kontinuierlich ihre Positionen anpassen, wie schwankende Umfragewerte der Parteien belegen würden \citep[S.\,263-4]{laver2005policy}.
+Das Modell von \citet{laver2005policy} vereinigt dabei Ansätze der klassischen räumlichen Modelle mit den dynamischen Ansätzen verschieder Parteitypen. Die Parteitypen haben gemeinsam, dass sie ihre Position auf die aktuelle politische Situation anpassen. Sie unterscheiden sich jedoch darin, wie sie diese Anpassung vornehmen. Laver unterscheidet dabei die vier Parteitypen Aggregator, Hunter, Predator und Sticker \citep[S.\,266-7]{laver2005policy}. In dieser Arbeit werden die original englischen Begriffe beibehalten. Im Folgenden werden die Parteitypen genauer definiert.
 
-[TODO evtl Absatz über KMP]
+\paragraph{Aggregator} Der Aggregator sammelt die Meinungen seiner momentanen Wähler. Die neue Position ist die Durchschnittsposition dieser momentanen Wähler \citep[S.\,267]{laver2005policy}. Dies entspricht einer Partei die sich basisdemokratisch organisiert.
 
-Das Modell von \citet{laver2005policy} vereinigt Ansätze der klassischen räumlichen Modelle mit den dynamischen Ansätzen verschieder Parteitypen. Die Parteitypen haben gemeinsam, dass sie ihre Position auf die aktuelle politische Situation anpassen. Sie unterscheiden sich jedoch darin, wie sie diese Anpassung vornehmen. Laver unterscheidet dabei die vier Parteitypen Aggregator, Hunter, Predator und Sticker \citep[S.\,266-7]{laver2005policy}. In dieser Arbeit werden die original englischen Begriffe beibehalten. Im Folgenden werden die Parteitypen genauer definiert.
+\paragraph{Hunter} Der Hunter versucht möglichst viele Wähler hinzuzugewinnen. Dazu verwendet er eine beschränkt rationale Strategie die auf dem Erfolg der vorhergegangenen Positionsanpassungen basiert. Hat die vorherige Positionsanpassung Wähler hinzugewonnen, so wird eine weiterer Schritt in die selbe Richtung gegangen. Ansonsten wird ein Schritt in die umgekehrte Richtung gegangen, mit einer zufälligen Komponente von bis zu 90 Grad \citep[S.\,267]{laver2005policy}. Dieses Verhalten entspricht einer Partei, in der die Parteiführung völlig freie Hand hat bei der Positionswahl und danach strebt, möglichst viele Wähler zu gewinnen.
 
-\paragraph{Aggregator} Der Aggregator, was im Deutschen die gleiche Bedeutung hat, sammelt die Meinungen seiner momentanen Wähler. Die neue Position ist die Durchschnittsposition dieser momentanen Wähler \citep[S.\,267]{laver2005policy}. Dies entspricht einer Partei die sich basisdemokratisch organisiert.
+\paragraph{Predator} Der Predator passt seine Position nicht aufgrund der Wähler an, sondern aufgrund der Positionen der anderen Parteien und deren Zustimmungswerten. Ist der Predator selbst die größte Partei, so behält er seine Position. Ansonsten bewegt er sich in Richtung der Position der größten Partei. Dies entspricht einer Partei mit einer starken Führung, die versucht möglichst viele Wähler zu gewinnen. Im Unterschied zum Hunter nimmt sie nicht die Zustimmungsänderung als Indikator, sondern die Partei mit der meisten Zustimmung als Indikator, wo die meisten Wähler zu gewinnen sind \citep[S.\,267]{laver2005policy}.
 
-\paragraph{Hunter} Der Hunter, auf deutsch der Jäger, versucht möglichst viele Wähler hinzuzugewinnen. Dazu verwendet er eine beschränkt rationale Strategie die auf dem Erfolg der vorhergegangenen Positionsanpassungen basiert. Hat die vorherige Positionsanpassung Wähler hinzugewonnen, so wird eine weiterer Schritt in die selbe Richtung gegangen. Ansonsten wird ein Schritt in die umgekehrte Richtung gegangen, mit einer zufälligen Komponente von bis zu 90 Grad \citep[S.\,267]{laver2005policy}. Dieses Verhalten entspricht einer Partei, in der die Parteiführung völlig freie Hand hat bei der Positionswahl und danach strebt, möglichst viele Wähler zu gewinnen.
-
-\paragraph{Predator} Der Predator, was soviel heißt wie Raubtier, passt seine Position nicht aufgrund der Wähler an, sondern aufgrund der Positionen der anderen Parteien und deren Zustimmungswerten. Ist der Predator selbst die größte Partei, so behält er seine Position. Ansonsten bewegt er sich in Richtung der Position der größten Partei. Dies entspricht einer Partei mit einer starken Führung, die versucht möglichst viele Wähler zu gewinnen. Im Unterschied zum Hunter nimmt sie nicht die Zustimmungsänderung als Indikator, sondern die Partei mit der meisten Zustimmung als Indikator, wo die meisten Wähler zu gewinnen sind \citep[S.\,267]{laver2005policy}.
-
-\paragraph{Sticker} Der Sticker, was auf deutsch dem Festkleber entspricht, ändert seine Position nicht. Diese Regel kann einer ideologischen Partei entsprechen, die auf ihren Positionen festgefahren ist. Diese Partei ist an sich nicht interessant, kann jedoch spannende Wechselwirkungen mit anderen Parteitypen haben \citep[S.\,267]{laver2005policy}.
+\paragraph{Sticker} Der Sticker ändert seine Position nicht. Diese Regel kann einer ideologischen Partei entsprechen, die auf ihren Positionen festgefahren ist. Diese Partei ist an sich nicht interessant, kann jedoch spannende Wechselwirkungen mit anderen Parteitypen haben \citep[S.\,267]{laver2005policy}.
 
 \paragraph{Ergebnisse}
 Laut \citet{laver2005policy} ist das bemerkenswerteste Ergebenis, dass der Parteityp Hunter sehr erfolgreich ist. Besteht das Modell ausschließlich aus Huntern so bewegen sie sich zum Zentrum hin. Bei genau zwei Parteien bewegen sich beide sehr nah zum Zentrum, ähnlich wie bei \citet{hotelling1929}. Bei mehr Huntern halten sie einen größeren Abstand zum Zentrum, da sie sonst Wähler an die anderen Hunter verlieren würden. \citep[S.\,267-70]{laver2005policy}
@@ -307,5 +326,8 @@ Die Fälle mit ausschließlich Stickern und ausschließlich Predatoren sind triv
 Beinhaltet das Modell verschiedene Parteitypen werden die Interaktionen komplexer. Beinhaltet das Modell mehrere Aggregatoren und einzelne Hunter oder Predatoren, so konkurrieren die Hunter und Predatoren in der Mitte des Positionsraums. Sind sie alleine, so sind sie dort die größte Partei. Gibt es jedoch noch weiter Hunter oder Predatoren schneiden sie weniger gut ab. Die Aggregatoren haben zwar geringere Wähleranteile, jedoch sind sie sehr robust und werden kaum marginalisiert, da sie stets ihre Wählerbasis bedienen.
 Für ein Modell mit einem Predator und mehreren Huntern stellt der Autor fest, dass die Hunter erfolgreicher sind, da der Predator ständig zwischen den Positionen wechselt und somit keine aussichtsreiche Position festigt. \citep[S.\,271-4]{laver2005policy}
 
-\paragraph{Weiterführendes Modell}
-\citet{laver2007endogenousParties}: Parteitypen % TODO
+\paragraph{Weiterführende Modelle}
+Laver hat dieses Modell in weiteren Arbeiten erweitert und verfeinert.
+Im Modell von \citet{laver2007endogenousParties} wird die Anzahl der Parteien nicht mehr zu Simulationsbeginn exogen festgelegt, sondern ist ein endogener Bestandteil des Modells.
+Manche Parteien sterben und es kommen neue Parteien hinzu.
+Im Buch \citet{laver2011party} geben die Autoren einen umfassenden Überblick über die Modelle von Laver. Außerdem werden viele Details und Weiterentwicklungen der Modelle vorgestellt.
