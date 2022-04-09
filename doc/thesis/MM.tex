@@ -113,7 +113,7 @@ Im Folgenden werden direkte Schlussfolgerungen vorgestellt.
 \paragraph{Prinzip der minimalen Differenzierung}
 Ist einer der Wettbewerber auf seine Position fixiert, so kann der andere Wettbewerber seine Position so anpassen, dass sein Gewinn maximiert wird.
 Dies kann nicht durch Differenzierung ermittelt werden, da die Gewinnfunktion kein eindeutiges Maximum hat.
-Es gilt jedoch für alle $a<l$, dass $\frac{\partial \pi_1}{\partial a} > 0$. Deswegen strebt Wettbewerber $A$, danach sich möglichst nah an der Mitte zu positionieren.
+Es gilt jedoch für alle $a<l$, dass $\frac{\partial \pi_1^*}{\partial a} > 0$. Deswegen strebt Wettbewerber $A$, danach sich möglichst nah an der Mitte zu positionieren.
 Für Wettbewerber $B$ gilt das symmetrische Argument. \citep[S.\,51-2]{hotelling1929}
 
 Daraus leitet sich ab, dass die Wettbewerber stets zueinander streben und sich minimal differenzieren.
@@ -126,19 +126,25 @@ Das bedeutet in diesem Fall $a=b=\frac{l}{4}$. Hotelling betrachtet dies, dem Ze
 
 \section{Modell von d‘Aspremont}\label{Sec-Aspremont}
 
-d'Aspremont \citep{aspremont1979} kritisieren das Prinzip der minimalen Differenzierung von \citet{hotelling1929}.
-Die Kritik stützt sich auf zwei Aspekte: Erstens ist kein Gleichgewichtspreis definiert, wenn die beiden Wettbewerber sich am selben Punkt befinden. Zweitens hat das Modell drastisch andere Lösungen, wenn die Transportkostenfunktion sich ändert. \citep[S.\,1145]{aspremont1979}
+\citet{aspremont1979} kritisieren das Modell und das Prinzip der minimalen Differenzierung von \citet{hotelling1929}.
+Die Arbeit stützt sich auf zwei Aspekte: Erstens ist im Modell von \citet{hotelling1929} kein Gleichgewichtspreis definiert, wenn die beiden Wettbewerber sich am selben Punkt befinden.
+Zweitens stellen die Autoren ein Modell mit einer anderen Transportkostenfunktion vor, das drastisch andere Lösungen hat. \citep[S.\,1145]{aspremont1979}
 
 \subsection{Kritik an Hotelling}
-Der Gleichgewichtspreis ergibt sich als Nash-Cournot-Gleichgewicht. Dabei müssen zwei Fälle unterschieden werden: Erstens wenn sich die Wettbewerber am selben Punkt befinden und zweitens wenn die Wettbewerber auseinanderliegen.
+Der Gleichgewichtspreis ergibt sich als Nash-Cournot-Gleichgewicht.
+Dabei müssen zwei Fälle unterschieden werden: Erstens wenn sich die Wettbewerber am selben Punkt befinden und zweitens wenn die Wettbewerber auseinanderliegen.
 
-Im Fall, dass die Wettbewerber sich beide am selben Punkt (beispielsweise in der Mitte) befinden, so herrscht reiner Preiswettbewerb. Nach Betrand (TODO: zitieren) führt das zu Preisen in Höhe der Stückkosten, in diesem Fall zu einem Preis $p_1=p_2=0$.
+\paragraph{Wettbewerber am selben Punkt}
+Im Fall, dass die Wettbewerber sich beide am selben Punkt, beispielsweise in der Mitte, befinden, so herrscht reiner Preiswettbewerb.
+Nach \citet{bertrand1883theorie} führt das zu Preisen in Höhe der Stückkosten, in diesem Fall zu einem Preis $p_1=p_2=0$. \citep[S.\,1146-7]{aspremont1979}
 
-Liegen die Wettbewerber auseinander, so stimmt \citet{aspremont1979} mit \citet{hotelling1929} überein und präzisiert das Marktgleichgewicht. Der Gleichgewichtspreis ist dann
+\paragraph{Wettbewerber an verschiedenen Punkten}
+Liegen die Wettbewerber auseinander, so stimmen \citet{aspremont1979} mit \citet{hotelling1929} überein und präzisieren das Marktgleichgewicht.
+Der Gleichgewichtspreis ist dann
 \begin{equation}
 \begin{split}
-p_1 &= c \left(l+\frac{a-b}{3}\right) \\
-p_2 &= c \left(l-\frac{a-b}{3}\right)
+p_1^* &= c \left(l+\frac{a-b}{3}\right) \\
+p_2^* &= c \left(l-\frac{a-b}{3}\right)
 \end{split}
 \end{equation}
 unter der Bedingung
@@ -146,22 +152,28 @@ unter der Bedingung
 \begin{split}
 \left(l+\frac{a-b}{3}\right)^2 &\geq \tfrac{4}{3} l (a+2b) \\
 \left(l-\frac{a-b}{3}\right)^2 &\geq \tfrac{4}{3} l (2a+b)
-\end{split}
+.\end{split}
 \end{equation}
+Ist diese Bedingung nicht erfüllt, so kollabiert das Duopol zu einem Monopol. \citep[S.\,1146]{aspremont1979}
 
-\paragraph{Das Gleichgewicht tendiert zur Mitte und kollabiert.} Da $\frac{\partial \pi_1}{\partial a}>0$ und $\frac{\partial \pi_2}{\partial b}>0$ bewegen sich beide Wettbewerber zur Gewinnoptimierung zur Mitte hin. Allerdings existiert in der Mitte nur noch das Gleichgewicht mit Nullpreisen. Da dies kein wirkliches Marktgleichgewicht ist, ist das laut \citet{aspremont1979} das gesamte Modell invalidiert.
+\paragraph{Das Gleichgewicht tendiert zur Mitte und kollabiert.}
+Da wie oben beschrieben $\frac{\partial \pi_1^*}{\partial a}>0$ und $\frac{\partial \pi_2^*}{\partial b}>0$ gilt, bewegen sich beide Wettbewerber zur Gewinnoptimierung zur Mitte hin.
+Allerdings existiert in der Mitte nur noch das Gleichgewicht mit Nullpreisen.
+Da dies kein wirkliches Marktgleichgewicht ist, ist somit laut \citet{aspremont1979} die Lösung von \citet{hotelling1929} invalidiert. \citep[S.\,1147-8]{aspremont1979} 
 
 \subsection{Alternatives Modell}\label{Sec-Aspremont-Modell}
-\citet{aspremont1979} schlagen stattdessen ein alternatives Modell mit einer veränderten Transportkostenfunktion vor. Diese ist dann quadratisch im Abstand, also $cx^2$ statt $cx$.
-Das Gleichgewicht berechnet sich identisch zum Fall oben. Die Gleichgewichtspreise sind dann
+\citet{aspremont1979} schlagen stattdessen ein alternatives Modell mit einer veränderten Transportkostenfunktion vor.
+Diese ist dann quadratisch im Abstand $d$, also $cd^2$ statt $cd$.
+Das Gleichgewicht berechnet sich identisch zum Fall oben.
+Die Gleichgewichtspreise sind dann  \citep[S.\,1149]{aspremont1979}
 \begin{equation} \label{eqn:aspremont-prices}
 \begin{split}
-p_1 &= c (l-a-b) \left(l+\frac{a-b}{b}\right) \\
-p_2 &= c (l-a-b) \left(l-\frac{a-b}{b}\right)
+p_1^* &= c (l-a-b) \left(l+\frac{a-b}{b}\right) \\
+p_2^* &= c (l-a-b) \left(l-\frac{a-b}{b}\right)
 \end{split}
 \end{equation}
 
-Die Gleichgewichtsmenge ist dann \citep[S.\,1148]{aspremont1979}
+Die Gleichgewichtsmenge ist gegeben als \citep[S.\,1148]{aspremont1979}
 \begin{equation} \label{eqn:aspremont-quantities}
 q_1(p_1,p_2) = \begin{cases}
 	a+ \frac{p_2-p_1}{2c(l-a-b)} + \frac{l-a-b}{2} & 0\leq a+ \frac{p_2-p_1}{2c(l-a-b)} + \frac{l-a-b}{2} \leq l\\
@@ -173,17 +185,25 @@ q_1(p_1,p_2) = \begin{cases}
 Setzt man die Gleichgewichtspreise aus Gleichungen \ref{eqn:aspremont-prices} in die Gleichgewichtsmengen aus Gleichung \ref{eqn:aspremont-quantities} ein, so kann man daraus den Gewinn im Gleichgewicht $\pi_1^*=p_1^* q_1(p_1^*, p_2^*)$ berechnen.
 Der Gewinn im Gleichgewicht ist dann (Quelle: eigene Berechnung)
 \begin{equation}
-\pi_1^* = \frac{c}{2} (l-a-b) \left(l+ \frac{a-b}{2} \right)^2
+\begin{split}
+\pi_1^* &= \frac{c}{2} (l-a-b) \left(l + \frac{a-b}{2} \right)^2\\
+\pi_2^* &= \frac{c}{2} (l-a-b) \left(l - \frac{a-b}{2} \right)^2
+.
+\end{split}
 \end{equation}
+Daraus lassen sich wiederum einige Schlussfolgerungen ableiten.
 
 \subsection{Schlussfolgerungen}
 
 \paragraph{Prinzip der maximalen Differenzierung}
-Daraus lassen sich die Ableitungen der Gewinnfunktion im Gleichgewicht berechnen. Sie sind (Quelle: eigene Berechnung)
+Daraus lassen sich die Ableitungen der Gewinnfunktion im Gleichgewicht berechnen.
+Sie sind (Quelle: eigene Berechnung)
 \begin{equation}
 \frac{\partial \pi_1^*}{\partial a} = -\frac{c}{2}\left(l+\frac{a-b}{3}\right)^2 + \frac{c}{3} (l-a-b) \left( l+\frac{a-b}{3} \right)
+.
 \end{equation}
-Dieser Wert ist strikt negativ, da der erste Term negativ und der zweite strikt positiv ist, der erste Term im Absolutwert jedoch stets dominiert. Der erste Term ist im Absolutwert größer als der zweite, weil $\frac{c}{2} > \frac{c}{3}$ und $\left(l+\frac{a-b}{3}\right) \geq (l-a-b)$ (Quelle: eigene Berechnung).
+Dieser Wert ist strikt negativ, da der erste Term negativ und der zweite strikt positiv ist, der erste Term im Absolutwert jedoch stets dominiert.
+Der erste Term ist im Absolutwert strikt größer als der zweite, weil $\frac{c}{2} > \frac{c}{3}$ und $\left(l+\frac{a-b}{3}\right) \geq (l-a-b)$. (Quelle: eigene Berechnung)
 
 Die Ableitungen $\frac{\partial \pi_1^*}{\partial a}<0$ und $\frac{\partial \pi_2^*}{\partial b}<0$ sind also negativ \citep[S.\,1149]{aspremont1979}.
 Somit bewegen sich die beiden Wettbewerber so weit wie möglich voneinander weg. Das ist das Prinzip der maximalen Differenzierung.
