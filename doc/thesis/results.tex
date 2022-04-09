@@ -4,39 +4,87 @@
 
 \chapter{Empirische Analyse}\label{Kap-Empirische-Analyse}
 
-\section{Beispiel von Schofield et al}
+Zunächst wird die Arbeit von \citet{schofield1998germany} vorgestellt.
+Diese Arbeit gibt eine Orientierung, wie empirisch gearbeitet werden kann.
+Anschließend werden Daten über Partei- und Wählerpositionen gesammelt und in einen gemeinsamen Positionsraum berechnet. Auf diese Positionen wird dann das agentenbasierte Modell von \citet{laver2005policy} angewendet.
 
-\blindtext[3]
+\paragraph{Programmcode}
+Ein wesentlicher Teil dieser Arbeit beinhaltet Programmcode. Dieser ist mit ungefähr 900 Zeilen\footnote{Gezählt mit dem Kommandozeilenbefehl \texttt{find . -name '*.py' | xargs wc -l}} relativ umfangreich.
+Dieser Programmcode ist in der digitalen Abgabe enthalten und wird außerdem auf Anfrage zur Verfügung gestellt.
+Diese Art der Bereitstellung erleichtert außerdem die weitere Verwendung dieser Codebasis.
+
+\section{Schofield et al. als Vorbild}
+
+\citet{schofield1998germany} führen eine empirische Analyse der politischen Situation in Deutschland und Niederlande 1979 durch. Darauf wenden sie spieltheoretische Modelle an, um zu analysieren, ob die Parteien rational handeln. Diese Studie dient als ein Vorbild für diese Arbeit.
+
+\paragraph{Daten}
+\citet{schofield1998germany} nutzen Umfragedaten von Wählern als Grundlage. Die Umfragedaten beinhalten sowohl Antworten von Wählern, als auch Antworten der Parteieliten auf die selben politischen Thesen. Daraus konstruieren die Autoren die Wähler- und Parteipositionen in einem zweidimensionalen Raum.
+\citep[S.\,268-9]{schofield1998germany}
+
+\paragraph{Wählerpotentiale}
+Die Autoren untersuchen nun, ob die Parteien mehr Wähler gewinnen könnten, wenn sie ihre Position ändern.
+Dabei wird angenommen, dass die anderen Parteien ihre Position beibehalten.
+Dabei stellt sich heraus, dass einzelne Parteien erhebliche Wählerpotential hätten, wenn sie ihre Position anpassen.
+Dies geschehe jedoch nicht, da andere Faktoren wie die tatsächliche Politik nach der Wahl eine erhebliche Rolle spielen.
+\citep[S.\,276-277]{schofield1998germany}
+
+\paragraph{Koalitionen}
+Wie die Politik nach der Wahl ist, hängt davon ab, welche Regierungskoalition sich bildet. Beispielsweise kann im Modell eine Partei quasi sicher sein, dass sie Teil einer Regierung ist, wenn sie sich Richtung Medianwähler bewegt. Allerdings ist diese Position unter Umständen sehr weit weg von der ursprünglichen, echten Präferenz der Parteielite.
+Ebenso kann eine Partei eine extremere Position einnehmen, um mehr Verhandlungsspielraum in einer Koalition zu besitzen.
+In den untersuchten Fällen bot sich nur einer Partei, die Möglichkeit eventuell eine extremere Position einzunehmen. \citep[S.\,277-281]{schofield1998germany}
+
+\paragraph{Schlussfolgerung}
+Somit sind sowohl das Erschließen neuer Wähler, als auch das Positionieren für eine Regierungskoalition also strategische Möglichkeiten. Dies widerspricht dem Ansatz von \citet{downs1957economic}, stets die Wähleranteile zu maximieren. \citep[S.\,282-283]{schofield1998germany}
 
 \section{Positionen der Parteien}\label{Sec-Parteienpositionen}
 
-[TODO grundsätzliche Erläuterungen warum Parteipositionen notwendig sind]
+Es werden Partei- und Wählerpositionen zur Analyse benötigt. Diese Arbeit benutzt keinen gemeinsamen Datensatz für diese Positionen, sondern es werden zunächst die Parteipositionen bestimmt und basierend darauf die Wählerpositionen.
 
 \subsection{Wahl-O-Mat Daten}
 Wahl-O-Mat \citep{WahlOMat} ist ein Tool, das von der Bundeszentrale für politische Bildung zur Verfügung gestellt wird. Der Wahl-O-Mat wird wissenschaftlich begleitet von Prof.\,Dr.\,Stefan Marschall \citep{MarschallWahlOMat}.
 
-Das Ziel des Wahl-O-Maten bestehe darin, über \glqq wesentliche und unterscheidbare Inhalte der Parteien\grqq zu informieren. Außerdem soll so das politische Interesse insbesondere vor den Wahlen aber auch nach den Wahlen geweckt werden. 
-Die Thesen werden von von Schülern, Auszubildenden und Studenten entwickelt unter Begleitung des Wahl-O-Mat Teams. Deren ungefähr 80 Thesen werden den Parteien zur Beantwortung vorgelegt. Die Parteien geben an, ob sie zustimmen, nicht zustimmen oder neutral sind. Unter dem Kriterium der Unterscheidbarkeit der Parteien werden  38 Thesen ausgewählt und bilden den Wahl-O-Mat. %[TODO cite https://www.sozwiss.hhu.de/institut/abteilungen/politikwissenschaft/politik-ii/prof-dr-stefan-marschall/forschungsprojekte/wahl-o-mat-forschung/was-ist-der-wahl-o-mat]
+Das Ziel des Wahl-O-Maten bestehe darin, über \glqq wesentliche und unterscheidbare Inhalte der Parteien\grqq\ zu informieren. Außerdem soll so das politische Interesse insbesondere vor den Wahlen aber auch nach den Wahlen geweckt werden. 
+Die Thesen werden von von Schülern, Auszubildenden und Studenten entwickelt unter Begleitung des Wahl-O-Mat Teams. Deren ungefähr 80 Thesen werden den Parteien zur Beantwortung vorgelegt. Die Parteien geben an, ob sie zustimmen, nicht zustimmen oder neutral sind. Unter dem Kriterium der Unterscheidbarkeit der Parteien werden  38 Thesen ausgewählt und bilden den Wahl-O-Mat.
+\citep{marschall2022wahlomatFAQ}%[https://www.sozwiss.hhu.de/institut/abteilungen/politikwissenschaft/politik-ii/prof-dr-stefan-marschall/forschungsprojekte/wahl-o-mat-forschung/was-ist-der-wahl-o-mat]
 
-[TODO wissenschaftliche Publikationen]
+Beispielhaft für die wissenschaftliche Begleitung zeigen \citet{heinsohn2019effects}, dass der Wahl-O-Mat das allgemeine politische Interesse und das Interesse an Wahlkampagnen steigert. In dieser Studie konnte allerdings kein positiver Effekt auf die politische Bildung der Bürger nachgewiesen werden. \citep[S.\,257-258]{heinsohn2019effects}
 
-Die Daten umfassen ausdrücklich keine Daten von Wählern. Eine Anfrage bei Prof.\,Dr.\,Stefan Marschall hat ergeben, dass \glqq die Logfiles direkt nach dem Wahl-O-Mat-Einsatz aus Datenschutzgründen vernichtet [werden]. Sie stehen auch uns [wissenschaftliche Begleitung des Wahl-O-Mats] nicht zur Auswertung zur Verfügung.\grqq
+Die Daten umfassen ausdrücklich keine Daten von Wählern. Eine Anfrage bei Prof.\,Dr.\,Stefan Marschall hat ergeben, dass 
 
-Für diese Arbeit greife ich auf die GitHub-Datenbank Qual-O-Mat von Felix Bolte \citep{Bolte2022QualOMat} zurück. Diese Datenbank sammelt alle verfügbaren Wahl-O-Mat Daten mit den Antworten der Parteien und legt diese in einem strukturierten Format ab. Somit kann auf die Daten leichter zugegriffen werden.
+\begin{minipage}{0.9\textwidth}
+\glqq die Logfiles direkt nach dem Wahl-O-Mat-Einsatz aus Datenschutzgründen vernichtet [werden]. Sie stehen auch uns [wissenschaftliche Begleitung des Wahl-O-Mats] nicht zur Auswertung zur Verfügung.\grqq
+\end{minipage}
+
+\noindent
+Das ist auch der Grund, warum die Partei- und Wählerpositionen aus zwei verschiedenen Datensätzen berechnet werden.
+
+Für diese Arbeit werden nicht direkt die Daten des Wahl-O-Mats verwendet, sondern auf die GitHub-Datenbank Qual-O-Mat von \citet{Bolte2022QualOMat} zugegriffen. Diese Datenbank sammelt alle verfügbaren Wahl-O-Mat Daten mit den Antworten der Parteien und legt diese in einem strukturierten Format ab.
+Somit können die Daten besser verarbeitet werden.
 
 \subsection{Hauptkomponentenanalyse Wahl-O-Mat}
-\paragraph{Hauptkomponentenanalyse}
+
 Die Wahl-O-Mat Daten stellen die Positionen der Parteien im Hinblick auf die Thesen dar. Angesichts dessen, dass 38 Thesen abgefragt werden ist der Raum der Positionen hochdimensional. Daher nehme ich eine Dimensionsreduktion vor. Mein Mittel der Wahl ist eine Hauptkomponentenanalyse vorzunehmen.
 
-Die Hauptkomponentenanalyse hat nach Bishop und Nasrabadi \citep{bishop2006pattern} zwei verschiedene Motivationen. Die erste Motivation ist es, die Hauptkomponenten so zu wählen, dass die Varianz entlang der Hauptkomponenten maximiert wird. Das entspricht im vorliegenden Fall, dem Ziel, dass sich die Positionen der Parteien entlang der Hauptkomponenten maximal unterscheiden sollen. Die zweite Motivation ist es, die Länge der Projektion zu minimieren. Im Fall der Parteipositionen bedeutet das, dass die projizierte Position möglichst nah an der tatsächlichen Position liegen soll. Beide Ziele entsprechen auch den Eigenschaften, die eine geeignete Projektion der Parteipositionen darstellt.
+\paragraph{Hauptkomponentenanalyse}
+Die Hauptkomponentenanalyse hat nach \citet{bishop2006pattern} zwei verschiedene Motivationen. Die erste Motivation ist es, die Hauptkomponenten so zu wählen, dass die Varianz entlang der Hauptkomponenten maximiert wird.
+Die zweite Motivation ist es, die Länge der Projektion zu minimieren. \citep[Kap.\,12.1, S.\,561-570]{bishop2006pattern}
 
-\paragraph{Umsetzung}
-Für die konkrete Umsetzung sind die Details zu beachten. Zunächst sind die Daten aufzubereiten. Dazu werden die Daten in numerische Werte konvertiert, wobei die Position \glqq stimmt nicht zu\grqq der $0$ entspricht und \glqq stimmt zu\grqq der $1$. Die neutrale Position entspricht der Mitte bei $0,5$.
-Eine wichtige Entscheidung ist außerdem welche Parteien für die Hauptkomponentenanalyse verwendet werden sollen. In diesem Fall werden ausschließlich die Bundestagsparteien verwendet. Das schränkt zwar die Daten sehr ein, aber damit konzentriert sich die Analyse auf die Parteien die relevant sind.
+Die Varianz zu maximieren entspricht im vorliegenden Fall, dem Ziel, dass sich die Positionen der Parteien entlang der Hauptkomponenten maximal unterscheiden sollen.
+Den Projektionsabstand zu minimieren bedeutet, dass die projizierte Parteiposition möglichst nah an der ursprünglichen Parteiposition liegen soll.
+Beide Ziele entsprechen auch den Eigenschaften, die eine geeignete Projektion der Parteipositionen darstellt.
 
+\paragraph{Datenauswahl}
+Für die konkrete Umsetzung sind die Details zu beachten.
+Zunächst sind die Daten aufzubereiten. Dazu werden die Daten in numerische Werte konvertiert, wobei die Position \glqq stimmt nicht zu\grqq\ der $0$ entspricht und \glqq stimmt zu\grqq\ der $1$.
+Die neutrale Position entspricht der Mitte bei $0,5$.
+Eine wichtige Entscheidung ist außerdem, welche Parteien für die Hauptkomponentenanalyse verwendet werden sollen.
+In diesem Fall werden ausschließlich die Bundestagsparteien verwendet.
+Das schränkt zwar die Daten sehr ein, aber damit konzentriert sich die Analyse auf die Parteien die relevant sind.
+
+\paragraph{Berechnung}
 Die Berechnung der Hauptkomponentenanalyse nehme ich mit scikit-learn \citep{scikit-learn} vor. Die Bibliothek implementiert eine Vielzahl an Algorithmen des maschinellen Lernens. Das garantiert eine einfach Handhabung und effiziente Implementierung.
 
-Bei der Berechnung der Haupkomponentenanalyse muss außerdem bedacht werden, wie die Hauptkomponenten skaliert werden. In der Theorie stellen sie lediglich eine Richtung dar. Wenn jedoch eine Metrik verwendet wird, spielt die Skalierung eine Rolle. Es gibt im Wesentlichen zwei Optionen. Erstens, können die Hauptkomponenten so skaliert werden, dass die Varianz in jeder Hauptkomponente die gleich ist. Zweitens, können die Hauptkomponenten so skaliert werden, dass das Verhältnis der Varianzen zwischen den Hauptkomponenten erhalten bleibt. Ich entscheide mich dafür das Verhältnis der Varianzen zu erhalten, da somit eine Gewichtung zwischen den politischen Themen erhalten bleibt.
+Bei der Berechnung der Haupkomponentenanalyse muss außerdem bedacht werden, wie die Hauptkomponenten skaliert werden. In der Theorie stellen sie lediglich eine Richtung dar. Wenn jedoch eine Metrik verwendet wird, spielt die Skalierung eine Rolle. Es gibt im Wesentlichen zwei Optionen. Erstens, können die Hauptkomponenten so skaliert werden, dass die Varianz in jeder Hauptkomponente die gleiche ist. Zweitens, können die Hauptkomponenten so skaliert werden, dass das Verhältnis der Varianzen zwischen den Hauptkomponenten erhalten bleibt. Ich entscheide mich dafür das Verhältnis der Varianzen zu erhalten, da somit eine gewisse Gewichtung zwischen den politischen Themen erhalten bleibt.
 
 \paragraph{Positionen der Parteien in den Hauptkomponenten}
 Die Positionen der Parteien auf die Hauptkomponenten projiziert sind in Abbildung \ref{fig:party-positions-pca} dargestellt. Parteien, die sich auf einer Achse nah beieinander befinden, haben auf dieser Achse tendenziell ähnliche Positionen. Somit haben beispielsweise \glqq DIE LINKE\grqq\ und \glqq Grüne\grqq\ tendenziell ähnliche Positionen in der ersten Hauptkomponente. Dagegen haben in der zweiten Hauptkomponente \glqq AfD\grqq\ und \glqq DIE LINKE\grqq\ und am anderen Ende des Spektrums \glqq CDU/CSU\grqq\ und \glqq SPD\grqq\ ähnliche Positionen. Dass das Zentrum leer ist, liegt an der Konstruktion der Hauptkomponentenanalyse. Da sie darauf abzielt, die Varianz zu maximieren, liegen nur wenige beziehungsweise keine Datenpunkte in der Projektion in der Mitte.
@@ -50,7 +98,7 @@ Die Positionen der Parteien auf die Hauptkomponenten projiziert sind in Abbildun
 
 \paragraph{Analyse der Hauptkomponenten}
 Die theoretischen Arbeiten, die in Kapitel \ref{Sec-ABM} betrachtet wurden, nehmen zumeist an, dass es sich bei den Achsen um politische Themenfelder handelt.
-Um den dimensionslosen Hauptkomponenten Bedeutung zu verleihen wird berechnet, wie die Thesen in ihnen gewichtet sind. Der größte Absolutwert im Vektor einer Hauptkomponente repräsentiert gleichzeitig diejenige These, die diese Hauptkomponente ausmacht. Daher werden die Vektorelemente der Hauptkomponenten nach absteigendem Absolutwert sortiert.
+Um den dimensionslosen Hauptkomponenten Bedeutung zu verleihen wird berechnet, wie die Thesen des Wahl-O-Mats in ihnen gewichtet sind. Der größte Absolutwert im Vektor einer Hauptkomponente repräsentiert gleichzeitig diejenige These, die diese Hauptkomponente ausmacht. Daher werden die Vektorelemente der Hauptkomponenten nach absteigendem Absolutwert sortiert.
 In Tabelle \ref{tab:pca1} sind die 10 Thesen aufgelistet, die für die erste Hauptkomponente am bedeutendsten sind. In Tabelle \ref{tab:pca2} sind die 10 bedeutendsten Thesen der zweiten Hauptkomponente aufgelistet.
 
 \begin{table}[htb]
@@ -71,8 +119,8 @@ In Tabelle \ref{tab:pca1} sind die 10 Thesen aufgelistet, die für die erste Hau
 	\label{tab:pca1}
 \end{table}
 
-In der Spalte \glqq Wert\grqq ist der Wert im Vektor der Hauptkomponente gelistet. Je größer der Wert, desto größer ist die Bedeutung für diese Richtung. Ist der Wert positiv, so bedeutet das eine Ablehnung der These. Ist der Wert negativ bedeutet das eine Zustimmung zur These.
-Zur Erläuterung ein kurzes Beispiel: Die \glqq AfD\grqq\ hat die beiden bedeutendsten Thesen der ersten Hauptkomponente, die These 29 mit 0 (Zustimmung) und die These 3 mit 1 (Ablehnung) beantwortet. In der Projektion werden diese Werte mit dem Wert in der Hauptkomponente multipliziert, was einen Wert von $0*0.259+1*(-0.259)=-0.259$ ergibt. Deshalb befindet sich die \glqq AfD\grqq\ eher im negativen Teil der ersten Hauptkomponente, also eher links. Parteien die diese Thesen genau gegenteilig beantwortet haben befinden sich eher im positiven Teil, also eher rechts, siehe dazu auch Abbilung \ref{fig:party-positions-pca}.
+In der Spalte \glqq Wert\grqq\ ist der Wert im Vektor der Hauptkomponente gelistet. Je größer der Wert, desto größer ist die Bedeutung für diese Richtung. Ist der Wert positiv, so bedeutet das eine Ablehnung der These. Ist der Wert negativ bedeutet das eine Zustimmung zur These.
+Zur Erläuterung ein kurzes Beispiel: Die \glqq AfD\grqq\ hat die beiden bedeutendsten Thesen der ersten Hauptkomponente, die These 29 mit 0 (Zustimmung) und die These 3 mit 1 (Ablehnung) beantwortet. In der Projektion werden diese Werte mit dem Wert in der Hauptkomponente multipliziert, was einen Wert von $0*0.259+1*(-0.259)=-0.259$ ergibt. Deshalb befindet sich die \glqq AfD\grqq\ eher im negativen Teil der ersten Hauptkomponente, also eher links. Parteien, die diese Thesen genau gegenteilig beantwortet haben, wie beispielsweise \glqq DIE LINKE\grqq , befinden sich eher im positiven Teil, also eher rechts, siehe dazu auch Abbilung \ref{fig:party-positions-pca}.
 
 \begin{table}%[htb]
 	\centering
@@ -99,7 +147,7 @@ Die Thesen der ersten Hauptkomponente in Tabelle \ref{tab:pca1} beinhalten mehre
 	\item Besteuerung von Pkw-Diesel
 	\item Tempolimit
 \end{itemize}
-Dabei bedeutet im positiven Teil der Hauptkomponente, dass Umweltschutz befürwortet wird.
+Alle drei Thesen haben dabei einen negativen Wert. Das bedeutet, dass Parteien, die sich im positiven Teil der Hauptkomponente befinden, Umweltschutz befürwortet.
 
 Das zweite bedeutende Thema in der ersten Hauptkomponente ist Verteilungspolitik. Die zugehörigen Thesen sind
 \begin{itemize}
@@ -109,14 +157,15 @@ Das zweite bedeutende Thema in der ersten Hauptkomponente ist Verteilungspolitik
 	\item Vermögenssteuer
 	\item Sachgrundlose Befristung
 \end{itemize}
-Dabei bedeutet der positive Teil der Hauptkomponente, dass eine soziale Umverteilung befürwortet wird.
+Wieder zeigen die Werte ein einheitliches Bild. Hier bedeutet der positive Teil der Hauptkomponente, dass eine soziale Umverteilung befürwortet wird.
 
-Die Thesen \glqq Erhöhung der Verteidigungsausgaben\grqq\ und \glqq Abbau von Staatsschulden\grqq\ lassen sich nicht einwandfrei zuordnen.
+Die Thesen \glqq Erhöhung der Verteidigungsausgaben\grqq\ und \glqq Abbau von Staatsschulden\grqq\ lassen sich nicht einwandfrei zuordnen oder zu einem größeren Thema zusammenfassen.
 
-Zusammenfassend gilt, dass die erste Hauptkomponente das Spektrum von \glqq rechts\grqq\ und \glqq braun\grqq\ nach \glqq links\grqq\ und \glqq grün\grqq\ abbildet.
+Zusammenfassend gilt, dass die erste Hauptkomponente beim Umweltschutz das Spektrum von \glqq rechts\grqq\ nach \glqq links\grqq\ und bei der Verteilungspolitik von \glqq braun\grqq\ nach \glqq grün\grqq\ abbildet.
 
 \paragraph{Interpretation der zweiten Hauptkomponente}
-Die zehn bedeutendsten Thesen der zweiten Hauptkomponente, die in Tabelle \ref{tab:pca2} zu sehen sind, sind nur schwer zuzuordnen. Beispielsweise stimmen Parteien, die sich im positiven Teil der zweiten Komponente befinden, also eher oben, der These \glqq Vorgezogener Renteneintritt\grqq\ zu, lehnen jedoch die These \glqq Sozialer Wohnungsbau\grqq\ ab. Dies sind beides linke Themen, die aber völlig entgegengesetzt beantwortet werden. Deshalb ist eine eindeutige Zuordnung nur schwer möglich.
+Die zehn bedeutendsten Thesen der zweiten Hauptkomponente, die in Tabelle \ref{tab:pca2} zu sehen sind, sind nur schwer zu verallgemeinern. Beispielsweise stimmen Parteien, die sich im positiven Teil der zweiten Komponente befinden, also eher oben, der These \glqq Vorgezogener Renteneintritt\grqq\ zu, lehnen jedoch die These \glqq Sozialer Wohnungsbau\grqq\ ab. Dies sind beides Themen der Verteilungspolitik, die aber, wie an den Werten zu sehen ist, völlig entgegengesetzt beantwortet werden. Deshalb ist eine eindeutige Zuordnung nur schwer möglich.
+Damit hat die zweite Hauptkomponente keine eindeutige Interpretation.
 
 \section{Positionen der Wähler}\label{Sec-Wählerpositionen}
 
@@ -204,7 +253,7 @@ Insgesamt wird die Parteizuordnung also in dieser Hauptkomponentenanalyse mit di
 \paragraph{Gesamtbeurteilung Wählerpositionierung}
 Insgesamt erscheint die Wählerpositionierung sinnvoll und kosistent. Die Links-Rechts-Komponente wird gut abgebildet und ist konsistent mit der Interpretation der Hauptkomponente. Der Einflussbereich der Parteien ist ebenfalls sehr gut abgebildet.
 
-\section{Dynamik agentenbasiert modelliert}
+\section{Dynamik agentenbasiert modelliert} \label{Sec:Dynamik-Anwendung}
 
 Die in Kapitel [TODO] und Kapitel [TODO] erstellten Daten der Partei- und Wählerpositionen dienen nun als Grundlage für ein dynamisches Modell. Das Modell von \citet{laver2005policy} das in Kapitel [TODO] vorgestellt wurde wird hier umgesetzt.
 
