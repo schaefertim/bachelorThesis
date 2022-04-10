@@ -30,7 +30,7 @@ for i in range(6):
     party_positions_temp[PARTY_MAPPING_WAHL_O_MAT_2017[i]] = party_positions[i]
 party_positions = party_positions_temp
 
-# print most significant statements
+# save most significant statements to file
 print("pca explained variance ratio", pca.explained_variance_ratio_)
 print_pca_significant_statements(pca, dataframe_statement, filepath="../fig")
 
@@ -43,5 +43,6 @@ for party in range(6):
         PARTY_DICTIONARY[party],
     )
 
+# save plot and calculated data
 plt.savefig("../fig/party_positions.png")
 np.save("../data/saved/party_positions_pca", party_positions)

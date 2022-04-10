@@ -4,6 +4,7 @@ import pandas as pd
 
 from src.data_utility.party_dictionary import PARTY_MAPPING_POLITBAROMETER
 
+# variables for loading data
 filepath_politbarometer = "../data/ZA2391_v13-0-0.sav"
 col_study = "v1"
 col_participant = "v2"
@@ -14,6 +15,7 @@ col_party_last = "v7"
 cols_party_preference = [f"v{i}" for i in range(8, 15)]
 col_left_right = "v22"
 
+# Mapping of the party preference ratings to its integer values
 map_rating_int = {
     "-5 überhaupt nichts": -5,
     "-4": -4,
@@ -57,6 +59,8 @@ def reduce_data(
     dataframe: pd.DataFrame, year=None, study=None, month=None
 ) -> pd.DataFrame:
     """Reduce the loaded voter data to specified values.
+
+    Voters that have any party preference missing are immediately omitted.
 
     Args:
         dataframe: voter data
@@ -167,5 +171,4 @@ def convert_party_affiliation(dataframe_voter: pd.DataFrame) -> pd.DataFrame:
         dataframe_voter[col_party].isin(map_party_int)
     ]
     dataframe_voter[col_party].replace(map_party_int, inplace=True)
-    # dataframe_voter.astype(int)
     return dataframe_voter

@@ -1,4 +1,4 @@
-"""Color the voter distribution from left to right."""
+"""Plot the voter distribution from left to right."""
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -36,7 +36,7 @@ dataframe = calculate_voter_position(party_positions, dataframe)
 # convert and reduce using left-right
 dataframe = convert_left_right(dataframe)
 
-# plot voters in PC coordinates
+# plot voters in PC coordinates and colour left-right
 scatter_voter = ax.scatter(
     dataframe["position_x"],
     dataframe["position_y"],
@@ -46,14 +46,11 @@ scatter_voter = ax.scatter(
     vmax=11,
     cmap="coolwarm",
 )
-"""legend1 = ax.legend(
-    *scatter_voter.legend_elements(), loc="upper right", title="Rechts-Links"
-)
-ax.add_artist(legend1)"""
 cbar = fig.colorbar(
     scatter_voter,
     ticks=[1, 6, 11],
 )
 cbar.ax.set_yticklabels(["0 sehr links", "5", "10 sehr rechts"])
 
+# save plot
 plt.savefig("../fig/voter_distribution_left_right.png")

@@ -1,13 +1,12 @@
 """Experiment the scenarios in Laver(2005) with the german data."""
 
-# load party positions from file
 from os import path
 
 import numpy as np
 
 from src.party_model.party_model import PartyModel
 
-# settings to experiment
+# settings for all experiments
 settings = [
     {
         "kinds": ["AGGREGATOR" for _ in range(6)],
@@ -48,6 +47,7 @@ settings = [
 ]
 
 
+# load party positions from file
 party_positions_pca = np.load("../data/saved/party_positions_pca.npy")
 
 # load voter positions from file
@@ -63,8 +63,10 @@ for setting in settings:
         kinds=setting["kinds"],
     )
 
+    # run 1000 steps
     for _ in range(1000):
         party_model.step()
 
+    # save plot
     fig_path = path.join("../fig", setting["fig_name"])
     party_model.scatter_plot(filename=fig_path)

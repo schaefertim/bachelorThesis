@@ -1,7 +1,4 @@
-"""Try to load Wahl-O-Mat-2017.
-
-data from https://github.com/gockelhahn/qual-o-mat-data
-"""
+"""Calculate voter positions based on party positions."""
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -27,7 +24,7 @@ for party in range(6):
 # load voter data
 dataframe = load_voter_data()
 
-# reduce data to Bundestagswahl 2017
+# reduce data to Bundestagswahl 2017 August
 dataframe = reduce_data(dataframe, year="2017", study=2391, month="August")
 
 # calculate voter positions
@@ -36,6 +33,7 @@ dataframe = calculate_voter_position(party_positions, dataframe)
 # plot voters in PC coordinates
 plt.scatter(dataframe["position_x"], dataframe["position_y"], s=1)
 
+# save figure and calculated voter positions
 plt.savefig("../fig/voter_distribution.png")
 np.save(
     "../data/saved/voter_positions",

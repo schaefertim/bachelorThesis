@@ -1,4 +1,4 @@
-"""Color the voter distribution from left to right."""
+"""Plot the party affiliation of voters."""
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -33,7 +33,7 @@ dataframe = reduce_data(dataframe, year="2017", study=2391, month="August")
 # calculate voter positions
 dataframe = calculate_voter_position(party_positions, dataframe)
 
-# convert and reduce
+# convert and reduce using party affiliation
 dataframe = convert_party_affiliation(dataframe)
 
 # plot voters in PC coordinates
@@ -53,4 +53,5 @@ legend1 = ax.legend(
 for i, text in enumerate(legend1.get_texts()):
     text.set_text(PARTY_DICTIONARY[i])
 
+# save figure
 fig.savefig("../fig/voter_distribution_party_affiliation.png")
