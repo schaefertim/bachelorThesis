@@ -6,7 +6,6 @@
 *.pdf
 *.synctex.gz
 *.toc
-*.sav
 *.bcf
 *.run.xml
 
@@ -15,3 +14,9 @@
 
 # figures
 /fig/
+
+# Politbarometer
+*.sav
+
+# saved data
+*.npy
