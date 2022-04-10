@@ -60,7 +60,7 @@ Somit können die Daten besser verarbeitet werden.
 
 \subsection{Hauptkomponentenanalyse Wahl-O-Mat}\label{sec:Hauptkomponentenanalyse}
 
-Die Wahl-O-Mat Daten stellen die Positionen der Parteien im Hinblick auf die Thesen dar. Angesichts dessen, dass 38 Thesen abgefragt werden ist der Raum der Positionen hochdimensional. Daher nehme ich eine Dimensionsreduktion vor. Mein Mittel der Wahl ist eine Hauptkomponentenanalyse vorzunehmen.
+Die Wahl-O-Mat Daten stellen die Positionen der Parteien im Hinblick auf die Thesen dar. Angesichts dessen, dass 38 Thesen abgefragt werden ist der Raum der Positionen hochdimensional. Daher wird eine Dimensionsreduktion vorgenommen. Mein Mittel der Wahl ist eine Hauptkomponentenanalyse vorzunehmen.
 
 \paragraph{Hauptkomponentenanalyse}
 Die Hauptkomponentenanalyse hat nach \citet{bishop2006pattern} zwei verschiedene Motivationen. Die erste Motivation ist es, die Hauptkomponenten so zu wählen, dass die Varianz entlang der Hauptkomponenten maximiert wird.
@@ -79,9 +79,9 @@ In diesem Fall werden ausschließlich die Bundestagsparteien verwendet.
 Das schränkt zwar die Daten sehr ein, aber damit konzentriert sich die Analyse auf die Parteien die relevant sind.
 
 \paragraph{Berechnung}
-Die Berechnung der Hauptkomponentenanalyse nehme ich mit scikit-learn \citep{scikit-learn} vor. Die Bibliothek implementiert eine Vielzahl an Algorithmen des maschinellen Lernens. Das garantiert eine einfach Handhabung und effiziente Implementierung.
+Die Berechnung der Hauptkomponentenanalyse wird mit scikit-learn \citep{scikit-learn} umgesetzt. Die Bibliothek implementiert eine Vielzahl an Algorithmen des maschinellen Lernens. Das garantiert eine einfach Handhabung und effiziente Implementierung.
 
-Bei der Berechnung der Haupkomponentenanalyse muss außerdem bedacht werden, wie die Hauptkomponenten skaliert werden. In der Theorie stellen sie lediglich eine Richtung dar. Wenn jedoch eine Metrik verwendet wird, spielt die Skalierung eine Rolle. Es gibt im Wesentlichen zwei Optionen. Erstens, können die Hauptkomponenten so skaliert werden, dass die Varianz in jeder Hauptkomponente die gleiche ist. Zweitens, können die Hauptkomponenten so skaliert werden, dass das Verhältnis der Varianzen zwischen den Hauptkomponenten erhalten bleibt. Ich entscheide mich dafür das Verhältnis der Varianzen zu erhalten, da somit eine gewisse Gewichtung zwischen den politischen Themen erhalten bleibt.
+Bei der Berechnung der Haupkomponentenanalyse muss außerdem bedacht werden, wie die Hauptkomponenten skaliert werden. In der Theorie stellen sie lediglich eine Richtung dar. Wenn jedoch eine Metrik verwendet wird, spielt die Skalierung eine Rolle. Es gibt im Wesentlichen zwei Optionen. Erstens, können die Hauptkomponenten so skaliert werden, dass die Varianz in jeder Hauptkomponente die gleiche ist. Zweitens, können die Hauptkomponenten so skaliert werden, dass das Verhältnis der Varianzen zwischen den Hauptkomponenten erhalten bleibt. Diese Arbeit erhält das Verhältnis der Varianzen, da somit eine gewisse Gewichtung zwischen den politischen Themen erhalten bleibt.
 
 \paragraph{Positionen der Parteien in den Hauptkomponenten}
 Die Positionen der Parteien auf die Hauptkomponenten projiziert sind in Abbildung \ref{fig:party-positions-pca} dargestellt. Parteien, die sich auf einer Achse nah beieinander befinden, haben auf dieser Achse tendenziell ähnliche Positionen. Somit haben beispielsweise \glqq DIE LINKE\grqq\ und \glqq Grüne\grqq\ tendenziell ähnliche Positionen in der ersten Hauptkomponente. Dagegen haben in der zweiten Hauptkomponente \glqq AfD\grqq\ und \glqq DIE LINKE\grqq\ und am anderen Ende des Spektrums \glqq CDU/CSU\grqq\ und \glqq SPD\grqq\ ähnliche Positionen. Dass das Zentrum leer ist, liegt an der Konstruktion der Hauptkomponentenanalyse. Da sie darauf abzielt, die Varianz zu maximieren, liegen nur wenige beziehungsweise keine Datenpunkte in der Projektion in der Mitte.
@@ -175,7 +175,7 @@ Der Daten des Politbarometers sind sehr umfangreich. Es werden viele verschieden
 
 \paragraph{V6 Parteienwahl Absicht}
 Die Frage lautete von 2010 bis 2020 (in anderen Jahren ähnlich): \glqq Und welche Partei würden Sie wählen?\grqq. \citep[Variablendokumentation, S.\,12]{politbarometer}\\
-Diese Antwort verwende ich um die Umfrageteilnehmer einer Partei zuzuordnen. Die Angaben dieser Frage sind außerdem zum jeweiligen Erhebungszeitpunkt aktueller als die Angaben bei der Variable \glqq V7 Wahl: Rückerinnerung\grqq.
+Diese Antwort wird verwendet, um die Umfrageteilnehmer einer Partei zuzuordnen. Die Angaben dieser Frage sind außerdem zum jeweiligen Erhebungszeitpunkt aktueller als die Angaben bei der Variable \glqq V7 Wahl: Rückerinnerung\grqq.
 
 \paragraph{V8 bis V14 Skalometer Parteien}
 Die Frage lautete von 1989 bis 2010 (in anderen Jahren ähnlich): \glqq Und nun noch etwas genauer zu den Parteien. Stellen Sie sich bitte einmal ein Thermometer vor, das von plus 5 bis minus 5 geht, mit einem Nullpunkt dazwischen. Sagen Sie mir mit diesem Thermometer, was Sie von den einzelnen Parteien halten. +5 bedeutet, dass Sie sehr viel von der Partei halten. -5 bedeutet, dass Sie überhaupt nichts von ihr halten. Mit den Werten dazwischen können Sie Ihre Meinung abgestuft sagen.\grqq\\
