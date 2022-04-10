@@ -1,3 +1,4 @@
+# latex
 *.aux
 *.bbl
 *.blg
@@ -5,7 +6,12 @@
 *.pdf
 *.synctex.gz
 *.toc
-.idea/
-*.json
 *.sav
+*.bcf
+*.run.xml
+
+# pycharm
+.idea/
+
+# figures
 /fig/
