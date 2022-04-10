@@ -22,7 +22,10 @@ for party in range(6):
         party_positions[party, 0],
         party_positions[party, 1],
         PARTY_DICTIONARY[party],
+        ha="center",
     )
+plt.xlabel("1. Hauptkomponente")
+plt.ylabel("2. Hauptkomponente")
 
 # load voter data
 dataframe = load_voter_data()
@@ -42,16 +45,19 @@ scatter_voter = ax.scatter(
     dataframe["position_y"],
     s=1,
     c=dataframe[col_party],
+    alpha=0.5,
     cmap="Set1",
 )
 legend1 = ax.legend(
     *scatter_voter.legend_elements(),
-    loc="upper right",
+    loc="lower right",
     title="Parteipräferenz",
-    bbox_to_anchor=(1.1, 1.0),
+    bbox_to_anchor=(1.1, 0.0),
 )
 for i, text in enumerate(legend1.get_texts()):
     text.set_text(PARTY_DICTIONARY[i])
+for lh in legend1.legendHandles:
+    lh.set_alpha(1)
 
 # save figure
 fig.savefig("../fig/voter_distribution_party_affiliation.png")

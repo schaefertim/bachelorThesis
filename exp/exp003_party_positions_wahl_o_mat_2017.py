@@ -35,13 +35,17 @@ print("pca explained variance ratio", pca.explained_variance_ratio_)
 print_pca_significant_statements(pca, dataframe_statement, filepath="../fig")
 
 # plot party positions
-plt.scatter(party_positions[:, 0], party_positions[:, 1])
+plt.scatter(party_positions[:, 0], party_positions[:, 1], label="Parteien")
 for party in range(6):
     plt.text(
         party_positions[party, 0],
         party_positions[party, 1],
         PARTY_DICTIONARY[party],
+        ha="center",
     )
+plt.xlabel("1. Hauptkomponente")
+plt.ylabel("2. Hauptkomponente")
+plt.legend(loc="lower right")
 
 # save plot and calculated data
 plt.savefig("../fig/party_positions.png")
