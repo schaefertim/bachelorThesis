@@ -98,7 +98,9 @@ class PartyAgent(Agent):
 class PartyModel(Model):
     """Party model."""
 
-    def __init__(self, party_positions, voter_positions, kinds=None, seed=None):
+    def __init__(
+        self, party_positions, voter_positions, kinds=None, seed=None
+    ):
         """Initialize the party model.
 
         Args:
