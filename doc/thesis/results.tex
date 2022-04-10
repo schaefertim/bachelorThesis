@@ -255,32 +255,28 @@ Insgesamt erscheint die Wählerpositionierung sinnvoll und kosistent. Die Links-
 
 \section{Dynamik agentenbasiert modelliert} \label{Sec:Dynamik-Anwendung}
 
-Die in Kapitel [TODO] und Kapitel [TODO] erstellten Daten der Partei- und Wählerpositionen dienen nun als Grundlage für ein dynamisches Modell. Das Modell von \citet{laver2005policy} das in Kapitel [TODO] vorgestellt wurde wird hier umgesetzt.
+Die in Kapitel \ref{Sec-Parteienpositionen} und Kapitel \ref{Sec-Wählerpositionen} berechneten Partei- und Wählerpositionen dienen nun als Grundlage für ein dynamisches Modell. Das Modell von \citet{laver2005policy} das in Kapitel \ref{sec:ABM-Dynamik} vorgestellt wurde wird umgesetzt.
 
 \subsection{Umsetzung des Modells}
 
-Zur Umsetzung des agentenbasierten Modells wird hier Mesa \citep{mesa2020} verwendet. Das Mesa Projekt ist ein open-source Projekt das auf github zu finden ist [TODO mesa repository]. 
-Mesa bietet ein Gerüst innerhalb dessen ein agentenbasiertes Modell einfach und effizient umgesetzt werden kann. Es bietet Werkzeuge zum Aufbau, der Analyse und der Visualisierung dieser Modelle.
-% TODO cite https://mesa.readthedocs.io/en/latest/overview.html
+\paragraph{Mesa}
+Zur Umsetzung des agentenbasierten Modells wird Mesa \citep{mesa2020} verwendet. Mesa ist ein open-source Projekt\footnote{https://gitlab.freedesktop.org/mesa/mesa}. 
+Mesa bietet ein Gerüst, innerhalb dessen ein agentenbasiertes Modell einfach und effizient umgesetzt werden kann. Es bietet Werkzeuge zum Aufbau, der Analyse und der Visualisierung dieser Modelle. Außerdem ist eine ausführliche Dokumentation verfügbar\footnote{https://mesa.readthedocs.io/en/latest/}.
 
-Zunächst wird das Modell in das allgemeine Modell und seine Agenten eingeteilt. In diesem Fall sind die Parteien die Agenten, da sie ihre Position dynamisch ändern. Die Wähler könnten auch als Agenten modelliert werden. Allerdings ist es hier einfacher sie als Teil des äußeren Modells zu betrachten, da sie lediglich ihre Parteipräferenz ändern. So können die Berechnungen effizienter durchgeführt werden, als wenn alle Wähler einzelne Agenten wären.
+\paragraph{Einteilung Agenten und Modell}
+Für Mesa wird das Modell in das äußere Modell und seine Agenten eingeteilt. In diesem Fall sind die Parteien die Agenten, da sie ihre Positionen dynamisch ändern. Die Wähler könnten auch als Agenten modelliert werden. Allerdings ist es hier einfacher sie als Teil des äußeren Modells zu betrachten, da sie lediglich ihre Parteipräferenz ändern. So können die Berechnungen effizienter durchgeführt werden, als wenn alle Wähler einzelne Agenten wären.
 
 \paragraph{Implementierung}
-Das Modell übernimmt die Berechnung der Wählerzuordnung und der daraus abgeleiteten Größen wie zum Beispiel den Wähleranteil einer Partei. Das Modell führt die Zeitschritte aus. Innerhalb eines Zeitschritts hat die Partei als Agent die Aufgabe, ihre neue Position für den nächsten Zeitschritt zu berechnen. Dabei kann sie auf die Ressourcen des Modells zurückgreifen und die Art und Weise hängt vom Typ der Partei ab. Wie in Kapitel [TODO] beschrieben teilt \citet{laver2005policy} die Parteien in die Typen Aggregator, Hunter, Predator und Sticker ein. Bei programmierten Modellen stecken wichtige Elemente auch in Implementierungsdetails. Im Folgenden wird insbesondere auf folgende Punkte eingegangen:
-\begin{itemize}
-\item Einheitslänge
-\item Hunter mit stagnierendem Stimmenanteil
-\item Ausführungsreihenfolge
-\item Anzahl Zyklen
-\end{itemize}
+Das Modell übernimmt die Berechnung der Wählerzuordnung und der daraus abgeleiteten Größen wie zum Beispiel den Wähleranteil einer Partei. Das Modell führt die Zeitschritte aus. Innerhalb eines Zeitschritts hat die Partei als Agent die Aufgabe, ihre neue Position für den nächsten Zeitschritt zu berechnen. Dabei kann sie auf die Ressourcen des Modells zurückgreifen und die Art und Weise hängt vom Typ der Partei ab. Wie in Kapitel \ref{sec:ABM-Dynamik} beschrieben teilt \citet{laver2005policy} die Parteien in die Typen Aggregator, Hunter, Predator und Sticker ein. Bei programmierten Modellen stecken wichtige Elemente auch in Implementierungsdetails.
+Im Folgenden werden für das Modell von \citet{laver2005policy} die Implementierungsdetails diskutiert.
 
 \paragraph{Einheitslänge}
 \citet{laver2005policy} verwendet im Modell, insbesondere für Hunter und Predator eine Einheitslänge als Bewegung für den nächsten Zeitschritt. Allerdings ist nicht eindeutig geklärt wie diese Einheitslänge definiert ist.
 Das die Länge nicht eindeutig geklärt ist, ist ein Problem insofern, dass sich die Ergebnisse je nach Einheitslänge erheblich unterscheiden können. Bei einer zu großen Einheitslänge sind die Positionsanpassungen der Parteien zu groß. Dadurch verlieren die Positionsanpassungen ihren Sinn und das Modell kann sich nicht stabilieren. Ist die Einheitslänge dagegen zu klein, braucht das Modell sehr viele Zyklen um sich zu ändern beziehungsweise zu stabilisieren. Im schlimmsten Fall funktioniert das Modell gar nicht, weil beispielsweise der Hunter aufgrund der Diskretität der Wähler mit einer kleinen Schrittlänge gar keine Stimmenanteiländerung feststellt.
-Aufgrund einer Abbildung Lavers \citep[Abb.\,4]{laver2005policy} schätze ich einen ungefähren Wert ab. Daher wähle ich für mein Modell einen Wert von $0,1$.
+Aufgrund einer Abbildung Lavers \citep[Abb.\,4]{laver2005policy} wird ein ungefährer Wert abgeschätzt. Im Modell hier wird ein Wert von 0,1 gewählt.
 
 \paragraph{Hunter mit stagnierendem Stimmenanteil}
-Direkt mit der Einheitslänge verbunden ist die Problematik was der Hunter tut, wenn sein Stimmenanteil gleich bleibt. Wird die momentane Richtung beibehalten, dann verhält sich der Hunter eher explorativ. Dagegen kann diese Strategie katastrophal scheitern, wenn beispielsweise der Stimmenanteil bei Null liegt und der Hunter sich immer weiter von den Wählern entfernt. Die andere Möglichkeit ist, dass der Hunter seine Richtung wechselt. Dann ist die Strategie des Hunters stabiler. Allerdings besteht die Gefahr, dass zu exploriert wird. Diese Eigenschaft muss also direkt mit der Einheitslänge abgestimmt werden.
+Direkt mit der Einheitslänge verbunden ist die Problematik, was der Hunter tut, wenn sein Stimmenanteil gleich bleibt. Wird die momentane Richtung beibehalten, dann verhält sich der Hunter eher explorativ. Dagegen kann diese Strategie katastrophal scheitern, wenn beispielsweise der Stimmenanteil bei Null liegt und der Hunter sich immer weiter von den Wählern entfernt. Die andere Möglichkeit ist, dass der Hunter seine Richtung wechselt. Dann ist die Strategie des Hunters stabiler. Allerdings besteht die Gefahr, dass zu wenig exploriert wird. Diese Eigenschaft muss also direkt mit der Einheitslänge abgestimmt werden.
 Laver entscheidet sich für den Richtungswechsel, weshalb diese Arbeit diesen Fall ebenso handhabt \citep[S.\,280]{laver2005policy}.
 
 \paragraph{Ausführungsreihenfolge}
@@ -290,11 +286,11 @@ Die Ausführungsreihenfolge zwischen den Parteien kann einen kleinen Unterschied
 Laver zeigt in seiner Arbeit, dass ein Modell mit bis zu 10 Parteien des Typs Aggregator mit bis zu 1000 Wählern nach spätestens 55 Zyklen statisch wird \citep[S.\,271-2]{laver2005policy}. Das dient als Orientierung, um abzuschätzen, wann ein Modell statisch wird.
 
 \paragraph{Ausführungsdauer}
-Die resultierende Implementierung ist effizient. So kann beispielsweise ein System mit ??? Wählern und ??? Parteien ??? Zyklen innerhalb von ??? Sekunden berechnen [TODO]. Kleinere Systeme haben eine vernachlässigbare Ausführungsdauer. Für die nachfolgend aufgeführten Experimente ist die Ausührungsdauer keine Schwierigkeit.
+Die resultierende Implementierung ist effizient. So kann beispielsweise ein Beispielsystem mit 1847 Wählern, 6 Parteien und 1000 Zyklen unter 0,1 Sekunden berechnet werden\footnote{Systeminformation: 8 x Intel(R) Core(TM) i7-7700 CPU @ 3.60GHz, 16GB RAM}. Kleinere Systeme haben eine vernachlässigbare Ausführungsdauer. Für die nachfolgend aufgeführten Experimente ist die Ausührungsdauer also keine Schwierigkeit.
 
 \subsection{Ergebnisse}
 
-Nun wird das Modell auf die zuvor abgeleiteten Partei- und Wählerpositionen angewendet. Das Modell wird initialisiert mit den berechneten Positionen. Als Parteitypen werden die verschiedenen Konstellationen aus den Ergebnissen von \citet{laver2005policy} durchgespielt, die in Kapitel [TODO] vorgestellt wurden. Das Modell läuft für 1000 Zyklen, damit die Modelle, die statisch werden statisch geworden sind. Im Folgenden werden die Ergebnisse für die verschiedenen Konstellationen präsentiert.
+Nun wird das Modell auf die zuvor abgeleiteten Partei- und Wählerpositionen angewendet. Das Modell wird initialisiert mit den berechneten Positionen. Als Parteitypen werden die verschiedenen Konstellationen aus den Ergebnissen von \citet{laver2005policy} durchgespielt, die in Kapitel \ref{sec:ABM-Dynamik} vorgestellt wurden. Das Modell läuft für 1000 Zyklen, damit die Modelle, die statisch werden, statisch geworden sind. Im Folgenden werden die Ergebnisse für die verschiedenen Konstellationen präsentiert.
 
 \paragraph{Nur Aggregatoren}
 
@@ -320,7 +316,14 @@ In Abbildung \ref{fig:laver-hunter6} ist das Ergebnis zu sehen, wenn alle sechs 
 
 \paragraph{Aggregatoren gegen einzelne Hunter oder Predatoren}
 
-In dieser Arbeit wurden viele Szenarien durchgespielt, in denen vier oder fünf Aggregatoren gegen einzelne Hunter oder Predatoren antreten. Repräsentativ dafür ist in Abbildung \ref{fig:laver-aggregator4-hunter-predator} die Situation von vier Aggregatoren mit einem Hunter und einem Predator dargestellt. Die Hunter und Predatoren bewegen sich ausnahmslos in den unteren Bereich mit der hohen Wählerdichte. Allerdings schaffen es nur die Hunter und die auch nicht immer den attraktivsten Platz ganz unten einzunehmen. Ansonsten konzentrieren sich die Positionen der einzelnen Hunter und Predatoren auf den Bereich rechts davon. Wie bei \citet{laver2005policy} bleiben die Aggregatoren sehr robust und behalten wesentliche Wähleranteile. In der Situation auf den realen Daten sind die einzelnen Hunter und Predatoren jedoch erfolgreicher als bei \citet{laver2005policy}. Dies liegt insbesondere an der unregelmäßigen Wählerverteilung, die die symmetrische Situation wie \citet{laver2005policy} vermeidet.
+In dieser Arbeit wurden mehrere Szenarien durchgespielt, in denen vier oder fünf Aggregatoren gegen einzelne Hunter oder Predatoren antreten.
+Repräsentativ dafür ist in Abbildung \ref{fig:laver-aggregator4-hunter-predator} die Situation von vier Aggregatoren mit einem Hunter und einem Predator dargestellt.
+Die Hunter und Predatoren bewegen sich ausnahmslos in den unteren Bereich mit der hohen Wählerdichte.
+Allerdings schaffen es nur die Hunter, wobei auch diese es nicht immer schaffen, den attraktivsten Platz ganz unten einzunehmen.
+Ansonsten konzentrieren sich die Positionen der einzelnen Hunter und Predatoren auf den Bereich rechts davon.
+Wie bei \citet{laver2005policy} bleiben die Aggregatoren sehr robust und behalten wesentliche Wähleranteile.
+In der Situation auf den realen Daten sind die einzelnen Hunter und Predatoren jedoch erfolgreicher als bei \citet{laver2005policy}.
+Dies liegt insbesondere an der unregelmäßigen Wählerverteilung, die sich von der symmetrischen Situation mit Normalverteilung bei \citet{laver2005policy} deutlich unterscheidet.
 
 \begin{figure}[htb]
 	\centering
@@ -329,7 +332,7 @@ In dieser Arbeit wurden viele Szenarien durchgespielt, in denen vier oder fünf 
 	\label{fig:laver-aggregator4-hunter-predator}
 \end{figure}
 
-\paragraph{Hunter gegen einzelnen Predator}
+\paragraph{Mehrere Hunter gegen einzelnen Predator}
 
 In Abbildung \ref{fig:laver-hunter5-predator} ist das Ergebnis von fünf Huntern mit einem einzelnen Predator dargestellt. Das Ergebnis ist sehr dynamisch und vom Zufall beeinflusst. Allen Ergebnissen ist jedoch gemein, dass der Predator tendenziell nicht die erfolgreichste Partei ist. Stattdessen pendelt er wie bei \citet{laver2005policy} zwischen den erfolgreichsten Huntern hin und her. Dadurch hält er sich zwar in der Region mit der größten Wählerdichte auf, kann dort aber nicht unbeschränkt dominieren.
 
@@ -339,9 +342,3 @@ In Abbildung \ref{fig:laver-hunter5-predator} ist das Ergebnis von fünf Huntern
 	\caption{TODO (Quelle: eigene Darstellung)}
 	\label{fig:laver-hunter5-predator}
 \end{figure}
-
-\paragraph{Bewertung}
-
-Die Ergebnisse sind im Großen und Ganzen wie in \citet{laver2005policy}. Es ergeben sich jedoch Unterschiede aus der anderen Verteilung der Wähler. Insbesondere die unsymmetrische Verteilung sorgt dafür, dass manche Gleichgewichte nicht zustande kommen und die Hunter und Predatoren erfolgreicher sind.
-
-Die meisten Ergebnisse hier unterscheiden sich wesentlich von der Ausgangssituation. Eine Ausnahme davon bildet die Situation mit ausschließlich Aggregatoren. In dieser Situation bleiben die Parteien relativ stabil in der Nähe ihrer Ausgangsposition. Daher bildet dieses Modell die Daten dieser Arbeit am besten ab.
