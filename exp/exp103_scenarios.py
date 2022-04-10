@@ -6,6 +6,10 @@ import numpy as np
 
 from src.party_model.party_model import PartyModel
 
+# set seed for deterministic outcome
+# ensures results that can be replicated
+seed = 0
+
 # settings for all experiments
 settings = [
     {
@@ -61,6 +65,7 @@ for setting in settings:
         party_positions=party_positions_pca[:n_parties],
         voter_positions=voter_positions,
         kinds=setting["kinds"],
+        seed=seed,
     )
 
     # run 1000 steps

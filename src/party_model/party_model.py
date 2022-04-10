@@ -43,6 +43,7 @@ class PartyAgent(Agent):
                 )
                 return
             case "HUNTER":
+                np.random.seed(self.model.seed)
                 if not hasattr(self, "position_old"):
                     angle = np.random.random() * 2 * np.pi
                     new_direction = (
@@ -97,15 +98,17 @@ class PartyAgent(Agent):
 class PartyModel(Model):
     """Party model."""
 
-    def __init__(self, party_positions, voter_positions, kinds=None):
+    def __init__(self, party_positions, voter_positions, kinds=None, seed=None):
         """Initialize the party model.
 
         Args:
             party_positions: initial party positions
             voter_positions: positions of voters in 2D space
             kinds: list of party kinds, if None all are set as AGGREGATOR
+            seed: set seed for deterministic model
         """
-        super().__init__()
+        super().__init__(seed=seed)
+        self.seed = seed
         self.num_agents = party_positions.shape[0]
         self.schedule = RandomActivation(self)
         kinds = (
