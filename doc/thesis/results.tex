@@ -112,11 +112,12 @@ In Tabelle \ref{tab:pca1} sind die 10 Thesen aufgelistet, die für die erste Hau
 	]{../../fig/statements_pca0.csv}{}{
 		\MYindex & \num{\MYvalue} & \MYlabel & \MYtext
 	}
-	\caption{Zehn bedeutendsten Thesen der ersten Hauptkomponente der Parteipositionen: Sortiert nach absteigendem Absolutwert, was gleichbedeuted mit absteigender Relevanz ist. Für Parteien die einen positiven Wert in der Hauptkomponente haben gilt tendenziell: Sie lehnen Thesen mit positivem Wert ab und stimmen Thesen mit negativem Wert zu. (Quelle: eigene Darstellung)}
+	\caption{Zehn bedeutendsten Thesen des Wahl-O-Mats \citep{WahlOMat} in der ersten Hauptkomponente der Parteipositionen (Quelle: eigene Darstellung)}
 	\label{tab:pca1}
 \end{table}
 
-In der Spalte \glqq Wert\grqq\ ist der Wert im Vektor der Hauptkomponente gelistet. Je größer der Wert, desto größer ist die Bedeutung für diese Richtung. Ist der Wert positiv, so bedeutet das eine Ablehnung der These. Ist der Wert negativ bedeutet das eine Zustimmung zur These.
+In der Spalte \glqq Wert\grqq\ ist der Wert im Vektor der Hauptkomponente gelistet. Je größer der Wert, desto größer ist die Bedeutung für diese Richtung.
+Für Parteien, die einen positiven Wert in der Hauptkomponente haben gilt tendenziell: Sie lehnen Thesen mit positivem Wert ab und stimmen Thesen mit negativem Wert zu.
 Zur Erläuterung ein kurzes Beispiel: Die \glqq AfD\grqq\ hat die beiden bedeutendsten Thesen der ersten Hauptkomponente, die These 29 mit 0 (Zustimmung) und die These 3 mit 1 (Ablehnung) beantwortet. In der Projektion werden diese Werte mit dem Wert in der Hauptkomponente multipliziert, was einen Wert von $0*0.259+1*(-0.259)=-0.259$ ergibt. Deshalb befindet sich die \glqq AfD\grqq\ eher im negativen Teil der ersten Hauptkomponente, also eher links. Parteien, die diese Thesen genau gegenteilig beantwortet haben, wie beispielsweise \glqq DIE LINKE\grqq , befinden sich eher im positiven Teil, also eher rechts, siehe dazu auch Abbilung \ref{fig:party-positions-pca}.
 
 \begin{table}%[htb]
@@ -133,7 +134,7 @@ Zur Erläuterung ein kurzes Beispiel: Die \glqq AfD\grqq\ hat die beiden bedeute
 	]{../../fig/statements_pca1.csv}{}{
 		\MYindex & \num{\MYvalue} & \MYlabel & \MYtext
 	}
-	\caption{Zehn bedeutendsten Thesen der zweiten Hauptkomponente der Parteipositionen: Sortiert nach absteigendem Absolutwert, was gleichbedeuted mit absteigender Relevanz ist. Für Parteien die einen positiven Wert in der Hauptkomponente haben gilt tendenziell: Sie lehnen Thesen mit positivem Wert ab und stimmen Thesen mit negativem Wert zu. (Quelle: eigene Darstellung)}
+\caption{Zehn bedeutendsten Thesen des Wahl-O-Mats \citep{WahlOMat} in der zweiten Hauptkomponente der Parteipositionen (Quelle: eigene Darstellung)}
 	\label{tab:pca2}
 \end{table}
 
@@ -300,7 +301,7 @@ Bei nur Aggregatoren wird laut \citet{laver2005policy} eine gleichmäßige Verte
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=1.0]{../../fig/fig_laver_aggregator6.png}
-	\caption{TODO (Quelle: eigene Darstellung)}
+	\caption{Simulationsergebnis mit ausschließlich Aggregatoren nach dem Modell von \citet{laver2005policy} (Quelle: eigene Darstellung)}
 	\label{fig:laver-aggregator6}
 \end{figure}
 
@@ -311,7 +312,7 @@ In Abbildung \ref{fig:laver-hunter6} ist das Ergebnis zu sehen, wenn alle sechs 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=1.0]{../../fig/fig_laver_hunter6.png}
-	\caption{TODO (Quelle: eigene Darstellung)}
+	\caption{Simulationsergebnis mit ausschließlich Huntern nach dem Modell von \citet{laver2005policy} (Quelle: eigene Darstellung)}
 	\label{fig:laver-hunter6}
 \end{figure}
 
@@ -321,7 +322,7 @@ In dieser Arbeit wurden mehrere Szenarien durchgespielt, in denen vier oder fün
 Repräsentativ dafür ist in Abbildung \ref{fig:laver-aggregator4-hunter-predator} die Situation von vier Aggregatoren mit einem Hunter und einem Predator dargestellt.
 Die Hunter und Predatoren bewegen sich ausnahmslos in den unteren Bereich mit der hohen Wählerdichte.
 Allerdings schaffen es nur die Hunter, wobei auch diese es nicht immer schaffen, den attraktivsten Platz ganz unten einzunehmen.
-Ansonsten konzentrieren sich die Positionen der einzelnen Hunter und Predatoren auf den Bereich rechts davon.
+Ansonsten konzentrieren sich die Positionen der einzelnen Hunter und Predatoren meistens auf den Bereich rechts davon.
 Wie bei \citet{laver2005policy} bleiben die Aggregatoren sehr robust und behalten wesentliche Wähleranteile.
 In der Situation auf den realen Daten sind die einzelnen Hunter und Predatoren jedoch erfolgreicher als bei \citet{laver2005policy}.
 Dies liegt insbesondere an der unregelmäßigen Wählerverteilung, die sich von der symmetrischen Situation mit Normalverteilung bei \citet{laver2005policy} deutlich unterscheidet.
@@ -329,7 +330,7 @@ Dies liegt insbesondere an der unregelmäßigen Wählerverteilung, die sich von 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=1.0]{../../fig/fig_laver_aggregator4_predator_hunter.png}
-	\caption{TODO (Quelle: eigene Darstellung)}
+	\caption{Simulationsergebnis mit vier Aggregatoren und je einem einzelnen Predator und Hunter nach dem Modell von \citet{laver2005policy} (Quelle: eigene Darstellung)}
 	\label{fig:laver-aggregator4-hunter-predator}
 \end{figure}
 
@@ -340,6 +341,6 @@ In Abbildung \ref{fig:laver-hunter5-predator} ist das Ergebnis von fünf Huntern
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=1.0]{../../fig/fig_laver_hunter5_predator.png}
-	\caption{TODO (Quelle: eigene Darstellung)}
+	\caption{Simulationsergebnis mit mehreren Huntern und einem Predator nach dem Modell von \citet{laver2005policy} (Quelle: eigene Darstellung)}
 	\label{fig:laver-hunter5-predator}
 \end{figure}
