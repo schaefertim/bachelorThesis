@@ -172,18 +172,19 @@ class PartyModel(Model):
         """
         plt.figure()
         party_positions = self._get_party_positions()
-        scatter_party = plt.scatter(
-            party_positions[:, 0],
-            party_positions[:, 1],
-            c=range(self.num_agents),
-            cmap="Set1",
-        )
         plt.scatter(
             self.voter_positions[:, 0],
             self.voter_positions[:, 1],
             s=1,
             c=self.party_affiliation,
             cmap="Set1",
+        )
+        scatter_party = plt.scatter(
+            party_positions[:, 0],
+            party_positions[:, 1],
+            c=range(self.num_agents),
+            cmap="Set1",
+            edgecolors="black",
         )
         legend = plt.legend(
             *scatter_party.legend_elements(),
@@ -192,6 +193,9 @@ class PartyModel(Model):
         )
         for i, text in enumerate(legend.get_texts()):
             text.set_text(self.schedule.agents[i].kind)
+
+        plt.xlabel("1. Hauptkomponente")
+        plt.ylabel("2. Hauptkomponente")
 
         if filename is None:
             plt.show()
