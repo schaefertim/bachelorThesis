@@ -58,7 +58,7 @@ Das ist auch der Grund, warum die Partei- und Wählerpositionen aus zwei verschi
 Für diese Arbeit werden nicht direkt die Daten des Wahl-O-Mats verwendet, sondern auf die GitHub-Datenbank Qual-O-Mat von \citet{Bolte2022QualOMat} zugegriffen. Diese Datenbank sammelt alle verfügbaren Wahl-O-Mat Daten mit den Antworten der Parteien und legt diese in einem strukturierten Format ab.
 Somit können die Daten besser verarbeitet werden.
 
-\subsection{Hauptkomponentenanalyse Wahl-O-Mat}
+\subsection{Hauptkomponentenanalyse Wahl-O-Mat}\label{sec:Hauptkomponentenanalyse}
 
 Die Wahl-O-Mat Daten stellen die Positionen der Parteien im Hinblick auf die Thesen dar. Angesichts dessen, dass 38 Thesen abgefragt werden ist der Raum der Positionen hochdimensional. Daher nehme ich eine Dimensionsreduktion vor. Mein Mittel der Wahl ist eine Hauptkomponentenanalyse vorzunehmen.
 
@@ -166,48 +166,50 @@ Damit hat die zweite Hauptkomponente keine eindeutige Interpretation.
 
 \section{Positionen der Wähler}\label{Sec-Wählerpositionen}
 
+Nun werden die Positionen der Wähler bestimmt. In dieser Arbeit werden dazu die Bewertungen der Wähler gegenüber den Parteien herangezogen. Die Positionen der Wähler werden dann relativ zu den Positionen der Parteien bestimmt.
+
 \subsection{Politbarometer Daten}
-Die Daten des Politbarometers \citep{politbarometer} werden von der Forschungsgruppe Wahlen Mannheim erhoben im Auftrag des ZDF. Die Erhebung erfolgt telefonisch und ist repräsentativ für das gesamte Bundesgebiet. Die Daten umfassen eine lange Historie von 1977 bis 2020. Für den Zweck in dieser Arbeit, werden diejenigen Daten ausgewählt, die am besten mit dem Zeitpunkt des Wahl-O-Maten übereinstimmen.
+Die Daten des Politbarometers \citep{politbarometer} werden von der Forschungsgruppe Wahlen Mannheim erhoben im Auftrag des ZDF. Die Erhebung erfolgt telefonisch und ist repräsentativ für das gesamte Bundesgebiet. Die Daten umfassen eine lange Historie von 1977 bis 2020.
 
-Der Daten des Politbarometers sind sehr umfangreich. Es werden viele verschiedene politische Ansichten erfasst. Für diese Arbeit werden folgende Variablen verwendet:
-\begin{itemize}
-	\item V6 Parteienwahl Absicht\\
-	Die Frage lautete von 2010 bis 2020 (in anderen Jahren ähnlich): \glqq Und welche Partei würden Sie wählen?\grqq.\\
-	Diese Antwort verwende ich um die Umfrageteilnehmer einer Partei zuzuordnen. Die Angaben dieser Frage sind außerdem zum jeweiligen Erhebungszeitpunkt aktueller als die Angaben bei der Variable \glqq V7 Wahl: Rückerinnerung\grqq.
+Der Daten des Politbarometers sind sehr umfangreich. Es werden viele verschiedene politische Ansichten erfasst. Die für diese Arbeit wichtigsten Variablen werden im Folgenden vorgestellt.
 
-	\item V8 bis V14 Skalometer Parteien\\
-	Die Frage lautete von 1989 bis 2010 (in anderen Jahren ähnlich): \glqq Und nun noch etwas genauer zu den Parteien. Stellen Sie sich bitte einmal ein Thermometer vor, das von plus 5 bis minus 5 geht, mit einem Nullpunkt dazwischen. Sagen Sie mir mit diesem Thermometer, was Sie von den einzelnen Parteien halten. +5 bedeutet, dass Sie sehr viel von der Partei halten. -5 bedeutet, dass Sie überhaupt nichts von ihr halten. Mit den Werten dazwischen können Sie Ihre Meinung abgestuft sagen.\grqq\\
-	Zu den konkreten Parteien wurde dann gefragt: \glqq Was halten Sie von der [Parteiname]?\grqq, wobei SPD, CDU, CSU, FDP, Grüne, AfD und Die Linken abgefragt werden.\\
-	TODO Erläuterung Akkumulation CDU und CSU\\
-	Diese Variable wird in dieser Arbeit verwendet, um die Wählerpositionen abzuleiten. Dabei werden die vorher berechneten Parteipositionen und die Bewertung der einzelnen Parteien berücksichtigt.
+\paragraph{V6 Parteienwahl Absicht}
+Die Frage lautete von 2010 bis 2020 (in anderen Jahren ähnlich): \glqq Und welche Partei würden Sie wählen?\grqq. \citep[Variablendokumentation, S.\,12]{politbarometer}\\
+Diese Antwort verwende ich um die Umfrageteilnehmer einer Partei zuzuordnen. Die Angaben dieser Frage sind außerdem zum jeweiligen Erhebungszeitpunkt aktueller als die Angaben bei der Variable \glqq V7 Wahl: Rückerinnerung\grqq.
 
-	\item V22 Links-Rechts-Kontinuum\\
-	Die Frage lautete ab 2010: \glqq Wenn von Politik die Rede ist, hört man immer wieder die Begriﬀe 'links' und 'rechts'. Wir hätten gerne von Ihnen gewusst, ob Sie sich selbst eher links oder eher rechts einstufen. Stellen Sie sich	dazu bitte noch einmal ein Thermometer vor, das diesmal aber nur von 0 bis 10 geht. 0 bedeutet sehr links, 10 bedeutet sehr rechts. Mit den Werten dazwischen können Sie Ihre Meinung abgestuft sagen. Wo würden Sie sich einstufen?\grqq\\
-	Diese Variable wird verwendet um die Qualität der Wählerpositionierung  und die Interpretation der Hauptkomponentenanalyse zu beurteilen.
-\end{itemize}
+\paragraph{V8 bis V14 Skalometer Parteien}
+Die Frage lautete von 1989 bis 2010 (in anderen Jahren ähnlich): \glqq Und nun noch etwas genauer zu den Parteien. Stellen Sie sich bitte einmal ein Thermometer vor, das von plus 5 bis minus 5 geht, mit einem Nullpunkt dazwischen. Sagen Sie mir mit diesem Thermometer, was Sie von den einzelnen Parteien halten. +5 bedeutet, dass Sie sehr viel von der Partei halten. -5 bedeutet, dass Sie überhaupt nichts von ihr halten. Mit den Werten dazwischen können Sie Ihre Meinung abgestuft sagen.\grqq\\
+Zu den konkreten Parteien wurde dann gefragt: \glqq Was halten Sie von der [Parteiname]?\grqq, wobei SPD, CDU, CSU, FDP, Grüne, AfD und Die Linken abgefragt werden. \citep[Variablendokumentation, S.\,28-29]{politbarometer}\\
+Diese Variable wird in dieser Arbeit verwendet, um die Wählerpositionen abzuleiten. Dabei werden die vorher berechneten Parteipositionen und die Bewertung der einzelnen Parteien berücksichtigt.
 
-[TODO Datenaufbereitung, Datenauswahl]
+\paragraph{V22 Links-Rechts-Kontinuum}
+Die Frage lautete ab 2010: \glqq Wenn von Politik die Rede ist, hört man immer wieder die Begriﬀe 'links' und 'rechts'. Wir hätten gerne von Ihnen gewusst, ob Sie sich selbst eher links oder eher rechts einstufen. Stellen Sie sich	dazu bitte noch einmal ein Thermometer vor, das diesmal aber nur von 0 bis 10 geht. 0 bedeutet sehr links, 10 bedeutet sehr rechts. Mit den Werten dazwischen können Sie Ihre Meinung abgestuft sagen. Wo würden Sie sich einstufen?\grqq \citep[Variablendokumentation, S.\,61-62]{politbarometer}\\
+Diese Variable wird verwendet um die Qualität der Wählerpositionierung  und die Interpretation der Hauptkomponentenanalyse zu beurteilen.
+
+\paragraph{Datenauswahl}
+Für den Zweck in dieser Arbeit, werden diejenigen Daten ausgewählt, die am besten mit dem Zeitpunkt des Wahl-O-Maten übereinstimmen.
+Die Bundestagswahl fand zum 24.\,September 2017 statt, daher werden vom Politbarometer die gesamten Umfragedaten für August 2017 verwendet.
+Außerdem werden alle Umfrageteilnehmer aus dem Datensatz entfernt, zu denen eine zur Berechnung wichtige Angabe fehlt.
+Beispielsweise werden zur Positionsberechnung diejenigen Wähler entfernt, bei denen mindestens eine Präferenzangabe fehlt.
+Weitere wichtige Arbeitsschritte sind unter Anderem die Konvertierung der Angaben in verarbeitbare Formate und die Vereinheitlichung mit dem Wahl-O-Mat-Datensatz.
 
 \subsection{Wählerpositionierung mithilfe der Parteipositionen}
+
 \paragraph{Metrik}
 Hier werden die Wähler mithilfe des Skalometers positioniert. Zu jeder Partei steht eine Bewertung des Wählers zwischen -5 und +5 zur Verfügung. Dies ist eine Metrik der Wähler, wobei ein hoher Wert einen geringen Abstand zur Partei und ein niedriger Wert einen großen Abstand zur Parteiposition bedeutet.
 Fraglich ist jedoch wie diese Metrik umgesetzt werden kann. In dieser Arbeit wird eine exponentielle Gewichtung der Parteipositionen vorgenommen. Somit ist die Wählerposition $x_i$:
 \begin{equation}
 	x_i = \frac{\sum_j e^{r_{ij}} p_j}{\sum_j e^{r_{ij}}}
 \end{equation}
-berechnet aus den Parteipositionen $p_j$, und den Bewertungen des Wählers $r_{ij}$.
+berechnet aus den Parteipositionen $p_j$ aus Kapitel \ref{Sec-Parteienpositionen}, und den Bewertungen des Wählers $r_{ij}$.
 Diese Entscheidung hat Vor- und Nachteile:
 \begin{itemize}
 	\item Berechenbarkeit: Die Formel ist immer berechenbar, da der Nenner stets positiv ist.
-	\item Positive Bewertungen werden stärker gewichtet. Aufgrund der Exponentialfunktion spielen fast ausschließlich die besten Bewertungen eine Rolle. Dies ist positiv in dem Sinn, dass bei einer Wahl der Wähler nur eine Stimme hat und es daher wichtiger ist, welche Partei der Wähler mag, als welche er nicht mag.
-	\item Negative Bewertungen werden als positiv berechnet: Andererseits wird eine stark negative Gewichtung zwar als quasi Null gewichtet, aber immer noch positiv gewichtet was nicht der Realtität entspricht.
-	\item Konvexkombination: Es handelt sich bei der Berechnung um eine Konvexkombination. Das bedeutet, dass Wählerpositionen außerhalb der konvexen Hülle der Parteipositionen gar nicht möglich sind. Dagegen ist es in der Realität durchaus wahrscheinlich, dass Wählerpositionen extremer sind als jede Parteiposition.
-	\item Robustheit gegen Verschiebung: Es denkbar, dass Wähler unter einer genauen Zahl als Bewertung, zum Beispiel +3, etwas anderes verstehen. Die hier angewendete Formel hat den Vorteil, dass das Ergebnis invariant ist gegenüber einer pauschal bessereren oder schlechtereren Bewertung aller Parteien. Der einzig entscheidende Faktor ist der Abstand zwischen den Bewertungen.
-	\item Nichtlinearität: TODO
+	\item Positive Bewertungen werden stärker gewichtet als negative: Aufgrund der Exponentialfunktion spielen fast ausschließlich die besten Bewertungen eine Rolle. Dies ist positiv in dem Sinn, dass bei einer Wahl der Wähler nur eine Stimme hat und es daher wichtiger ist, welche Partei der Wähler mag, als welche er nicht mag.
+	\item Negative Bewertungen werden als marginal positiv berücksichtigt: Eine stark negative Gewichtung zwar als quasi Null gewichtet, aber immer noch positiv gewichtet was nicht der Realtität entspricht.
+	\item Konvexkombination: Es handelt sich bei der Berechnung um eine Konvexkombination. Das bedeutet, dass Wählerpositionen außerhalb der konvexen Hülle der Parteipositionen gar nicht möglich sind. Dagegen ist es in der Realität durchaus wahrscheinlich, dass Wählerpositionen extremer sind als jede Parteiposition. Diese Tatsache, dass es somit keine Ausreißer gibt, hat wiederum den Vorteil, dass die Daten leicht beherrschbar sind.
+	\item Invarianz gegen Verschiebung: Es ist denkbar, dass Wähler pauschal alle Parteien um +1 besser oder -1 schlechter bewerten. Die hier angewendete Formel hat den Vorteil, dass das Ergebnis invariant ist gegenüber einer pauschal besseren oder schlechteren Bewertung aller Parteien. Der einzig entscheidende Faktor ist die Differenz zwischen den Bewertungen.
 \end{itemize}
-
-TODO alternative Metriken
-
 Das Ergebnis der Wählergewichtungen ist in Abbildung \ref{fig:voter-positions-pca} dargestellt.
 
 \begin{figure}[htb]
@@ -227,11 +229,12 @@ Im Politbarometer stehen auch Daten zur Verfügung, wie sich die Befragten auf e
 	\label{fig:voter-positions-pca-left-right}
 \end{figure}
 
-Nun stellt sich die Frage, ob dieses Ergebnis mit der Interpretation der ersten Hauptkomponente als links-rechts-Skala übereinstimmt. Tatsächlich ist es so, dass die Wähler im rechten Teil des Schaubilds sich tendenziell als links identifizieren und diejenigen im linken Teil des Schaubilds, sich als neutral beziehungsweise rechts identifizieren. Dies bestätigt also die Interpretation der Haupkomponente.
-
+Nun stellt sich die Frage, ob dieses Ergebnis mit der Interpretation der ersten Hauptkomponente als links-rechts-Skala aus Kapitel \ref{sec:Hauptkomponentenanalyse} übereinstimmt.
+Tatsächlich ist es so, dass die Wähler im rechten Teil des Schaubilds sich tendenziell als links identifizieren und diejenigen im linken Teil des Schaubilds, sich als neutral beziehungsweise rechts identifizieren.
 Dieses Muster ist zwar eindeutig aber eindeutig nicht homogen. Das liegt schlichtweg daran, dass Wähler nicht homogen sind und somit Abweichungen erwartbar sind.
+Insgesamt bestätigt die Darstellung die Interpretation der ersten Haupkomponente als links-rechts-Skala.
 
-In der Richtung der zweiten Hauptkomponente lässt sich hingegen kein eindeutiger Gradient feststellen.
+In der Richtung der zweiten Hauptkomponente lässt sich hingegen kein eindeutiger Gradient feststellen, was mit der Unklarheit der zweiten Hauptkomponente auf der links-rechts-Skala bestätigt.
 
 \paragraph{Parteipräferenz}
 
