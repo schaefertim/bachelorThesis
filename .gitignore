@@ -3,7 +3,7 @@
 *.bbl
 *.blg
 *.log
-*.pdf
+/doc/thesis/paper.pdf
 *.synctex.gz
 *.toc
 *.bcf
